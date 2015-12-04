@@ -128,6 +128,54 @@ public abstract class Fraccion {
         return entero + (double) numerador / denominador;
     }
 
+    /**
+     * Devuelve la representacion en Latex de la fraccion.
+     *
+     * @return El valor del codigo latex.
+     */
+    public String toLatex() {
+        String latex = "";
+
+        if (isNumeroEntero()) {
+            latex = entero + "";
+        } else if (isMixta()) {
+            latex = String.format("%d\\frac{%d}{%d}", entero, numerador,
+                    denominador);
+        } // Solo queda que sea propia o impropia
+        else {
+            latex = String.format("\\frac{%d}{%d}", numerador, denominador);
+        }
+
+        return latex;
+    }
+
+    /**
+     * Devuelve el codigo latex correspondiente a la fraccion cuando se esta
+     * ingresando en la GUI.
+     *
+     * @return El codigo latex de la fraccion.
+     */
+    public String toLatexFormulacion() {
+        String latex = "";
+
+        // Evalua si es mixta para determinar si la fraccion tiene entero
+        if (isMixta()) {
+            latex += entero + " ";
+
+            if (numerador != 0 || denominador != 0) {
+                latex += String.format("\\frac{%s}{%s}",
+                        (numerador != 0) ? numerador : "\\hspace{20px}",
+                        (denominador != 0) ? denominador : " ");
+            }
+        } else {
+            latex += String.format("\\frac{%s}{%s}",
+                    (numerador != 0) ? numerador : "\\hspace{20px}",
+                    (denominador != 0) ? denominador : " ");
+        }
+
+        return latex;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -149,7 +197,7 @@ public abstract class Fraccion {
 
         return true;
     }
-    
+
     @Override
     public String toString() {
         String fraccion = "";

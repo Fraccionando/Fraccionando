@@ -7,6 +7,7 @@ import com.porfirio.fraccionando.main.Configuracion;
 import java.util.ArrayList;
 
 /**
+ * Esta clase prueba los calculos del mcm y mcd.
  *
  * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
  */

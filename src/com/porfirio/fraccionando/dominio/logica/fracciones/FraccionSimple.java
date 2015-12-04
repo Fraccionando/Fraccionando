@@ -1,5 +1,11 @@
 package com.porfirio.fraccionando.dominio.logica.fracciones;
 
+import com.porfirio.fraccionando.dominio.enumerados.TipoPaso;
+import com.porfirio.fraccionando.dominio.logica.calculos.Calculos;
+import com.porfirio.fraccionando.dominio.procedimiento.Paso;
+import com.porfirio.fraccionando.dominio.procedimiento.Procedimiento;
+import com.porfirio.fraccionando.main.Configuracion;
+
 /**
  * Esta clase es una implementacion de la clase abstracta Fraccion, donde las
  * operaciones realizadas no generan ningun tipo de explicacion.
@@ -47,16 +53,60 @@ public class FraccionSimple extends Fraccion {
 
     @Override
     public void simplificar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (isSimplificable()) {
+            if (isImpropia()) {
+                convertirAMixta();
+            }
+
+            if (isPropia() && isReducible()) {
+                long mcd = Calculos.mcdSimple(numerador, denominador);
+                numerador /= mcd;
+                denominador /= mcd;
+            }
+        }
+
+        Procedimiento.agregarPaso(new Paso(Configuracion
+                .getString("OPE_NX_RES_SIM"), TipoPaso.string));
+        Procedimiento.agregarPaso(new Paso(toLatex(), TipoPaso.expresion));
     }
 
     @Override
     public boolean convertirAMixta() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean conversion = true;
+
+        if (isImpropia()) {
+            if (!isMixta()) {
+                entero = numerador / denominador;
+                numerador = numerador - (entero * denominador);
+            } else {
+                entero = entero + (numerador / denominador);
+                numerador = numerador
+                        - ((numerador / denominador) * denominador);
+            }
+        } else {
+            conversion = false;
+        }
+
+        return conversion;
     }
 
     @Override
     public boolean convertirAImpropia() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean conversion = true;
+
+        if (isMixta()) {
+            if (isNumeroEntero()) {
+                entero = 0l;
+                numerador = entero;
+                denominador = 1l;
+            } else {
+                numerador = numerador + (entero * denominador);
+                entero = 0l;
+            }
+        } else {
+            conversion = false;
+        }
+
+        return conversion;
     }
 }
