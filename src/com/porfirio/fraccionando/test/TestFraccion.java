@@ -8,7 +8,8 @@ import com.porfirio.fraccionando.main.Configuracion;
 import java.util.ArrayList;
 
 /**
- * Esta clase prueba los metodos de Fraccion.
+ * Esta clase prueba los metodos de la clase abstracta Fraccion, asi como de sus
+ * implementaciones FraccionSimple y FraccionDetallada.
  *
  * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
  */
@@ -34,25 +35,20 @@ public class TestFraccion {
 //        System.out.println("- SIMPLIFICAR");
 //        simplicar(fraccionesSimples);
 //        printPasos();
-        
 //        System.out.println("- CONVERTIR A MIXTA");
 //        cam(fraccionesSimples);
 //        printPasos();
-        
         System.out.println("- CONVERTIR A IMPROPIA");
         cai(fraccionesSimples);
         printPasos();
-        
-        
+
 //        System.out.println("\n-- FRACCIONES DETALLADAS");
 //        System.out.println("- SIMPLIFICAR");
 //        simplicar(fraccionesDetalladas);
 //        printPasos();
-        
 //        System.out.println("- CONVERTIR A MIXTA");
 //        cam(fraccionesDetalladas);
 //        printPasos();
-        
         System.out.println("- CONVERTIR A IMPROPIA");
         cai(fraccionesDetalladas);
         printPasos();

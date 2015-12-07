@@ -111,8 +111,8 @@ public class FraccionDetallada extends Fraccion {
     public boolean convertirAMixta() {
         boolean huboConversion = true;
 
-        Procedimiento.agregarPaso(new Paso(Configuracion.getString("FR_CAM_IND"),
-                TipoPaso.string));
+        Procedimiento.agregarPaso(new Paso(Configuracion
+                .getString("FR_CAM_IND"), TipoPaso.string));
         Procedimiento.agregarPaso(new Paso(toLatex(), TipoPaso.expresion));
 
         if (isImpropia()) {

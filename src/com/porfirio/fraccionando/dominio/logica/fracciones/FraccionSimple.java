@@ -96,8 +96,8 @@ public class FraccionSimple extends Fraccion {
 
         if (isMixta()) {
             if (isNumeroEntero()) {
-                entero = 0l;
                 numerador = entero;
+                entero = 0l;
                 denominador = 1l;
             } else {
                 numerador = numerador + (entero * denominador);
