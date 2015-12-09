@@ -20,13 +20,13 @@ public enum ColorTema {
     private Color claro;
     private Color oscuro;
 
-    private ColorTema(Color claro, Color oscuro) {
+    private ColorTema(Color oscuro, Color claro) {
         this.claro = claro;
         this.oscuro = oscuro;
     }
 
     private static int hexToInt(String hex) {
-        return Integer.parseInt(hex);
+        return Integer.parseInt(hex, 16);
     }
 
     public Color getClaro() {

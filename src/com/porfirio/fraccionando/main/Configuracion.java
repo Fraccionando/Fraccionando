@@ -1,7 +1,11 @@
 package com.porfirio.fraccionando.main;
 
+import com.porfirio.fraccionando.dominio.enumerados.ColorTema;
+import com.porfirio.fraccionando.dominio.enumerados.TipoPaso;
 import com.porfirio.fraccionando.dominio.utils.Constantes;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -44,6 +48,8 @@ public class Configuracion {
         setIdioma(properties.getProperty(Constantes.cIdioma));
         setNivelExplicacion(properties.getProperty(Constantes.cExplicacion));
         setTema(properties.getProperty(Constantes.cTema));
+        System.out.println(properties);
+        System.out.println(colorClaro + ", " + colorOscuro + ", " + locale);
     }
 
     /**
@@ -103,8 +109,6 @@ public class Configuracion {
                 locale = Constantes.locale_es;
         }
 
-//        System.out.println(properties);
-//        System.out.println(locale);
         Locale.setDefault(locale);
         ResourceBundle.clearCache();
         reiniciarBundle();
@@ -138,6 +142,10 @@ public class Configuracion {
 
         properties.setProperty(Constantes.cTema, tema);
 
+        ColorTema temaElegido = ColorTema.valueOf(tema);
+        colorClaro = temaElegido.getClaro();
+        colorOscuro = temaElegido.getOscuro();
+
         guardar();
     }
 
@@ -159,4 +167,18 @@ public class Configuracion {
         bundle = ResourceBundle.getBundle(
                 "com.porfirio.fraccionando.resources.strings.strings");
     }
+
+    public static Dimension porcentajePantalla(int porcentaje) {
+        Dimension resolucionPantalla = Toolkit.getDefaultToolkit()
+                .getScreenSize();
+        Dimension resolucionPorcentaje = null;
+
+        int ancho = (resolucionPantalla.width * porcentaje) / 100;
+        int alto = (resolucionPantalla.height * porcentaje) / 100;
+
+        resolucionPorcentaje = new Dimension(ancho, alto);
+
+        return resolucionPorcentaje;
+    }
+
 }

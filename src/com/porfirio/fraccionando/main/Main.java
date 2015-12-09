@@ -1,5 +1,7 @@
 package com.porfirio.fraccionando.main;
 
+import com.porfirio.fraccionando.gui.pantallas.DialogoCarga;
+import com.porfirio.fraccionando.gui.pantallas.PantallaPrincipal;
 import com.porfirio.fraccionando.test.TestCalculo;
 import com.porfirio.fraccionando.test.TestConfiguracion;
 import com.porfirio.fraccionando.test.TestFraccion;
@@ -14,6 +16,8 @@ public class Main {
 //        TestCalculo.main(args);
 //        TestConfiguracion.main(args);
 //        TestFraccion.main(args);
-        TestOperacion.main(args);
+//        TestOperacion.main(args);
+//        PantallaPrincipal.main(args);
+        DialogoCarga.main(args);
     }
 }
