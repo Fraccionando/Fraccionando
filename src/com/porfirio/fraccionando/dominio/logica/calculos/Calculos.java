@@ -20,6 +20,12 @@ import java.util.Arrays;
 public class Calculos {
 
     /**
+     * Constructor privado para que no se puedan hacer instancias de la clase.
+     */
+    private Calculos() {
+    }
+
+    /**
      * Calcula el minimo comun multiplo de un conjunto de numeros, sin generar
      * explicaciones del procedimiento.
      *

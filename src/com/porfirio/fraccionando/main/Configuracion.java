@@ -181,4 +181,14 @@ public class Configuracion {
         return resolucionPorcentaje;
     }
 
+    /**
+     * Devuelve el valor de una property guardada.
+     *
+     * @param key Es el identificador de la property a buscar.
+     * @return El valor de la property.
+     */
+    public static String getPropertyValue(String key) {
+        return properties.getProperty(key);
+    }
+
 }

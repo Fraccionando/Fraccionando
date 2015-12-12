@@ -1,5 +1,6 @@
 package com.porfirio.fraccionando.gui.pantallas;
 
+import com.porfirio.fraccionando.latex.LatexRender;
 import com.porfirio.fraccionando.main.Configuracion;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -98,24 +99,23 @@ public class DialogoCarga extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(DialogoCarga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         DialogoCarga dialog = new DialogoCarga(new javax.swing.JFrame(), true);
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                DialogoCarga dialog = new DialogoCarga(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
                     }
                 });
-                
+
                 dialog.setVisible(true);
             }
         });
-        
+
         dialog.prepararComponentes();
     }
 
@@ -143,9 +143,7 @@ public class DialogoCarga extends javax.swing.JDialog {
 
             @Override
             public void run() {
-                for (int i = 0; i < 100000; i++) {
-                    System.out.print("");
-                }
+                LatexRender.render("prueba", "hola mundo", true);
 
                 PantallaPrincipal.main(new String[]{});
                 dispose();

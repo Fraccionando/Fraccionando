@@ -157,20 +157,23 @@ public abstract class Fraccion {
      */
     public String toLatexFormulacion() {
         String latex = "";
+        
+        if (equals(new FraccionSimple())) {
+            return "";
+        } else {
+            if (isMixta()) {
+                latex += entero + " ";
 
-        // Evalua si es mixta para determinar si la fraccion tiene entero
-        if (isMixta()) {
-            latex += entero + " ";
-
-            if (numerador != 0 || denominador != 0) {
+                if (numerador != 0 || denominador != 0) {
+                    latex += String.format("\\frac{%s}{%s}",
+                            (numerador != 0) ? numerador : "\\hspace{20px}",
+                            (denominador != 0) ? denominador : " ");
+                }
+            } else {
                 latex += String.format("\\frac{%s}{%s}",
                         (numerador != 0) ? numerador : "\\hspace{20px}",
                         (denominador != 0) ? denominador : " ");
             }
-        } else {
-            latex += String.format("\\frac{%s}{%s}",
-                    (numerador != 0) ? numerador : "\\hspace{20px}",
-                    (denominador != 0) ? denominador : " ");
         }
 
         return latex;

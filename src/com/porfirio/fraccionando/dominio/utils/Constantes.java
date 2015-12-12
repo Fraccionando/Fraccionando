@@ -8,6 +8,12 @@ import java.util.Locale;
  */
 public class Constantes {
 
+    /**
+     * Constructor privado para que no se puedan hacer instancias de la clase.
+     */
+    private Constantes() {
+    }
+
     public static final Locale locale_en = new Locale("en", "US");
     public static final Locale locale_es = new Locale("es", "MX");
     public static final String cIdioma = "IDIOMA";
@@ -27,4 +33,7 @@ public class Constantes {
     public static final String espacioLatex = "\\ ";
     public static final String saltoHtml = "<br>";
     public static final String espacioHtml = " ";
+    public static final String parteFraccionEntero = "ENTERO";
+    public static final String parteFraccionNumerador = "NUMERADOR";
+    public static final String parteFraccionDenominador = "DENOMINADOR";
 }

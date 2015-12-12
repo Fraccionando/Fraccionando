@@ -256,6 +256,15 @@ public class Operacion {
     }
 
     /**
+     * Devuelve los operadores de la operacion.
+     *
+     * @return Una list de Character con los operadores.
+     */
+    public ArrayList<Character> getOperadores() {
+        return operadores;
+    }
+
+    /**
      * Convierte a impropias las fracciones mixtas de la operacion.
      */
     protected void convertirMixtasAImpropias() {
