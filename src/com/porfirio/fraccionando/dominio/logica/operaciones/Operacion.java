@@ -16,8 +16,10 @@ import java.util.ArrayList;
  */
 public class Operacion {
 
+    /**
+     * Valor que determina si la operacion sera o no detallada.
+     */
     private boolean detallada;
-
     /**
      * Contiene los operandos de la operacion.
      */
@@ -36,6 +38,7 @@ public class Operacion {
      *
      * @param fracciones Contiene los operandos de la operacion.
      * @param operadores Contiene los operadores de la operacion.
+     * @param detallada Valor que determina si la operacion sera o no detallada.
      */
     public Operacion(ArrayList<Fraccion> fracciones,
             ArrayList<Character> operadores, boolean detallada) {
@@ -54,6 +57,7 @@ public class Operacion {
             ArrayList<Character> operadores) {
         this.fracciones = fracciones;
         this.operadores = operadores;
+        this.detallada = detallada;
     }
 
     @Override
@@ -64,8 +68,11 @@ public class Operacion {
             operacion = fracciones.get(0).toString();
 
             for (int i = 0; i < operadores.size(); i++) {
-                operacion += " " + operadores.get(i) + " "
-                        + fracciones.get(i + 1);
+                operacion += " " + operadores.get(i) + " ";
+
+                if (i < fracciones.size() - 1) {
+                    operacion += fracciones.get(i + 1).toString();
+                }
             }
         }
 
@@ -75,38 +82,22 @@ public class Operacion {
     /**
      * Devuelve el codigo latex correspondiente a la operacion.
      *
-     * @return
+     * @param formulacion Es el valor que determina si el codigo latex es para
+     * formulacion o para expresion final.
+     * @return El codigo latex correspondiente a la operacion.
      */
-    public String toLatex() {
+    public String toLatex(boolean formulacion) {
         String latex = "";
 
         if (fracciones.size() > 0) {
-            latex = fracciones.get(0).toLatexFormulacion();
+            latex = fracciones.get(0).toLatex(formulacion);
 
             for (int i = 0; i < operadores.size(); i++) {
-                latex += " " + operadores.get(i) + " " + fracciones.get(i + 1)
-                        .toLatex();
-            }
-        }
+                latex += " " + operadores.get(i) + " ";
 
-        return latex;
-    }
-
-    /**
-     * Devuelve el codigo latex correspondiente a la operacion cuando se esta
-     * formando a partir de la entrada del usuario.
-     *
-     * @return
-     */
-    public String toLatexFormulacion() {
-        String latex = "";
-
-        if (fracciones.size() > 0) {
-            latex = fracciones.get(0).toLatexFormulacion();
-
-            for (int i = 0; i < operadores.size(); i++) {
-                latex += " " + operadores.get(i) + " " + fracciones.get(i + 1)
-                        .toLatexFormulacion();
+                if (i < fracciones.size() - 1) {
+                    latex += fracciones.get(i + 1).toLatex(formulacion);
+                }
             }
         }
 
@@ -143,7 +134,7 @@ public class Operacion {
     public Fraccion calcularResultado(boolean operacionFinal) {
         Procedimiento.agregarPaso(new Paso(Configuracion.getString("OPE_INI"),
                 TipoPaso.string));
-        Procedimiento.agregarPaso(new Paso(toLatex(), TipoPaso.expresion));
+        Procedimiento.agregarPaso(new Paso(toLatex(false), TipoPaso.expresion));
 
         Suma suma = null;
 
@@ -269,4 +260,14 @@ public class Operacion {
      */
     protected void convertirMixtasAImpropias() {
     }
+
+    /**
+     * Establece si la operacion sera o no detallada.
+     *
+     * @param detallada true para detallada o false para no detallada.
+     */
+    public void setDetallada(boolean detallada) {
+        this.detallada = detallada;
+    }
+
 }

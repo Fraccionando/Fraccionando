@@ -1,6 +1,7 @@
 package com.porfirio.fraccionando.dominio.procedimiento;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  * Esta clase se encarga de administrar los pasos generados por las operaciones
@@ -14,6 +15,10 @@ public class Procedimiento {
      * En esta lista se guardan los pasos del procedimiento.
      */
     private static ArrayList<Paso> pasos;
+    /**
+     * Contiene el resultado de la operacion.
+     */
+    private static Paso resultado;
 
     /**
      * Constructor privado para que no se puedan hacer instancias de la clase.
@@ -43,11 +48,29 @@ public class Procedimiento {
     }
 
     /**
+     * Establece el resultado correspondiente a la operacion actual.
+     *
+     * @param resultado Contiene el resultado de la operacion.
+     */
+    public static void setResultado(Paso resultado) {
+        Procedimiento.resultado = resultado;
+    }
+
+    /**
      * Devuelve la lista de pasos.
      *
      * @return Un ArrayList con los pasos del procedimiento almacenados.
      */
     public static ArrayList<Paso> getPasos() {
         return pasos;
+    }
+
+    /**
+     * Devuelve el resultado de la operacion.
+     *
+     * @return Una instancia de Paso, con el resultado.
+     */
+    public static Paso getResultado() {
+        return resultado;
     }
 }

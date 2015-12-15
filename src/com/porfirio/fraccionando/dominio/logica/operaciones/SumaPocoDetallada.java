@@ -45,7 +45,7 @@ public class SumaPocoDetallada extends Suma {
                 long mcm = Calculos.mcmSimple(getDenominadores());
                 convertirAEquivalentesMcm(mcm);
 
-                Procedimiento.agregarPaso(new Paso(toLatex(),
+                Procedimiento.agregarPaso(new Paso(toLatex(false),
                         TipoPaso.expresion));
             }
 
@@ -58,7 +58,7 @@ public class SumaPocoDetallada extends Suma {
 
             resultado = calcularResultadoSumaNumeradores().toFraccionSimple();
 
-            Procedimiento.agregarPaso(new Paso(resultado.toLatex(),
+            Procedimiento.agregarPaso(new Paso(resultado.toLatex(false),
                     TipoPaso.expresion));
 
             if (operacionFinal) {

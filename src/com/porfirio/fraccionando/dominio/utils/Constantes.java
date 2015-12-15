@@ -3,13 +3,16 @@ package com.porfirio.fraccionando.dominio.utils;
 import java.util.Locale;
 
 /**
+ * Esta es una clase utilitaria que solo contiene atributos, los cuales son
+ * constantes que son accedidas desde varias ubicaciones.
  *
  * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
  */
 public class Constantes {
 
     /**
-     * Constructor privado para que no se puedan hacer instancias de la clase.
+     * Constructor privado para que no se puedan hacer instancias de la clase
+     * con 'new'.
      */
     private Constantes() {
     }

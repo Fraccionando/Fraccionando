@@ -9,16 +9,25 @@ package com.porfirio.fraccionando.dominio.procedimiento;
  */
 public class FraccionPaso {
 
-    private String numerador;
-    private String denominador;
+    /**
+     * Es la parte entera de la fraccion en el procedimiento.
+     */
     private String entero;
+    /**
+     * Es el numerador de la fraccion en el procedimiento.
+     */
+    private String numerador;
+    /**
+     * Es el denominador de la fraccion en el procedimiento.
+     */
+    private String denominador;
 
     /**
      * Constructor que recibe tres parametros
      *
-     * @param entero Es la parte entera de la fraccion en el procedimiento
-     * @param numerador Es el numerador de la fraccion en el procedimiento
-     * @param denominador Es el denominador de la fraccion en el procedimiento
+     * @param entero Es la parte entera de la fraccion en el procedimiento.
+     * @param numerador Es el numerador de la fraccion en el procedimiento.
+     * @param denominador Es el denominador de la fraccion en el procedimiento.
      */
     public FraccionPaso(String entero, String numerador, String denominador) {
         if (entero.equals("0")) {

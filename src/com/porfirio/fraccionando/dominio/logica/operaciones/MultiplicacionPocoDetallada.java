@@ -46,7 +46,7 @@ public class MultiplicacionPocoDetallada extends Multiplicacion {
 
             resultado = resultadoMultiplicacion().toFraccionSimple();
 
-            Procedimiento.agregarPaso(new Paso(resultado.toLatex(),
+            Procedimiento.agregarPaso(new Paso(resultado.toLatex(false),
                     TipoPaso.expresion));
 
             if (operacionFinal) {

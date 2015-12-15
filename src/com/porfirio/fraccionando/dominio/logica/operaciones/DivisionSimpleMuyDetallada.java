@@ -46,7 +46,7 @@ public class DivisionSimpleMuyDetallada extends DivisionSimple {
 
             resultado = resultadoMultiplicacionCruzada().toFraccionDetallada();
 
-            Procedimiento.agregarPaso(new Paso(resultado.toLatex(),
+            Procedimiento.agregarPaso(new Paso(resultado.toLatex(false),
                     TipoPaso.expresion));
 
             if (operacionFinal) {

@@ -2,16 +2,20 @@ package com.porfirio.fraccionando.gui.pantallas;
 
 import com.porfirio.fraccionando.gui.listeners.CreacionFraccionListener;
 import com.porfirio.fraccionando.controladores.ControladorOperacion;
+import com.porfirio.fraccionando.dominio.procedimiento.Paso;
+import com.porfirio.fraccionando.dominio.procedimiento.Procedimiento;
 import com.porfirio.fraccionando.dominio.utils.Constantes;
-import com.porfirio.fraccionando.latex.LatexRender;
+import com.porfirio.fraccionando.exportacion.Pdf;
+import com.porfirio.fraccionando.gui.componentes.Generador;
 import com.porfirio.fraccionando.main.Configuracion;
 import java.awt.Component;
-import java.awt.Font;
 import java.awt.event.ItemEvent;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -21,14 +25,23 @@ import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
+ * Esta clase tiene la ventana principal de Fraccionando, es el area de trabajo
+ * de la aplicacion.
  *
  * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
  */
 public class PantallaPrincipal extends javax.swing.JFrame {
 
-    private ControladorOperacion controlador;
+    /**
+     * Es el controladorOperacion para resolver las operaciones basicas.
+     */
+    private final ControladorOperacion controladorOperacion;
+    /**
+     * Es un arreglo que contiene los botones de las operaciones basicas.
+     */
     private final JButton[] botonesOperacionesBasicas;
 
     /**
@@ -40,9 +53,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         botonesOperacionesBasicas = new JButton[]{
             jButtonMas, jButtonMenos, jButtonPor, jButtonEntre
         };
-        controlador = new ControladorOperacion(jLabelOperacion, jPanelPasos,
+        controladorOperacion = new ControladorOperacion(jLabelOperacion, jPanelPasos,
                 fraccionPanel, botonesOperacionesBasicas,
-                jButtonResolverOperacion, jButtonReiniciarOperacion);
+                jButtonResolverOperacion, jButtonReiniciarOperacion,
+                jPanelResultado);
     }
 
     /**
@@ -58,18 +72,20 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         buttonGroupTemas = new javax.swing.ButtonGroup();
         buttonGroupIdiomas = new javax.swing.ButtonGroup();
         buttonGroupExplicaciones = new javax.swing.ButtonGroup();
+        jFileChooserGuardar = new javax.swing.JFileChooser();
         jPanelFondoOscuro = new javax.swing.JPanel();
         jPanelFondoClaro = new javax.swing.JPanel();
         jPanelVista = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPanePasos = new javax.swing.JScrollPane();
         jPanelPasos = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPaneEntrada = new javax.swing.JScrollPane();
-        jPanel6 = new javax.swing.JPanel();
+        jPanelOperacion = new javax.swing.JPanel();
         jLabelOperacion = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPaneResultado = new javax.swing.JScrollPane();
+        jPanelResultado = new javax.swing.JPanel();
         jPanelDerecho = new javax.swing.JPanel();
         jScrollPaneCalculadora = new javax.swing.JScrollPane();
         jPanelCalculadora = new javax.swing.JPanel();
@@ -111,9 +127,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jMenuAyuda = new javax.swing.JMenu();
         jmItemAcercaDe = new javax.swing.JMenuItem();
 
+        jFileChooserGuardar.setDialogType(javax.swing.JFileChooser.SAVE_DIALOG);
+        jFileChooserGuardar.setDialogTitle("Guardar operación");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Fraccionando");
         setIconImage(new ImageIcon(getClass().getResource("/com/porfirio/fraccionando/resources/images/Icono256.png")).getImage());
+        setResizable(false);
         setSize(new java.awt.Dimension(1000, 562));
 
         jPanelFondoOscuro.setBackground(Configuracion.colorOscuro);
@@ -128,25 +148,16 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jPanelVista.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         jPanelVista.setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado"));
-        jPanel1.setToolTipText("En esta área se muestra el resultado de la operación");
-        jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(482, 150));
-        jPanelVista.add(jPanel1, java.awt.BorderLayout.PAGE_START);
-
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Explicación"));
         jPanel3.setToolTipText("En esta área se muestran los pasos de la explicación");
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new java.awt.BorderLayout());
 
+        jScrollPanePasos.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         jPanelPasos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 10));
         jPanelPasos.setOpaque(false);
-        jPanelPasos.setLayout(new java.awt.BorderLayout());
-
-        jButton1.setText("jButton1");
-        jButton1.setPreferredSize(new java.awt.Dimension(81, 1000));
-        jPanelPasos.add(jButton1, java.awt.BorderLayout.CENTER);
-
+        jPanelPasos.setLayout(new javax.swing.BoxLayout(jPanelPasos, javax.swing.BoxLayout.Y_AXIS));
         jScrollPanePasos.setViewportView(jPanelPasos);
 
         jPanel3.add(jScrollPanePasos, java.awt.BorderLayout.CENTER);
@@ -161,16 +172,33 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jScrollPaneEntrada.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 20, 0));
-        jPanel6.setOpaque(false);
-        jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.LINE_AXIS));
-        jPanel6.add(jLabelOperacion);
+        jPanelOperacion.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 20, 0));
+        jPanelOperacion.setOpaque(false);
+        jPanelOperacion.setLayout(new javax.swing.BoxLayout(jPanelOperacion, javax.swing.BoxLayout.LINE_AXIS));
+        jPanelOperacion.add(jLabelOperacion);
 
-        jScrollPaneEntrada.setViewportView(jPanel6);
+        jScrollPaneEntrada.setViewportView(jPanelOperacion);
 
         jPanel4.add(jScrollPaneEntrada);
 
         jPanelVista.add(jPanel4, java.awt.BorderLayout.PAGE_END);
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado"));
+        jPanel5.setToolTipText("En esta área se muestra la operación que se está ingresando");
+        jPanel5.setOpaque(false);
+        jPanel5.setPreferredSize(new java.awt.Dimension(482, 150));
+        jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.LINE_AXIS));
+
+        jScrollPaneResultado.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        jPanelResultado.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 20, 0));
+        jPanelResultado.setOpaque(false);
+        jPanelResultado.setLayout(new javax.swing.BoxLayout(jPanelResultado, javax.swing.BoxLayout.LINE_AXIS));
+        jScrollPaneResultado.setViewportView(jPanelResultado);
+
+        jPanel5.add(jScrollPaneResultado);
+
+        jPanelVista.add(jPanel5, java.awt.BorderLayout.PAGE_START);
 
         jPanelFondoClaro.add(jPanelVista, java.awt.BorderLayout.CENTER);
 
@@ -378,14 +406,29 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jmItemNuevo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         jmItemNuevo.setText("Nuevo");
+        jmItemNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmItemNuevoActionPerformed(evt);
+            }
+        });
         jMenuArchivo.add(jmItemNuevo);
 
         jmItemGuardar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
         jmItemGuardar.setText("Guardar");
+        jmItemGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmItemGuardarActionPerformed(evt);
+            }
+        });
         jMenuArchivo.add(jmItemGuardar);
 
         jmItemSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jmItemSalir.setText("Salir");
+        jmItemSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmItemSalirActionPerformed(evt);
+            }
+        });
         jMenuArchivo.add(jmItemSalir);
 
         jMenuBar.add(jMenuArchivo);
@@ -553,17 +596,23 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void jrbItemSimpleItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jrbItemSimpleItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             cambiarExplicacion(Constantes.ePocoDetallado);
+            if (controladorOperacion != null) {
+                controladorOperacion.setOperacionDetallada(false);
+            }
         }
     }//GEN-LAST:event_jrbItemSimpleItemStateChanged
 
     private void jrbItemDetalladaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jrbItemDetalladaItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             cambiarExplicacion(Constantes.eMuyDetallado);
+            if (controladorOperacion != null) {
+                controladorOperacion.setOperacionDetallada(true);
+            }
         }
     }//GEN-LAST:event_jrbItemDetalladaItemStateChanged
 
     private void jButtonResolverOperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResolverOperacionActionPerformed
-        controlador.resolverOperacion();
+        controladorOperacion.resolverOperacion();
     }//GEN-LAST:event_jButtonResolverOperacionActionPerformed
 
     private void jmItemAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmItemAcercaDeActionPerformed
@@ -571,25 +620,60 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmItemAcercaDeActionPerformed
 
     private void jButtonReiniciarOperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReiniciarOperacionActionPerformed
-        JOptionPane.showMessageDialog(PantallaPrincipal.this,
-                "Voy a reiniciar la operación");
+        controladorOperacion.reiniciarOperacion();
     }//GEN-LAST:event_jButtonReiniciarOperacionActionPerformed
 
     private void jButtonMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMasActionPerformed
-        controlador.agregarFraccion('+');
+        controladorOperacion.agregarFraccion('+');
     }//GEN-LAST:event_jButtonMasActionPerformed
 
     private void jButtonMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenosActionPerformed
-        controlador.agregarFraccion('-');
+        controladorOperacion.agregarFraccion('-');
     }//GEN-LAST:event_jButtonMenosActionPerformed
 
     private void jButtonPorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPorActionPerformed
-        controlador.agregarFraccion('*');
+        controladorOperacion.agregarFraccion('*');
     }//GEN-LAST:event_jButtonPorActionPerformed
 
     private void jButtonEntreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntreActionPerformed
-        controlador.agregarFraccion('÷');
+        controladorOperacion.agregarFraccion('÷');
     }//GEN-LAST:event_jButtonEntreActionPerformed
+
+    private void jmItemNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmItemNuevoActionPerformed
+        limpiarWorkspace();
+    }//GEN-LAST:event_jmItemNuevoActionPerformed
+
+    private void jmItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmItemSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jmItemSalirActionPerformed
+
+    private void jmItemGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmItemGuardarActionPerformed
+        ArrayList<Paso> pasos = Procedimiento.getPasos();
+
+        if (pasos == null || pasos.isEmpty()) {
+            JOptionPane.showMessageDialog(PantallaPrincipal.this,
+                    "Resuelve una operación antes de guardarla.", "ERROR",
+                    JOptionPane.ERROR_MESSAGE);
+        } else {
+            int respuesta = jFileChooserGuardar
+                    .showSaveDialog(PantallaPrincipal.this);
+
+            if (respuesta == JFileChooser.APPROVE_OPTION) {
+                String nombreArchivo = jFileChooserGuardar.getSelectedFile()
+                        .getAbsolutePath();
+
+                if (!nombreArchivo.endsWith(".pdf")
+                        && !nombreArchivo.endsWith(".PDF")) {
+                    nombreArchivo += ".pdf";
+                }
+
+                Pdf pdf = new Pdf(nombreArchivo);
+                pdf.setEncabezado("Pasos de la solución");
+                pdf.addContenido(jPanelPasos.getComponents());
+                pdf.guardar();
+            }
+        }
+    }//GEN-LAST:event_jmItemGuardarActionPerformed
 
     /**
      * Cambia el tema de la aplicacion, mandado llamar al momento de elegir una
@@ -613,10 +697,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
      */
     private void cambiarIdioma(String idioma) {
         // Se evalua para que no haga nada al iniciar la aplicacion.
-        if (!Configuracion.getPropertyValue(Constantes.cIdioma).equals(idioma)) {
-            int respuesta = JOptionPane.showConfirmDialog(PantallaPrincipal.this,
-                    "Para ver los cambios debes reiniciar Fraccionando, lo cual borrará los datos de tu área de trabajo. ¿Deseas reiniciarlo ahora?",
-                    "Confirmacion", JOptionPane.YES_NO_CANCEL_OPTION);
+        if (!Configuracion.getPropertyValue(Constantes.cIdioma)
+                .equals(idioma)) {
+            int respuesta
+                    = JOptionPane.showConfirmDialog(PantallaPrincipal.this,
+                            "Para ver los cambios debes reiniciar Fraccionando, lo cual borrará los datos de tu área de trabajo. ¿Deseas reiniciarlo ahora?",
+                            "Confirmacion", JOptionPane.YES_NO_CANCEL_OPTION);
 
             if (respuesta != JOptionPane.CANCEL_OPTION) {
                 Configuracion.setIdioma(idioma);
@@ -638,7 +724,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
      */
     private void cambiarExplicacion(String explicacion) {
         // Se evalua para que no haga nada al iniciar la aplicacion.
-        if (!Configuracion.getPropertyValue(Constantes.cExplicacion).equals(explicacion)) {
+        if (!Configuracion.getPropertyValue(Constantes.cExplicacion)
+                .equals(explicacion)) {
             Configuracion.setNivelExplicacion(explicacion);
 
             JOptionPane.showMessageDialog(PantallaPrincipal.this,
@@ -652,7 +739,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupIdiomas;
     private javax.swing.ButtonGroup buttonGroupTemas;
     private com.porfirio.fraccionando.gui.componentes.FraccionPanel fraccionPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCai;
     private javax.swing.JButton jButtonCam;
     private javax.swing.JButton jButtonEntre;
@@ -667,6 +753,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonReiniciarOperacion;
     private javax.swing.JButton jButtonResolverOperacion;
     private javax.swing.JButton jButtonSimplificar;
+    private javax.swing.JFileChooser jFileChooserGuardar;
     private javax.swing.JLabel jLabelOperacion;
     private javax.swing.JMenu jMenuArchivo;
     private javax.swing.JMenu jMenuAyuda;
@@ -675,21 +762,23 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuIdioma;
     private javax.swing.JMenu jMenuPreferencias;
     private javax.swing.JMenu jMenuTema;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanelCalculadora;
     private javax.swing.JPanel jPanelDerecho;
     private javax.swing.JPanel jPanelEnvio;
     private javax.swing.JPanel jPanelFondoClaro;
     private javax.swing.JPanel jPanelFondoOscuro;
+    private javax.swing.JPanel jPanelOperacion;
     private javax.swing.JPanel jPanelPasos;
+    private javax.swing.JPanel jPanelResultado;
     private javax.swing.JPanel jPanelVista;
     private javax.swing.JScrollPane jScrollPaneCalculadora;
     private javax.swing.JScrollPane jScrollPaneEntrada;
     private javax.swing.JScrollPane jScrollPanePasos;
+    private javax.swing.JScrollPane jScrollPaneResultado;
     private javax.swing.JMenuItem jmItemAcercaDe;
     private javax.swing.JMenuItem jmItemGuardar;
     private javax.swing.JMenuItem jmItemNuevo;
@@ -704,6 +793,17 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jrbItemRosa;
     private javax.swing.JRadioButtonMenuItem jrbItemSimple;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Limpia las areas de resultado, pasos y entrada de datos en la aplicacion.
+     */
+    private void limpiarWorkspace() {
+        jLabelOperacion.setIcon(null);
+        jPanelResultado.removeAll();
+        jPanelResultado.updateUI();
+        jPanelPasos.removeAll();
+        jPanelPasos.updateUI();
+    }
 
     /**
      * Cambia el tipo de fuente recursivamente a todos los elementos que se
@@ -737,31 +837,18 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                     Border b = ((JPanel) c).getBorder();
 
                     if (b instanceof TitledBorder) {
-                        ((TitledBorder) b).setTitleFont(generarFont((JComponent) c, 20));
+                        ((TitledBorder) b).setTitleFont(
+                                Generador.generarFont((JComponent) c, 20));
                     }
 
                 }
 
-                c.setFont(generarFont((JComponent) c, 20));
+                c.setFont(Generador.generarFont((JComponent) c, 20));
             }
         } else {
-            System.err.println("NO COMPONENTES DENTRO DE: " + contenedor.getClass());
+            System.err.println("NO COMPONENTES DENTRO DE: "
+                    + contenedor.getClass());
         }
-    }
-
-    /**
-     * Genera una fuente a partir de un JComponent, con el tamano de letra
-     * indicado.
-     *
-     * @param componente Es el componente del cual se obtendra su fuente por
-     * default.
-     * @param size Es el tamano deseado para la fuente.
-     * @return La fuente con las caracteristicas deseadas.
-     */
-    private static Font generarFont(JComponent componente, int size) {
-        String name = componente.getFont().getFontName();
-        int style = componente.getFont().getStyle();
-        return new Font(name, style, size);
     }
 
     /**
@@ -773,10 +860,18 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         cambiarLetraHijos(jMenuBar);
         cambiarLetraHijos(jPanelFondoClaro);
 
+        FileNameExtensionFilter fileFilter
+                = new FileNameExtensionFilter(
+                        "Archivos pdf (*.pdf)", "pdf", "PDF");
+        jFileChooserGuardar.setAcceptAllFileFilterUsed(false);
+        jFileChooserGuardar.setFileFilter(fileFilter);
+        jFileChooserGuardar.addChoosableFileFilter(fileFilter);
+
         jScrollPaneCalculadora.getVerticalScrollBar().setUnitIncrement(15);
         jScrollPaneCalculadora.setBorder(BorderFactory.createEmptyBorder());
         jScrollPaneCalculadora.getViewport().setOpaque(false);
-        jScrollPaneCalculadora.setViewportBorder(BorderFactory.createEmptyBorder());
+        jScrollPaneCalculadora.setViewportBorder(BorderFactory
+                .createEmptyBorder());
 
         jScrollPanePasos.getVerticalScrollBar().setUnitIncrement(15);
         jScrollPanePasos.setBorder(BorderFactory.createEmptyBorder());
@@ -788,24 +883,31 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jScrollPaneEntrada.getViewport().setOpaque(false);
         jScrollPaneEntrada.setViewportBorder(BorderFactory.createEmptyBorder());
 
+        jScrollPaneResultado.getHorizontalScrollBar().setUnitIncrement(15);
+        jScrollPaneResultado.setBorder(BorderFactory.createEmptyBorder());
+        jScrollPaneResultado.getViewport().setOpaque(false);
+        jScrollPaneResultado.setViewportBorder(BorderFactory
+                .createEmptyBorder());
+
         seleccionarOpcionesGuardadasMenu();
 
-        fraccionPanel.setCreacionFraccionListener(new CreacionFraccionListener() {
-            @Override
-            public void onFraccionUpdated() {
-                controlador.actualizarFraccion();
-            }
+        fraccionPanel.setCreacionFraccionListener(
+                new CreacionFraccionListener() {
+                    @Override
+                    public void onFraccionUpdated() {
+                        controladorOperacion.updateGUI();
+                    }
 
-            @Override
-            public void onFraccionRemoved() {
-                controlador.actualizarOperacion();
-            }
+                    @Override
+                    public void onFraccionRemoved() {
+                        controladorOperacion.updateGUI();
+                    }
 
-            @Override
-            public void onFraccionReseted() {
-                controlador.actualizarOperacion();
-            }
-        });
+                    @Override
+                    public void onFraccionReseted() {
+                        controladorOperacion.updateGUI();
+                    }
+                });
     }
 
     /**
@@ -881,8 +983,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        UIManager.put("OptionPane.messageFont", generarFont(new JLabel(), 20));
-        UIManager.put("OptionPane.buttonFont", generarFont(new JButton(), 20));
+        UIManager.put("OptionPane.messageFont",
+                Generador.generarFont(new JLabel(), 20));
+        UIManager.put("OptionPane.buttonFont",
+                Generador.generarFont(new JButton(), 20));
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

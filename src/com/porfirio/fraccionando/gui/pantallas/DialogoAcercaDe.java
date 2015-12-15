@@ -3,6 +3,8 @@ package com.porfirio.fraccionando.gui.pantallas;
 import com.porfirio.fraccionando.main.Configuracion;
 
 /**
+ * Este cuadro de dialogo muestra informacion acerca de la aplicacion y del
+ * autor de la misma.
  *
  * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
  */
@@ -128,7 +130,8 @@ public class DialogoAcercaDe extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DialogoAcercaDe dialog = new DialogoAcercaDe(new javax.swing.JFrame(), true);
+                DialogoAcercaDe dialog = new DialogoAcercaDe(
+                        new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -6,6 +6,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Este cuadro de dialogo es el que se muestra al iniciar la aplicacion,
+ * permanece abierto mientras el programa carga y hace las operaciones
+ * necesarias antes de iniciar.
  *
  * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
  */

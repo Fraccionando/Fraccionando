@@ -56,50 +56,83 @@ public class FraccionDetallada extends Fraccion {
     public void simplificar() {
         Procedimiento.agregarPaso(new Paso(Configuracion
                 .getString("FR_SIM_IND"), TipoPaso.string));
-        Procedimiento.agregarPaso(new Paso(toLatex(), TipoPaso.expresion));
+        Procedimiento.agregarPaso(new Paso(toLatex(false), TipoPaso.expresion));
 
         if (isSimplificable()) {
-            Procedimiento.agregarPaso(new Paso(Configuracion
-                    .getString("FR_SIM_SX_INT"), TipoPaso.string));
+            if (IsUnidad()) {
+                if (isMixta()) {
+                    Procedimiento.agregarPaso(new Paso(Configuracion
+                            .getString("FR_SIM_SX_UNI_MIX"), TipoPaso.string));
+                    Procedimiento.agregarPaso(
+                            new Paso(entero + " + " + 1 + " = " + (entero + 1),
+                                    TipoPaso.expresion));
+                    entero += 1;
+                    numerador = 0l;
+                    denominador = 0l;
 
-            if (isImpropia()) { // Siendo impropia, por default es el CASO II
-                String pasoIndicacionMayor = numerador + " > " + denominador;
-
+                    Procedimiento.agregarPaso(new Paso(Configuracion
+                            .getString("FR_RESULTADO"), TipoPaso.string));
+                    Procedimiento.agregarPaso(new Paso(
+                            new FraccionSimple(entero, numerador, denominador)
+                            .toLatex(false), TipoPaso.expresion));
+                } else {
+                    Procedimiento.agregarPaso(new Paso(Configuracion
+                            .getString("FR_SIM_SX_UNI_NOMIX"),
+                            TipoPaso.string));
+                    Procedimiento.agregarPaso((new Paso("1",
+                            TipoPaso.expresion)));
+                    entero = 1l;
+                    numerador = 0l;
+                    denominador = 0l;
+                }
+            } else {
                 Procedimiento.agregarPaso(new Paso(Configuracion
-                        .getString("FR_SIM_SX_CAM"), TipoPaso.string));
-                Procedimiento.agregarPaso(new Paso(pasoIndicacionMayor,
-                        TipoPaso.expresion));
+                        .getString("FR_SIM_SX_INT"), TipoPaso.string));
 
-                convertirAMixta();
-            }
+                if (isImpropia()) { // Siendo impropia, por default es el CASO II
 
-            // Evalua si la fraccion es propia (CASO I), o si anteriormente era
-            // impropia, CASO III
-            if (isPropia() && isReducible()) {
-                Procedimiento.agregarPaso(new Paso(Configuracion
-                        .getString("FR_SIM_MCD"), TipoPaso.string));
+                    String pasoIndicacionMayor = numerador + " > "
+                            + denominador;
 
-                long MCD = Calculos.mcdDetallado(numerador, denominador);
+                    Procedimiento.agregarPaso(new Paso(Configuracion
+                            .getString("FR_SIM_SX_CAM"), TipoPaso.string));
+                    Procedimiento.agregarPaso(new Paso(pasoIndicacionMayor,
+                            TipoPaso.expresion));
 
-                String enteroPaso = entero + "";
-                String numeradorPaso = "(" + numerador + "÷" + MCD + ")";
-                String denominadorPaso = "(" + denominador + "÷" + MCD + ")";
+                    convertirAMixta();
+                }
 
-                FraccionPaso paso = new FraccionPaso(enteroPaso, numeradorPaso,
-                        denominadorPaso);
+                // Evalua si la fraccion es propia (CASO I), o si anteriormente era
+                // impropia, CASO III
+                if (isPropia() && isReducible()) {
 
-                Procedimiento.agregarPaso(new Paso(Configuracion
-                        .getString("FR_SIM_SX_DIV"), TipoPaso.string));
-                Procedimiento.agregarPaso(new Paso(paso.toLatex(),
-                        TipoPaso.expresion));
+                    Procedimiento.agregarPaso(new Paso(Configuracion
+                            .getString("FR_SIM_MCD"), TipoPaso.string));
 
-                numerador /= MCD;
-                denominador /= MCD;
+                    long MCD = Calculos.mcdDetallado(numerador, denominador);
 
-                Procedimiento.agregarPaso(new Paso(Configuracion
-                        .getString("FR_RESULTADO"), TipoPaso.string));
-                Procedimiento.agregarPaso(new Paso(new FraccionSimple(entero,
-                        numerador, denominador).toLatex(), TipoPaso.expresion));
+                    String enteroPaso = entero + "";
+                    String numeradorPaso = "(" + numerador + "÷" + MCD + ")";
+                    String denominadorPaso = "(" + denominador + "÷" + MCD
+                            + ")";
+
+                    FraccionPaso paso = new FraccionPaso(enteroPaso,
+                            numeradorPaso, denominadorPaso);
+
+                    Procedimiento.agregarPaso(new Paso(Configuracion
+                            .getString("FR_SIM_SX_DIV"), TipoPaso.string));
+                    Procedimiento.agregarPaso(new Paso(paso.toLatex(),
+                            TipoPaso.expresion));
+
+                    numerador /= MCD;
+                    denominador /= MCD;
+
+                    Procedimiento.agregarPaso(new Paso(Configuracion
+                            .getString("FR_RESULTADO"), TipoPaso.string));
+                    Procedimiento.agregarPaso(new Paso(
+                            new FraccionSimple(entero, numerador, denominador)
+                            .toLatex(false), TipoPaso.expresion));
+                }
             }
         } else {
             Procedimiento.agregarPaso(new Paso(Configuracion
@@ -113,7 +146,7 @@ public class FraccionDetallada extends Fraccion {
 
         Procedimiento.agregarPaso(new Paso(Configuracion
                 .getString("FR_CAM_IND"), TipoPaso.string));
-        Procedimiento.agregarPaso(new Paso(toLatex(), TipoPaso.expresion));
+        Procedimiento.agregarPaso(new Paso(toLatex(false), TipoPaso.expresion));
 
         if (isImpropia()) {
             FraccionSimple auxiliar = new FraccionSimple(entero, numerador,
@@ -145,6 +178,8 @@ public class FraccionDetallada extends Fraccion {
                         numerador, auxiliar.getEntero(), denominador,
                         auxiliar.getNumerador());
 
+                Procedimiento.agregarPaso(new Paso(Configuracion
+                        .getString("FR_CAM_SX_DET_NUM"), TipoPaso.string));
                 Procedimiento.agregarPaso(new Paso(pasoNumerador,
                         TipoPaso.expresion));
 
@@ -199,7 +234,7 @@ public class FraccionDetallada extends Fraccion {
                         .getString("FR_CAM_SX_CIII_MIX"), TipoPaso.string));
                 Procedimiento.agregarPaso(new Paso(new FraccionSimple(
                         auxiliar.getNumerador(), auxiliar.getDenominador())
-                        .toLatex(), TipoPaso.expresion));
+                        .toLatex(false), TipoPaso.expresion));
 
                 // Entero
                 String pasoEntero = numerador + "÷" + denominador;
@@ -258,7 +293,7 @@ public class FraccionDetallada extends Fraccion {
                         .getString("FR_CAM_SX_CIII_MIX"), TipoPaso.string));
                 Procedimiento.agregarPaso(new Paso(new FraccionSimple(
                         auxiliar.getNumerador(), auxiliar.getDenominador())
-                        .toLatex(), TipoPaso.expresion));
+                        .toLatex(false), TipoPaso.expresion));
 
                 // Entero
                 String pasoEntero = numerador + "÷" + denominador;
@@ -305,7 +340,7 @@ public class FraccionDetallada extends Fraccion {
             Procedimiento.agregarPaso(new Paso(Configuracion
                     .getString("FR_RESULTADO"), TipoPaso.string));
             Procedimiento.agregarPaso(new Paso(new FraccionSimple(entero,
-                    numerador, denominador).toLatex(), TipoPaso.expresion));
+                    numerador, denominador).toLatex(false), TipoPaso.expresion));
 
         } else {
             Procedimiento.agregarPaso(new Paso(Configuracion
@@ -322,7 +357,7 @@ public class FraccionDetallada extends Fraccion {
 
         Procedimiento.agregarPaso(new Paso(Configuracion
                 .getString("FR_CAI_IND"), TipoPaso.string));
-        Procedimiento.agregarPaso(new Paso(toLatex(), TipoPaso.expresion));
+        Procedimiento.agregarPaso(new Paso(toLatex(false), TipoPaso.expresion));
 
         // Evalua si la fraccion es mixta
         if (isMixta()) {
@@ -339,7 +374,7 @@ public class FraccionDetallada extends Fraccion {
                 Procedimiento.agregarPaso(new Paso(Configuracion
                         .getString("FR_CAI_SX_DES"), TipoPaso.string));
                 Procedimiento.agregarPaso(new Paso(entero + " + "
-                        + new FraccionSimple(numerador, denominador),
+                        + new FraccionSimple(numerador, denominador).toLatex(hizoConversion),
                         TipoPaso.expresion));
                 Procedimiento.agregarPaso(new Paso(Configuracion
                         .getString("FR_CAI_SX_OPE"), TipoPaso.string));
@@ -350,7 +385,7 @@ public class FraccionDetallada extends Fraccion {
                 FraccionPaso paso = new FraccionPaso(pasoNumerador,
                         pasoDenominador);
 
-                Procedimiento.agregarPaso(new Paso(toLatex(),
+                Procedimiento.agregarPaso(new Paso(paso.toLatex(),
                         TipoPaso.expresion));
 
                 numerador = numerador + (entero * denominador);
@@ -360,7 +395,7 @@ public class FraccionDetallada extends Fraccion {
             Procedimiento.agregarPaso(new Paso(Configuracion
                     .getString("FR_RESULTADO"), TipoPaso.string));
             Procedimiento.agregarPaso(new Paso(new FraccionSimple(entero,
-                    numerador, denominador).toLatex(), TipoPaso.expresion));
+                    numerador, denominador).toLatex(false), TipoPaso.expresion));
         } else {
             Procedimiento.agregarPaso(new Paso(Configuracion
                     .getString("FR_CAM_NOMIX"), TipoPaso.string));

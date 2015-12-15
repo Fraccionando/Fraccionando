@@ -38,6 +38,15 @@ public class Paso {
         return contenido;
     }
 
+    /**
+     * Devuelve el tipo de paso.
+     *
+     * @return Valor del enumerado TipoPaso.
+     */
+    public TipoPaso getTipo() {
+        return tipo;
+    }
+
     @Override
     public String toString() {
         return tipo + ": " + contenido;

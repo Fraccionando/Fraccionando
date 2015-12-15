@@ -23,7 +23,8 @@ public class MixtaPocoDetallada extends Mixta {
      * @param fracciones Contiene los operandos de la operacion.
      * @param operadores Contiene los operadores de la operacion.
      */
-    public MixtaPocoDetallada(ArrayList<Fraccion> fracciones, ArrayList<Character> operadores) {
+    public MixtaPocoDetallada(ArrayList<Fraccion> fracciones,
+            ArrayList<Character> operadores) {
         super(fracciones, operadores);
         ComunesOperacion.toFraccionSimple(fracciones);
     }

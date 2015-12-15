@@ -125,25 +125,45 @@ public abstract class Fraccion {
      * @return El valor de la fraccion en notacion decimal.
      */
     public Double getDecimal() {
-        return entero + (double) numerador / denominador;
+        if (denominador == 0) {
+            return entero + 0.0;
+        } else {
+            return entero + (double) numerador / denominador;
+        }
     }
 
     /**
      * Devuelve la representacion en Latex de la fraccion.
      *
+     * @param formulacion Es el valor que determina si el codigo latex es para
+     * formulacion o para expresion final.
      * @return El valor del codigo latex.
      */
-    public String toLatex() {
-        String latex = "";
+    public String toLatex(boolean formulacion) {
+        String latex;
 
         if (isNumeroEntero()) {
-            latex = entero + "";
-        } else if (isMixta()) {
-            latex = String.format("%d\\frac{%d}{%d}", entero, numerador,
-                    denominador);
-        } // Solo queda que sea propia o impropia
-        else {
-            latex = String.format("\\frac{%d}{%d}", numerador, denominador);
+            if (formulacion && entero == 0) {
+                latex = "";
+            } else {
+                latex = entero.toString();
+            }
+        } else {
+            String ent = (entero == 0) ? "" : entero.toString();
+
+            if (formulacion) {
+                String num = (numerador == 0) ? "" : numerador.toString();
+                String den = (denominador == 0) ? "" : denominador.toString();
+                latex = String.format("%s\\frac{%s}{%s}", ent, num, den);
+            } else {
+                if (numerador == 0 || denominador == 0) {
+                    latex = entero.toString();
+                } else {
+                    latex = String.format("%s\\frac{%d}{%d}", ent, numerador,
+                            denominador);
+                }
+            }
+
         }
 
         return latex;
@@ -156,27 +176,7 @@ public abstract class Fraccion {
      * @return El codigo latex de la fraccion.
      */
     public String toLatexFormulacion() {
-        String latex = "";
-        
-        if (equals(new FraccionSimple())) {
-            return "";
-        } else {
-            if (isMixta()) {
-                latex += entero + " ";
-
-                if (numerador != 0 || denominador != 0) {
-                    latex += String.format("\\frac{%s}{%s}",
-                            (numerador != 0) ? numerador : "\\hspace{20px}",
-                            (denominador != 0) ? denominador : " ");
-                }
-            } else {
-                latex += String.format("\\frac{%s}{%s}",
-                        (numerador != 0) ? numerador : "\\hspace{20px}",
-                        (denominador != 0) ? denominador : " ");
-            }
-        }
-
-        return latex;
+        return toLatex(true);
     }
 
     @Override
@@ -269,6 +269,16 @@ public abstract class Fraccion {
     }
 
     /**
+     * Evalua si la fraccion es una fraccion unidad (el numerador es igual al
+     * denominador).
+     *
+     * @return true si es fraccion unidad o false si no lo es.
+     */
+    public boolean IsUnidad() {
+        return Objects.equals(numerador, denominador);
+    }
+
+    /**
      * Evalua si la fraccion es mixta (tiene parte entera y parte fraccionaria).
      *
      * @return true si la fraccion es mixta y false si no lo es.
@@ -342,7 +352,7 @@ public abstract class Fraccion {
      * @return true si es un numero entero o false si no lo es.
      */
     public boolean isNumeroEntero() {
-        return denominador == 0;
+        return numerador == 0 && denominador == 0;
     }
 
     /**

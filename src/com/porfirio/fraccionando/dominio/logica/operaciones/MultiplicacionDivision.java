@@ -63,18 +63,18 @@ public abstract class MultiplicacionDivision extends Operacion {
     public String latexAgruparMultiplicaciones() {
         agrupar();
 
-        String latex = "(" + multiplicaciones.get(0).toLatex();
+        String latex = "(" + multiplicaciones.get(0).toLatex(false);
 
         for (int i = 1; i < multiplicaciones.size(); i++) {
             latex += " * ";
-            latex += multiplicaciones.get(i).toLatex();
+            latex += multiplicaciones.get(i).toLatex(false);
         }
 
-        latex += ") ÷ (" + divisiones.get(0).toLatex();
+        latex += ") ÷ (" + divisiones.get(0).toLatex(false);
 
         for (int i = 1; i < divisiones.size(); i++) {
             latex += " ÷ ";
-            latex += divisiones.get(i).toLatex();
+            latex += divisiones.get(i).toLatex(false);
         }
 
         latex += ")";

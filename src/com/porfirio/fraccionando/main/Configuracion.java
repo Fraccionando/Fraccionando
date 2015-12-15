@@ -6,6 +6,7 @@ import com.porfirio.fraccionando.dominio.utils.Constantes;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,6 +15,8 @@ import java.io.OutputStream;
 import java.util.Locale;
 import java.util.Properties;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Esta clase se encarga de cargar y guardar los aspectos de configuracion de
@@ -44,12 +47,11 @@ public class Configuracion {
      * uso.
      */
     public static void inicializar() {
+        preparaDirectorios();
         properties = leerPropiedades();
         setIdioma(properties.getProperty(Constantes.cIdioma));
         setNivelExplicacion(properties.getProperty(Constantes.cExplicacion));
         setTema(properties.getProperty(Constantes.cTema));
-        System.out.println(properties);
-        System.out.println(colorClaro + ", " + colorOscuro + ", " + locale);
     }
 
     /**
@@ -191,4 +193,46 @@ public class Configuracion {
         return properties.getProperty(key);
     }
 
+    /**
+     * Prepara los directorios y archivos necesarios para la aplicacion.
+     */
+    private static void preparaDirectorios() {
+        File carpetaTemporal = new File("tmp");
+        File archivoPreferencias = new File("Preferencias.properties");
+
+        if (carpetaTemporal.exists()) {
+            if (carpetaTemporal.isFile()) {
+                carpetaTemporal.delete();
+                carpetaTemporal.mkdir();
+            } else {
+                File[] archivos = carpetaTemporal.listFiles();
+
+                if (archivos != null) {
+                    for (int i = 0; i < archivos.length; i++) {
+                        archivos[i].delete();
+                    }
+                }
+            }
+        } else {
+            carpetaTemporal.mkdir();
+        }
+
+        if (archivoPreferencias.exists()) {
+            if (archivoPreferencias.isDirectory()) {
+                archivoPreferencias.delete();
+
+                try {
+                    archivoPreferencias.createNewFile();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        } else {
+            try {
+                archivoPreferencias.createNewFile();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
 }

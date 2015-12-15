@@ -21,7 +21,8 @@ public class DivisionSimplePocoDetallada extends DivisionSimple {
      * @param fracciones Contiene los operandos de la operacion.
      * @param operadores Contiene los operadores de la operacion.
      */
-    public DivisionSimplePocoDetallada(ArrayList<Fraccion> fracciones, ArrayList<Character> operadores) {
+    public DivisionSimplePocoDetallada(ArrayList<Fraccion> fracciones,
+            ArrayList<Character> operadores) {
         super(fracciones, operadores);
         ComunesOperacion.toFraccionSimple(fracciones);
     }
@@ -45,7 +46,7 @@ public class DivisionSimplePocoDetallada extends DivisionSimple {
 
             Procedimiento.agregarPaso(new Paso(Configuracion
                     .getString("OPE_RES"), TipoPaso.string));
-            Procedimiento.agregarPaso(new Paso(resultado.toLatex(),
+            Procedimiento.agregarPaso(new Paso(resultado.toLatex(false),
                     TipoPaso.expresion));
 
             if (operacionFinal) {

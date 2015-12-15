@@ -43,7 +43,7 @@ public class ComunesOperacion {
 
             Procedimiento.agregarPaso(new Paso(Configuracion
                     .getString("OPE_RES_CONV"), TipoPaso.string));
-            Procedimiento.agregarPaso(new Paso(operacion.toLatex(),
+            Procedimiento.agregarPaso(new Paso(operacion.toLatex(false),
                     TipoPaso.expresion));
         }
     }
@@ -65,7 +65,7 @@ public class ComunesOperacion {
                 }
             }
 
-            Procedimiento.agregarPaso(new Paso(operacion.toLatex(),
+            Procedimiento.agregarPaso(new Paso(operacion.toLatex(false),
                     TipoPaso.expresion));
         }
     }
@@ -100,8 +100,21 @@ public class ComunesOperacion {
      * si es posible.
      */
     public static void terminarOperacion(Fraccion resultado) {
+        System.out.println(resultado.toString() + "\n  Simplificable: "
+                + resultado.isReducible() + "\n  Impropia: "
+                + resultado.isImpropia() + "\n  Propia:" + resultado.isPropia()
+                + "\n  Reducible: " + resultado.isReducible() + "\n  Exacta: "
+                + resultado.isExacta() + "\n  Mixta: " + resultado.isMixta()
+                + "\n  Unidad: " + resultado.IsUnidad());
+
         if (resultado.isSimplificable()) {
             resultado.simplificar();
         }
+
+        String sp = Configuracion.espacio;
+
+        Procedimiento.setResultado(new Paso(resultado.toLatex(false)
+                + sp + sp + sp + "(" + resultado.getDecimal()
+                + ")", TipoPaso.expresion));
     }
 }

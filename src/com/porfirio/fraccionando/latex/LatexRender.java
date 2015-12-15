@@ -13,10 +13,19 @@ import org.scilab.forge.jlatexmath.TeXFormula;
 import org.scilab.forge.jlatexmath.TeXIcon;
 
 /**
+ * Esta clase utilitaria sirve para renderizar codigos latex, y guardar el
+ * resultado como imagenes, para su posterior utilizacion en la aplicacion.
  *
  * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
  */
 public class LatexRender {
+
+    /**
+     * Constructor privado para que no se puedan hacer instancias de la clase
+     * con 'new'.
+     */
+    private LatexRender() {
+    }
 
     /**
      * Es el numero de imagen actual.
@@ -28,6 +37,7 @@ public class LatexRender {
      *
      * @param basename Es el nombre base para el archivo generado.
      * @param latex Es el codigo latex que se va a renderizar.
+     * @param test Determina si la formula renderizada es para una prueba.
      * @return La ruta donde se encuentra el archivo generado.
      */
     public static String render(String basename, String latex, boolean test) {
@@ -50,16 +60,16 @@ public class LatexRender {
         }
 
         File imagenArchivo = new File(String
-                .format("%s%s%s%s_%d", carpeta.getPath(), File.separator,
-                        basename, ".png", numImagen));
+                .format("%s%s%s_%d%s", carpeta.getPath(), File.separator,
+                        basename, numImagen, ".png"));
 
         try {
             ImageIO.write(imagen, "png", imagenArchivo.getAbsoluteFile());
-            
+
             if (!test) {
                 numImagen++;
             }
-            
+
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

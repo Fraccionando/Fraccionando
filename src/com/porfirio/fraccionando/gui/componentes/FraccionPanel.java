@@ -10,6 +10,7 @@ import com.porfirio.fraccionando.dominio.utils.Arreglos;
 import com.porfirio.fraccionando.dominio.utils.ManejoDigitos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -22,9 +23,12 @@ import javax.swing.JOptionPane;
 public class FraccionPanel extends javax.swing.JPanel {
 
     /**
-     * Es la operacion a la que el generador proporciona las fracciones.
+     * Son las fracciones de la operacion o comparacion que se esta formando, en
+     * caso de que asi sea, en una conversion, esta lista solo tendra un
+     * elemento.
      */
-    private Operacion operacion;
+    private ArrayList<Fraccion> fracciones;
+    private ArrayList<Character> operadores;
     /**
      * Es el escuchadorBasico basico que ya contiene el panel generador de
      * fracciones.
@@ -35,10 +39,6 @@ public class FraccionPanel extends javax.swing.JPanel {
      * eliminada o reiniciada.
      */
     private CreacionFraccionListener creacionFraccionListener;
-    /**
-     * Es la fraccion formada por medio de la interfaz visual.
-     */
-    private Fraccion fraccion;
     /**
      * Valor que determina si el panel tendra visiblea el boton de remover
      * fraccion.
@@ -72,23 +72,26 @@ public class FraccionPanel extends javax.swing.JPanel {
     /**
      * Constructor que recibe un parametro.
      *
-     * @param botonesReiniciarRemover Valor que determina si el panel tendra
-     * visiblea el boton de remover fraccion.
+     * @param botonRemover Valor que determina si el panel tendra visiblea el
+     * boton de remover fraccion.
+     * @param fracciones
      */
-    public FraccionPanel(boolean botonRemover) {
+    public FraccionPanel(boolean botonRemover, ArrayList<Fraccion> fracciones,
+            ArrayList<Character> operadores) {
         this.botonRemover = botonRemover;
+        this.fracciones = fracciones;
+        this.operadores = operadores;
+        escuchadorBasico = new EscuchadorBasico();
+        creacionFraccionListener = new CreacionFraccionAdapter();
         initComponents();
         iniciarGUI();
-
     }
 
     /**
      * Creates new form FraccionPanel
      */
     public FraccionPanel() {
-        this.botonRemover = true;
-        initComponents();
-        iniciarGUI();
+        this(true, null, null);
     }
 
     /**
@@ -427,9 +430,6 @@ public class FraccionPanel extends javax.swing.JPanel {
      * initComponents.
      */
     private void iniciarGUI() {
-        escuchadorBasico = new EscuchadorBasico();
-        creacionFraccionListener = new CreacionFraccionAdapter();
-
         jButtonReiniciarFraccion.setVisible(true);
         jButtonRemoverFraccion.setVisible(botonRemover);
 
@@ -446,24 +446,21 @@ public class FraccionPanel extends javax.swing.JPanel {
         };
 
         botonesNumericosEntero = new JButton[]{
-            jButtonEnt_0,
-            jButtonEnt_1, jButtonEnt_2, jButtonEnt_3, jButtonEnt_4,
-            jButtonEnt_5, jButtonEnt_6, jButtonEnt_7, jButtonEnt_8,
-            jButtonEnt_9
+            jButtonEnt_0, jButtonEnt_1, jButtonEnt_2, jButtonEnt_3,
+            jButtonEnt_4, jButtonEnt_5, jButtonEnt_6, jButtonEnt_7,
+            jButtonEnt_8, jButtonEnt_9
         };
 
         botonesNumericosNumerador = new JButton[]{
-            jButtonNum_0,
-            jButtonNum_1, jButtonNum_2, jButtonNum_3, jButtonNum_4,
-            jButtonNum_5, jButtonNum_6, jButtonNum_7, jButtonNum_8,
-            jButtonNum_9
+            jButtonNum_0, jButtonNum_1, jButtonNum_2, jButtonNum_3,
+            jButtonNum_4, jButtonNum_5, jButtonNum_6, jButtonNum_7,
+            jButtonNum_8, jButtonNum_9
         };
 
         botonesNumericosDenominador = new JButton[]{
-            jButtonDen_0,
-            jButtonDen_1, jButtonDen_2, jButtonDen_3, jButtonDen_4,
-            jButtonDen_5, jButtonDen_6, jButtonDen_7, jButtonDen_8,
-            jButtonDen_9
+            jButtonDen_0, jButtonDen_1, jButtonDen_2, jButtonDen_3,
+            jButtonDen_4, jButtonDen_5, jButtonDen_6, jButtonDen_7,
+            jButtonDen_8, jButtonDen_9
         };
 
         EscuchadorBotonParteFraccion numeradorListener
@@ -499,8 +496,26 @@ public class FraccionPanel extends javax.swing.JPanel {
 
         jButtonEntAc.addActionListener(enteroListener);
         jButtonEntDel.addActionListener(enteroListener);
+    }
 
-        reiniciarFraccion();
+    /**
+     * Establece las fracciones de la operacion que se asocia al panel.
+     *
+     * @param fracciones Son las fracciones de la operacion o comparacion que se
+     * esta formando.
+     */
+    public void setFracciones(ArrayList<Fraccion> fracciones) {
+        this.fracciones = fracciones;
+    }
+
+    /**
+     * Establece los operadores de la operacion que se asocia al panel.
+     *
+     * @param operadores Son los operadores de la operacion que se esta
+     * formando.
+     */
+    public void setOperadores(ArrayList<Character> operadores) {
+        this.operadores = operadores;
     }
 
     /**
@@ -509,21 +524,17 @@ public class FraccionPanel extends javax.swing.JPanel {
      * @return Una instancia de Fraccion, con la fraccion formada.
      */
     public Fraccion getFraccion() {
-        return fraccion;
+        if (fracciones.isEmpty()) {
+            fracciones.add(new FraccionSimple());
+        }
+
+        int ultima = fracciones.size() - 1;
+
+        return fracciones.get(ultima);
     }
 
     /**
-     * Establece la operacion del panel.
-     *
-     * @param operacion Es la operacion a la que el generador proporciona las
-     * fracciones.
-     */
-    public void setOperacion(Operacion operacion) {
-        this.operacion = operacion;
-    }
-
-    /**
-     *
+     * Establece el listener de creacion de fraccion.
      *
      * @param cf Es el listener que se va a asignar.
      */
@@ -551,24 +562,28 @@ public class FraccionPanel extends javax.swing.JPanel {
     }
 
     /**
-     * Habilita/deshabilita los botones temporales de la interface para crear
-     * fracciones, los cuales son el boton 0, el boton AC y el boton DEL.
+     * Habilita/deshabilita los botones contenidos en un arreglo de JButton.
      *
      * @param botones Es un arreglo que incluye los botones a modificar.
      * @param habilitado Es el valor que se establecera a la propiedad 'enabled'
      * de los botones.
      */
-    private void habilitarBotonesTemporales(JButton[] botones,
-            boolean habilitado) {
+    private void habilitarBotones(JButton[] botones, boolean habilitado) {
         for (JButton boton : botones) {
             boton.setEnabled(habilitado);
         }
     }
 
+    /**
+     * Determina si la fraccion generada por el panel esta completa (que sus
+     * partes asignadas formen una fraccion valida).
+     *
+     * @return boolean si la fraccion esta completa o false si no lo esta.
+     */
     public boolean isCompleta() {
-        long num = fraccion.getNumerador();
-        long den = fraccion.getDenominador();
-        long ent = fraccion.getEntero();
+        long num = getFraccion().getNumerador();
+        long den = getFraccion().getDenominador();
+        long ent = getFraccion().getEntero();
 
         if (num == 0 && den == 0) {
             if (ent == 0) {
@@ -583,17 +598,72 @@ public class FraccionPanel extends javax.swing.JPanel {
         }
     }
 
+    /**
+     * Establece si el boton de reiniciar fraccion va a estar habilitado o no.
+     *
+     * @param enabled Valor que determina si el boton esta habilitado.
+     */
     public void setBotonReiniciarEnabled(boolean enabled) {
         jButtonReiniciarFraccion.setEnabled(enabled);
     }
 
+    /**
+     * Establece si el boton de remover fraccion va a estar habilitado o no.
+     *
+     * @param enabled Valor que determina si el boton esta habilitado.
+     */
     public void setBotonRemoverEnabled(boolean enabled) {
         jButtonRemoverFraccion.setEnabled(enabled);
     }
 
-    public void reiniciarFraccion() {
-        fraccion = new FraccionSimple();
-        escuchadorBasico.onFraccionUpdated();
+    /**
+     * Determina y actualiza los botones del panel segun a su disponibilidad que
+     * deban tener en ese momento, habilitandolos o deshabilitandolos.
+     */
+    public void updateGUI() {
+        boolean tieneEntero = getFraccion().getEntero() != 0l;
+        boolean tieneNumerador = getFraccion().getNumerador() != 0l;
+        boolean tieneDenominador = getFraccion().getDenominador() != 0l;
+
+        if (tieneEntero || tieneNumerador || tieneDenominador) {
+            jButtonReiniciarFraccion.setEnabled(true);
+        } else {
+            jButtonReiniciarFraccion.setEnabled(false);
+        }
+
+        if (botonRemover) {
+            if (fracciones != null) {
+                if (fracciones.size() == 1) {
+                    if (getFraccion().equals(new FraccionSimple())) {
+                        jButtonRemoverFraccion.setEnabled(false);
+                    } else {
+                        jButtonRemoverFraccion.setEnabled(true);
+                    }
+                } else if (fracciones.size() > 1) {
+                    jButtonRemoverFraccion.setEnabled(true);
+                } else {
+                    jButtonRemoverFraccion.setEnabled(false);
+                }
+            }
+        }
+
+        if (tieneEntero) {
+            habilitarBotones(botonesTemporalesEntero, true);
+        } else {
+            habilitarBotones(botonesTemporalesEntero, false);
+        }
+
+        if (tieneNumerador) {
+            habilitarBotones(botonesTemporalesNumerador, true);
+        } else {
+            habilitarBotones(botonesTemporalesNumerador, false);
+        }
+
+        if (tieneDenominador) {
+            habilitarBotones(botonesTemporalesDenominador, true);
+        } else {
+            habilitarBotones(botonesTemporalesDenominador, false);
+        }
     }
 
     /**
@@ -650,13 +720,13 @@ public class FraccionPanel extends javax.swing.JPanel {
         private void setValorParteFraccion(Long valor) {
             switch (parte) {
                 case ENTERO:
-                    fraccion.setEntero(valor);
+                    getFraccion().setEntero(valor);
                     break;
                 case NUMERADOR:
-                    fraccion.setNumerador(valor);
+                    getFraccion().setNumerador(valor);
                     break;
                 case DENOMINADOR:
-                    fraccion.setDenominador(valor);
+                    getFraccion().setDenominador(valor);
                     break;
             }
         }
@@ -670,11 +740,11 @@ public class FraccionPanel extends javax.swing.JPanel {
         private Long getValorParteFraccion() {
             switch (parte) {
                 case ENTERO:
-                    return fraccion.getEntero();
+                    return getFraccion().getEntero();
                 case NUMERADOR:
-                    return fraccion.getNumerador();
+                    return getFraccion().getNumerador();
                 case DENOMINADOR:
-                    return fraccion.getDenominador();
+                    return getFraccion().getDenominador();
             }
 
             return 0l;
@@ -709,59 +779,27 @@ public class FraccionPanel extends javax.swing.JPanel {
 
         @Override
         public void onFraccionUpdated() {
-            boolean seAgregoAlgo = fraccion.getEntero() != 0
-                    || fraccion.getNumerador() != 0
-                    || fraccion.getDenominador() != 0;
-
-            if (seAgregoAlgo) {
-                jButtonReiniciarFraccion.setEnabled(true);
-                jButtonRemoverFraccion.setEnabled(true);
-            } else {
-                jButtonReiniciarFraccion.setEnabled(false);
-                jButtonRemoverFraccion.setEnabled(false);
-            }
-
-            if (fraccion.getEntero() == 0) {
-                habilitarBotonesTemporales(botonesTemporalesEntero, false);
-            } else {
-                habilitarBotonesTemporales(botonesTemporalesEntero, true);
-            }
-
-            if (fraccion.getNumerador() == 0) {
-                habilitarBotonesTemporales(botonesTemporalesNumerador, false);
-            } else {
-                habilitarBotonesTemporales(botonesTemporalesNumerador, true);
-            }
-
-            if (fraccion.getDenominador() == 0) {
-                habilitarBotonesTemporales(botonesTemporalesDenominador, false);
-            } else {
-                habilitarBotonesTemporales(botonesTemporalesDenominador, true);
-            }
+            updateGUI();
         }
 
         @Override
         public void onFraccionRemoved() {
-            if (operacion != null) {
-                if (operacion.getFracciones().size() == 1) {
+            if (fracciones != null) {
+                if (fracciones.size() == 1) {
                     onFraccionReseted();
                 } else {
-                    int indiceFraccion = operacion.getFracciones().size() - 1;
-                    operacion.getFracciones().remove(indiceFraccion);
+                    int indiceFraccion = fracciones.size() - 1;
+                    fracciones.remove(indiceFraccion);
 
-                    indiceFraccion = operacion.getFracciones().size() - 1;
-                    fraccion = operacion.getFracciones().get(indiceFraccion);
-
-                    int indiceOperador = operacion.getOperadores().size() - 1;
+                    int indiceOperador = operadores.size() - 1;
 
                     if (indiceOperador > -1) {
-                        operacion.getOperadores().remove(indiceOperador);
+                        operadores.remove(indiceOperador);
                     }
 
-                    if (!jButtonReiniciarFraccion.isEnabled()) {
-                        jButtonReiniciarFraccion.setEnabled(true);
-                    }
+                    updateGUI();
                 }
+
             } else {
                 JOptionPane.showMessageDialog(FraccionPanel.this,
                         "Operacion nula", "ERROR",
@@ -771,9 +809,9 @@ public class FraccionPanel extends javax.swing.JPanel {
 
         @Override
         public void onFraccionReseted() {
-            fraccion.setEntero(0l);
-            fraccion.setNumerador(0l);
-            fraccion.setDenominador(0l);
+            getFraccion().setEntero(0l);
+            getFraccion().setNumerador(0l);
+            getFraccion().setDenominador(0l);
             onFraccionUpdated();
         }
 

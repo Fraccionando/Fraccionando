@@ -17,22 +17,50 @@ public enum ColorTema {
     ROJO(new Color(hexToInt("F70030")), new Color(hexToInt("FA92A6"))),
     MORADO(new Color(hexToInt("810AD7")), new Color(hexToInt("C08CE6")));
 
+    /**
+     * Es el color claro correspondiente al tema.
+     */
     private Color claro;
+    /**
+     * Es el color oscuro correspondiente al tema.
+     */
     private Color oscuro;
 
+    /**
+     * Constructor privado que recibe dos parametros.
+     *
+     * @param oscuro Es el color oscuro correspondiente al tema.
+     * @param claro Es el color claro correspondiente al tema.
+     */
     private ColorTema(Color oscuro, Color claro) {
         this.claro = claro;
         this.oscuro = oscuro;
     }
 
+    /**
+     * Convierte un numero hecadecimal a decimal.
+     *
+     * @param hex Es una cadena con el numero en hexadecimal.
+     * @return El valor del numero en decimal.
+     */
     private static int hexToInt(String hex) {
         return Integer.parseInt(hex, 16);
     }
 
+    /**
+     * Devuelve el color claro.
+     *
+     * @return El color claro.
+     */
     public Color getClaro() {
         return claro;
     }
 
+    /**
+     * Devuelve el color oscuro.
+     *
+     * @return El color oscuro.
+     */
     public Color getOscuro() {
         return oscuro;
     }

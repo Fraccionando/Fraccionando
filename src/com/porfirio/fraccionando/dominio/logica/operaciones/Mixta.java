@@ -63,7 +63,7 @@ public abstract class Mixta extends Operacion {
             latex += "(";
 
             for (int j = 0; j < gruposFracciones.get(i).size(); j++) {
-                latex += gruposFracciones.get(i).get(j).toLatex();
+                latex += gruposFracciones.get(i).get(j).toLatex(false);
 
                 if (operador < operadores.size()) {
                     latex += operadores.get(operador);

@@ -54,20 +54,28 @@ public class FraccionSimple extends Fraccion {
     @Override
     public void simplificar() {
         if (isSimplificable()) {
-            if (isImpropia()) {
-                convertirAMixta();
+            if (IsUnidad()) {
+                entero = entero + 1;
+                numerador = 0l;
+                denominador = 0l;
+            } else {
+                if (isImpropia()) {
+                    convertirAMixta();
+                }
+
+                if (isPropia() && isReducible()) {
+                    long mcd = Calculos.mcdSimple(numerador, denominador);
+                    numerador /= mcd;
+                    denominador /= mcd;
+                }
             }
 
-            if (isPropia() && isReducible()) {
-                long mcd = Calculos.mcdSimple(numerador, denominador);
-                numerador /= mcd;
-                denominador /= mcd;
-            }
+            Procedimiento.agregarPaso(
+                    new Paso(Configuracion
+                            .getString("OPE_NX_RES_SIM"), TipoPaso.string));
+            Procedimiento.agregarPaso(
+                    new Paso(toLatex(false), TipoPaso.expresion));
         }
-
-        Procedimiento.agregarPaso(new Paso(Configuracion
-                .getString("OPE_NX_RES_SIM"), TipoPaso.string));
-        Procedimiento.agregarPaso(new Paso(toLatex(), TipoPaso.expresion));
     }
 
     @Override

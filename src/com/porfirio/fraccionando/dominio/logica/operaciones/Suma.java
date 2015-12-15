@@ -101,8 +101,6 @@ public abstract class Suma extends Operacion {
             }
         }
 
-        System.out.println(sumaNumeradores);
-
         return new FraccionSimple(sumaNumeradores, fracciones.get(0)
                 .getDenominador());
     }

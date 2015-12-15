@@ -74,7 +74,7 @@ public class TestFraccion {
 
     private static void printFracciones(Fraccion... fracciones) {
         for (Fraccion f : fracciones) {
-            System.out.println(f.toString() + " : " + f.toLatex());
+            System.out.println(f.toString() + " : " + f.toLatex(false));
         }
     }
 

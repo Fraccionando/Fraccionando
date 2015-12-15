@@ -58,7 +58,7 @@ public class SumaMuyDetallada extends Suma {
 
                 convertirAEquivalentesMcm(mcm);
 
-                Procedimiento.agregarPaso(new Paso(toLatex(),
+                Procedimiento.agregarPaso(new Paso(toLatex(false),
                         TipoPaso.expresion));
                 Procedimiento.agregarPaso(new Paso(Configuracion
                         .getString("SUM_SX_OPE_NUMS"), TipoPaso.string));
@@ -72,7 +72,7 @@ public class SumaMuyDetallada extends Suma {
             resultado = calcularResultadoSumaNumeradores()
                     .toFraccionDetallada();
 
-            Procedimiento.agregarPaso(new Paso(resultado.toLatex(),
+            Procedimiento.agregarPaso(new Paso(resultado.toLatex(false),
                     TipoPaso.expresion));
 
             if (operacionFinal) {
