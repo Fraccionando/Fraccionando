@@ -204,6 +204,7 @@ public class Calculos {
                 .getString("CAL_MCD_SX_RES"), TipoPaso.string));
         Procedimiento.agregarPaso(new Paso(factores + " = " + mcd,
                 TipoPaso.expresion));
+        Procedimiento.setResultado(new Paso(mcd + "", TipoPaso.expresion));
 
         return mcd;
     }
@@ -290,6 +291,7 @@ public class Calculos {
                 .getString("CAL_MCM_SX_RES"), TipoPaso.string));
         Procedimiento.agregarPaso(new Paso(factores + " = " + mcm,
                 TipoPaso.expresion));
+        Procedimiento.setResultado(new Paso(mcm + "", TipoPaso.expresion));
 
         return mcm;
     }

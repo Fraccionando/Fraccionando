@@ -34,4 +34,23 @@ public class Arreglos {
             return -1;
         }
     }
+
+    /**
+     * Separa una cadena por medio de un caracter y devuelve un arreglo de
+     * longs.
+     *
+     * @param cadena Es la cadena de la que se van a extraer los datos.
+     * @param separador Es el caracter que separara los elementos.
+     * @return El arreglo obtenido de la cadena.
+     */
+    public static long[] stringToLongArray(String cadena, String separador) {
+        String[] strings = cadena.split(separador);
+        long[] longs = new long[strings.length];
+
+        for (int i = 0; i < longs.length; i++) {
+            longs[i] = Long.parseLong(strings[i]);
+        }
+
+        return longs;
+    }
 }

@@ -1,5 +1,6 @@
 package com.porfirio.fraccionando.gui.pantallas;
 
+import com.porfirio.fraccionando.gui.componentes.Generador;
 import com.porfirio.fraccionando.main.Configuracion;
 
 /**
@@ -17,7 +18,7 @@ public class DialogoAcercaDe extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         getRootPane().setDefaultButton(jButtonAceptar);
-        PantallaPrincipal.cambiarLetraHijos(jPanel1);
+        Generador.cambiarLetraHijos(jPanel1);
         pack();
         setLocationRelativeTo(parent);
     }

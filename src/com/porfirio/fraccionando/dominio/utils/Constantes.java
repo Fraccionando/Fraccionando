@@ -39,4 +39,6 @@ public class Constantes {
     public static final String parteFraccionEntero = "ENTERO";
     public static final String parteFraccionNumerador = "NUMERADOR";
     public static final String parteFraccionDenominador = "DENOMINADOR";
+    public static final int DIALOG_ACEPTAR = 1;
+    public static final int DIALOG_CANCELAR = 2;
 }

@@ -2,6 +2,8 @@ package com.porfirio.fraccionando.gui.pantallas;
 
 import com.porfirio.fraccionando.gui.listeners.CreacionFraccionListener;
 import com.porfirio.fraccionando.controladores.ControladorOperacion;
+import com.porfirio.fraccionando.controladores.ControladorResultadoOperacion;
+import com.porfirio.fraccionando.dominio.logica.calculos.Calculos;
 import com.porfirio.fraccionando.dominio.procedimiento.Paso;
 import com.porfirio.fraccionando.dominio.procedimiento.Procedimiento;
 import com.porfirio.fraccionando.dominio.utils.Constantes;
@@ -11,10 +13,12 @@ import com.porfirio.fraccionando.main.Configuracion;
 import java.awt.Component;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -40,6 +44,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
      */
     private final ControladorOperacion controladorOperacion;
     /**
+     * Es el controlador que se encarga de mostrar los resultados y pasos de la
+     * solucion para las funciones de comparacion, conversion y de numeros.
+     */
+    ControladorResultadoOperacion controladorResultado;
+    /**
      * Es un arreglo que contiene los botones de las operaciones basicas.
      */
     private final JButton[] botonesOperacionesBasicas;
@@ -56,6 +65,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         controladorOperacion = new ControladorOperacion(jLabelOperacion, jPanelPasos,
                 fraccionPanel, botonesOperacionesBasicas,
                 jButtonResolverOperacion, jButtonReiniciarOperacion,
+                jPanelResultado);
+        controladorResultado = new ControladorResultadoOperacion(jPanelPasos,
                 jPanelResultado);
     }
 
@@ -346,6 +357,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jButtonMcm.setText("M.C.M.");
         jButtonMcm.setToolTipText("Calcula el Mínimo Común Múltiplo");
+        jButtonMcm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMcmActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -357,6 +373,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jButtonMcd.setText("M.C.D.");
         jButtonMcd.setToolTipText("Calcula el Máximo Común Divisor");
+        jButtonMcd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMcdActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
@@ -675,6 +696,31 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jmItemGuardarActionPerformed
 
+    private void jButtonMcmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMcmActionPerformed
+        DialogoNumeros dialogoMcm = new DialogoNumeros(this, true);
+        dialogoMcm.setTitle("Mínimo común múltiplo");
+        dialogoMcm.setVisible(true);
+
+        if (dialogoMcm.getRespuesta() == Constantes.DIALOG_ACEPTAR) {
+            Procedimiento.iniciar();
+            Calculos.mcmDetallado(dialogoMcm.getNumeros());
+            controladorResultado.colocarResultadoPasos();
+        }
+
+    }//GEN-LAST:event_jButtonMcmActionPerformed
+
+    private void jButtonMcdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMcdActionPerformed
+        DialogoNumeros dialogoMcd = new DialogoNumeros(this, true);
+        dialogoMcd.setTitle("Máximo común divisor");
+        dialogoMcd.setVisible(true);
+
+        if (dialogoMcd.getRespuesta() == Constantes.DIALOG_ACEPTAR) {
+            Procedimiento.iniciar();
+            Calculos.mcdDetallado(dialogoMcd.getNumeros());
+            controladorResultado.colocarResultadoPasos();
+        }
+    }//GEN-LAST:event_jButtonMcdActionPerformed
+
     /**
      * Cambia el tema de la aplicacion, mandado llamar al momento de elegir una
      * opcion del menu de temas.
@@ -806,59 +852,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     /**
-     * Cambia el tipo de fuente recursivamente a todos los elementos que se
-     * encuentran dentro de un contenedor, que puede ser un JPanel, un JMenuBar
-     * o un JMenu.
-     *
-     * @param contenedor Es el contenedor de donde se extraeran los elementos
-     * para cambiar la fuente.
-     */
-    static void cambiarLetraHijos(JComponent contenedor) {
-        Component[] componentes;
-
-        if (contenedor instanceof JMenu) {
-            componentes = ((JMenu) contenedor).getMenuComponents();
-        } else {
-            componentes = contenedor.getComponents();
-        }
-
-        if (componentes.length > 0) {
-            for (Component c : componentes) {
-                if (c instanceof JMenuBar || c instanceof JMenu
-                        || c instanceof JPanel) {
-                    cambiarLetraHijos((JComponent) c);
-                } else if (c instanceof JScrollPane) {
-                    Component comp
-                            = ((JScrollPane) c).getViewport().getComponent(0);
-                    cambiarLetraHijos((JComponent) comp);
-                }
-
-                if (c instanceof JPanel) {
-                    Border b = ((JPanel) c).getBorder();
-
-                    if (b instanceof TitledBorder) {
-                        ((TitledBorder) b).setTitleFont(
-                                Generador.generarFont((JComponent) c, 20));
-                    }
-
-                }
-
-                c.setFont(Generador.generarFont((JComponent) c, 20));
-            }
-        } else {
-            System.err.println("NO COMPONENTES DENTRO DE: "
-                    + contenedor.getClass());
-        }
-    }
-
-    /**
      * Inicializa aspectos de la gui, que no se pueden colocar en el metodo
      * initComponents.
      */
     private void iniciarGUI() {
         setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
-        cambiarLetraHijos(jMenuBar);
-        cambiarLetraHijos(jPanelFondoClaro);
+        Generador.cambiarLetraHijos(jMenuBar);
+        Generador.cambiarLetraHijos(jPanelFondoClaro);
 
         FileNameExtensionFilter fileFilter
                 = new FileNameExtensionFilter(
