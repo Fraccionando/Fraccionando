@@ -72,14 +72,17 @@ public class FraccionDetallada extends Fraccion {
 
                     Procedimiento.agregarPaso(new Paso(Configuracion
                             .getString("FR_RESULTADO"), TipoPaso.string));
-                    Procedimiento.agregarPaso(new Paso(
-                            new FraccionSimple(entero, numerador, denominador)
-                            .toLatex(false), TipoPaso.expresion));
+                    Paso res = new Paso( new FraccionSimple(entero, numerador, 
+                            denominador).toLatex(false), TipoPaso.expresion);
+                    Procedimiento.agregarPaso(res);
+                    Procedimiento.setResultado(res);
                 } else {
                     Procedimiento.agregarPaso(new Paso(Configuracion
                             .getString("FR_SIM_SX_UNI_NOMIX"),
                             TipoPaso.string));
                     Procedimiento.agregarPaso((new Paso("1",
+                            TipoPaso.expresion)));
+                    Procedimiento.setResultado((new Paso("1",
                             TipoPaso.expresion)));
                     entero = 1l;
                     numerador = 0l;

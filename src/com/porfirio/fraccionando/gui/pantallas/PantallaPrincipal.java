@@ -834,7 +834,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                     public void onExecute() {
                         Fraccion f1 = dialogoMayor.getFracciones().get(0);
                         Fraccion f2 = dialogoMayor.getFracciones().get(1);
-                        Comparaciones.determinarReciprocas(f1, f2);
+                        Comparaciones.determinarMayor(f1, f2);
                     }
                 });
     }//GEN-LAST:event_jButtonMayorActionPerformed

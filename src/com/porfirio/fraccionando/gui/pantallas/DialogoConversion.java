@@ -57,6 +57,8 @@ public class DialogoConversion extends javax.swing.JDialog
         respuesta = Constantes.DIALOG_CANCELAR;
         generadorFraccion.setFracciones(new ArrayList<>());
         generadorFraccion.setBotonRemoverVisible(false);
+        
+        updateGUI();
     }
 
     /**

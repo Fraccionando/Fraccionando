@@ -282,6 +282,8 @@ public class DialogoComparacion extends javax.swing.JDialog
         }
 
         if (fracciones.size() == 1) {
+            jButtonAceptar.setEnabled(false);
+            
             if (generadorFraccion.isCompleta()) {
                 jButtonAgregarFraccion.setEnabled(true);
             } else {
