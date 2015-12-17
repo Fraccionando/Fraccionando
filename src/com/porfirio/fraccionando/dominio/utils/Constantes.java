@@ -41,4 +41,7 @@ public class Constantes {
     public static final String parteFraccionDenominador = "DENOMINADOR";
     public static final int DIALOG_ACEPTAR = 1;
     public static final int DIALOG_CANCELAR = 2;
+    public static final String conSimplificar = "SIMPLIFICAR";
+    public static final String conCam = "CAM";
+    public static final String conCai = "CAI";
 }

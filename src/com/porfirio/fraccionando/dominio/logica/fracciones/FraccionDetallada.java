@@ -129,14 +129,19 @@ public class FraccionDetallada extends Fraccion {
 
                     Procedimiento.agregarPaso(new Paso(Configuracion
                             .getString("FR_RESULTADO"), TipoPaso.string));
-                    Procedimiento.agregarPaso(new Paso(
-                            new FraccionSimple(entero, numerador, denominador)
-                            .toLatex(false), TipoPaso.expresion));
+                    FraccionSimple resultado = new FraccionSimple(entero,
+                            numerador, denominador);
+                    Procedimiento.agregarPaso(new Paso(resultado.toLatex(false),
+                            TipoPaso.expresion));
+                    Procedimiento.setResultado(new Paso(resultado.toLatex(false),
+                            TipoPaso.expresion));
                 }
             }
         } else {
-            Procedimiento.agregarPaso(new Paso(Configuracion
-                    .getString("FR_CAM_NOSIMP"), TipoPaso.string));
+            Paso resultado = new Paso(Configuracion.getString("FR_CAM_NOSIMP"),
+                    TipoPaso.string);
+            Procedimiento.agregarPaso(resultado);
+            Procedimiento.setResultado(resultado);
         }
     }
 
@@ -339,12 +344,19 @@ public class FraccionDetallada extends Fraccion {
 
             Procedimiento.agregarPaso(new Paso(Configuracion
                     .getString("FR_RESULTADO"), TipoPaso.string));
-            Procedimiento.agregarPaso(new Paso(new FraccionSimple(entero,
-                    numerador, denominador).toLatex(false), TipoPaso.expresion));
+
+            FraccionSimple resultado = new FraccionSimple(entero,
+                    numerador, denominador);
+            Procedimiento.agregarPaso(new Paso(resultado.toLatex(false),
+                    TipoPaso.expresion));
+            Procedimiento.setResultado(new Paso(resultado.toLatex(false),
+                    TipoPaso.expresion));
 
         } else {
-            Procedimiento.agregarPaso(new Paso(Configuracion
-                    .getString("FR_CAM_NOIMP"), TipoPaso.string));
+            Paso resultado = new Paso(Configuracion.getString("FR_CAM_NOIMP"),
+                    TipoPaso.string);
+            Procedimiento.agregarPaso(resultado);
+            Procedimiento.setResultado(resultado);
             huboConversion = false;
         }
 
@@ -394,11 +406,17 @@ public class FraccionDetallada extends Fraccion {
 
             Procedimiento.agregarPaso(new Paso(Configuracion
                     .getString("FR_RESULTADO"), TipoPaso.string));
-            Procedimiento.agregarPaso(new Paso(new FraccionSimple(entero,
-                    numerador, denominador).toLatex(false), TipoPaso.expresion));
+            FraccionSimple resultado = new FraccionSimple(entero,
+                    numerador, denominador);
+            Procedimiento.agregarPaso(new Paso(resultado.toLatex(false),
+                    TipoPaso.expresion));
+            Procedimiento.setResultado(new Paso(resultado.toLatex(false),
+                    TipoPaso.expresion));
         } else {
-            Procedimiento.agregarPaso(new Paso(Configuracion
-                    .getString("FR_CAM_NOMIX"), TipoPaso.string));
+            Paso resultado = new Paso(Configuracion.getString("FR_CAM_NOMIX"),
+                    TipoPaso.string);
+            Procedimiento.agregarPaso(resultado);
+            Procedimiento.setResultado(resultado);
 
             hizoConversion = false;
         }

@@ -1,6 +1,7 @@
 package com.porfirio.fraccionando.gui.pantallas;
 
 import com.porfirio.fraccionando.gui.componentes.Generador;
+import com.porfirio.fraccionando.gui.componentes.RoundedPanel;
 import com.porfirio.fraccionando.main.Configuracion;
 
 /**
@@ -33,7 +34,7 @@ public class DialogoAcercaDe extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel2 = new RoundedPanel(10);
         jPanel3 = new javax.swing.JPanel();
         jButtonAceptar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();

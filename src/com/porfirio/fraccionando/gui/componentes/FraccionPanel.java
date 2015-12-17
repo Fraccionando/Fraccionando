@@ -608,6 +608,15 @@ public class FraccionPanel extends javax.swing.JPanel {
     }
 
     /**
+     * Establece la visibilidad del boton de remover fraccion.
+     *
+     * @param visible Es el valor que determina si el boton es visible o no.
+     */
+    public void setBotonRemoverVisible(boolean visible) {
+        jButtonRemoverFraccion.setVisible(visible);
+    }
+
+    /**
      * Establece si el boton de remover fraccion va a estar habilitado o no.
      *
      * @param enabled Valor que determina si el boton esta habilitado.

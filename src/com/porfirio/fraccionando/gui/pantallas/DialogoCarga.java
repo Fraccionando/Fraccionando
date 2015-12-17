@@ -1,5 +1,6 @@
 package com.porfirio.fraccionando.gui.pantallas;
 
+import com.porfirio.fraccionando.gui.componentes.RoundedPanel;
 import com.porfirio.fraccionando.latex.LatexRender;
 import com.porfirio.fraccionando.main.Configuracion;
 import java.util.logging.Level;
@@ -35,8 +36,8 @@ public class DialogoCarga extends javax.swing.JDialog {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jPanelFondoOscuro = new javax.swing.JPanel();
-        jPanelFondoClaro = new javax.swing.JPanel();
-        jPanelContenido = new javax.swing.JPanel();
+        jPanelFondoClaro = new RoundedPanel(50);
+        jPanelContenido = new RoundedPanel(50);
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 

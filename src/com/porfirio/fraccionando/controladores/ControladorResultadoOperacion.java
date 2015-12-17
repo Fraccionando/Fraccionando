@@ -56,7 +56,8 @@ public class ControladorResultadoOperacion {
             panelResultado.removeAll();
 
             if (resultado.getTipo() == TipoPaso.string) {
-                panelResultado.add(new JLabel(resultado.getContenido()));
+                panelResultado.add(crearLabelConRenglones(resultado
+                        .getContenido()));
             } else if (resultado.getTipo() == TipoPaso.expresion) {
                 panelResultado.add(crearLabelConImagen(
                         "resultado", resultado.getContenido()));

@@ -4,11 +4,14 @@ import com.porfirio.fraccionando.gui.listeners.CreacionFraccionListener;
 import com.porfirio.fraccionando.controladores.ControladorOperacion;
 import com.porfirio.fraccionando.controladores.ControladorResultadoOperacion;
 import com.porfirio.fraccionando.dominio.logica.calculos.Calculos;
+import com.porfirio.fraccionando.dominio.logica.comparaciones.Comparaciones;
+import com.porfirio.fraccionando.dominio.logica.fracciones.Fraccion;
 import com.porfirio.fraccionando.dominio.procedimiento.Paso;
 import com.porfirio.fraccionando.dominio.procedimiento.Procedimiento;
 import com.porfirio.fraccionando.dominio.utils.Constantes;
 import com.porfirio.fraccionando.exportacion.Pdf;
 import com.porfirio.fraccionando.gui.componentes.Generador;
+import com.porfirio.fraccionando.gui.componentes.RoundedPanel;
 import com.porfirio.fraccionando.main.Configuracion;
 import java.awt.Component;
 import java.awt.event.ItemEvent;
@@ -85,8 +88,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         buttonGroupExplicaciones = new javax.swing.ButtonGroup();
         jFileChooserGuardar = new javax.swing.JFileChooser();
         jPanelFondoOscuro = new javax.swing.JPanel();
-        jPanelFondoClaro = new javax.swing.JPanel();
-        jPanelVista = new javax.swing.JPanel();
+        jPanelFondoClaro = new RoundedPanel();
+        jPanelVista = new RoundedPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPanePasos = new javax.swing.JScrollPane();
         jPanelPasos = new javax.swing.JPanel();
@@ -291,6 +294,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jButtonEquivalentes.setText("Equivalentes");
         jButtonEquivalentes.setToolTipText("Determina si dos fracciones son equivalentes");
+        jButtonEquivalentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEquivalentesActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -302,6 +310,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jButtonReciprocas.setText("Recíprocas");
         jButtonReciprocas.setToolTipText("Determina si dos fracciones son recíprocas");
+        jButtonReciprocas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReciprocasActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -313,6 +326,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jButtonMayor.setText("Mayor");
         jButtonMayor.setToolTipText("Determina la mayor de dos fracciones");
+        jButtonMayor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMayorActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -324,6 +342,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jButtonSimplificar.setText("Simplificar");
         jButtonSimplificar.setToolTipText("Simplifica una fracción");
+        jButtonSimplificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSimplificarActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -335,6 +358,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jButtonCam.setText("C.A.M.");
         jButtonCam.setToolTipText("Convierte una fracción impropia en mixta");
+        jButtonCam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCamActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
@@ -346,6 +374,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jButtonCai.setText("C.A.I.");
         jButtonCai.setToolTipText("Convierte una fracción mixta en impropia");
+        jButtonCai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCaiActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -720,6 +753,127 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             controladorResultado.colocarResultadoPasos();
         }
     }//GEN-LAST:event_jButtonMcdActionPerformed
+
+    private void jButtonSimplificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSimplificarActionPerformed
+        DialogoConversion dialogoSimplificar = new DialogoConversion(this, true);
+        dialogoSimplificar.setTitle("Simplificar");
+        dialogoSimplificar.setVisible(true);
+
+        if (dialogoSimplificar.getRespuesta() == Constantes.DIALOG_ACEPTAR) {
+            Procedimiento.iniciar();
+            dialogoSimplificar.getFraccion().toFraccionDetallada()
+                    .simplificar();
+            controladorResultado.colocarResultadoPasos();
+        }
+    }//GEN-LAST:event_jButtonSimplificarActionPerformed
+
+    private void jButtonCaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCaiActionPerformed
+        DialogoConversion dialogoCai = new DialogoConversion(this, true);
+
+        abrirDialogoFuncion(dialogoCai, "Convertir a impropia",
+                new AccionDialogo() {
+
+                    @Override
+                    public void onExecute() {
+                        dialogoCai.getFraccion().toFraccionDetallada()
+                        .convertirAImpropia();
+                    }
+                });
+    }//GEN-LAST:event_jButtonCaiActionPerformed
+
+    private void jButtonCamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCamActionPerformed
+        DialogoConversion dialogoCam = new DialogoConversion(this, true);
+
+        abrirDialogoFuncion(dialogoCam, "Convertir a mixta",
+                new AccionDialogo() {
+
+                    @Override
+                    public void onExecute() {
+                        dialogoCam.getFraccion().toFraccionDetallada().convertirAMixta();
+                    }
+                });
+    }//GEN-LAST:event_jButtonCamActionPerformed
+
+    private void jButtonEquivalentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquivalentesActionPerformed
+        DialogoComparacion dialogoEqui = new DialogoComparacion(this, true);
+
+        abrirDialogoFuncion(dialogoEqui, "Comprobar equivalentes",
+                new AccionDialogo() {
+
+                    @Override
+                    public void onExecute() {
+                        Fraccion f1 = dialogoEqui.getFracciones().get(0);
+                        Fraccion f2 = dialogoEqui.getFracciones().get(1);
+                        Comparaciones.determinarEquivalentes(f1, f2);
+                    }
+                });
+    }//GEN-LAST:event_jButtonEquivalentesActionPerformed
+
+    private void jButtonReciprocasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReciprocasActionPerformed
+        DialogoComparacion dialogoReci = new DialogoComparacion(this, true);
+
+        abrirDialogoFuncion(dialogoReci, "Comprobar equivalentes",
+                new AccionDialogo() {
+
+                    @Override
+                    public void onExecute() {
+                        Fraccion f1 = dialogoReci.getFracciones().get(0);
+                        Fraccion f2 = dialogoReci.getFracciones().get(1);
+                        Comparaciones.determinarReciprocas(f1, f2);
+                    }
+                });
+    }//GEN-LAST:event_jButtonReciprocasActionPerformed
+
+    private void jButtonMayorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMayorActionPerformed
+        DialogoComparacion dialogoMayor = new DialogoComparacion(this, true);
+
+        abrirDialogoFuncion(dialogoMayor, "Comprobar equivalentes",
+                new AccionDialogo() {
+
+                    @Override
+                    public void onExecute() {
+                        Fraccion f1 = dialogoMayor.getFracciones().get(0);
+                        Fraccion f2 = dialogoMayor.getFracciones().get(1);
+                        Comparaciones.determinarReciprocas(f1, f2);
+                    }
+                });
+    }//GEN-LAST:event_jButtonMayorActionPerformed
+
+    /**
+     * Abre uno de los dialogos de funciones y resuelve la operacion asociada a
+     * ellos.
+     *
+     * @param dialogo Es la instancia del dialogo a abrir.
+     * @param titulo Es el titulo que se le desea poner al dialogo.
+     * @param acciones Es la implementacion de AccionDialogo que determina las
+     * acciones que se realizaran en ese dialogo.
+     */
+    private void abrirDialogoFuncion(DialogoFuncion dialogo, String titulo,
+            AccionDialogo acciones) {
+
+        ((JDialog) dialogo).setTitle(titulo);
+        ((JDialog) dialogo).setVisible(true);
+
+        if (dialogo.getRespuesta() == Constantes.DIALOG_ACEPTAR) {
+            Procedimiento.iniciar();
+            acciones.onExecute();
+            controladorResultado.colocarResultadoPasos();
+        }
+    }
+
+    /**
+     * Esta interface es usada por el metodo abrirDialogoFuncion, para que los
+     * metodos que la manden llamar puedan describir las acciones que desean que
+     * se realizen en el metodo onExecute, usandolo a manera de clases anonimas.
+     */
+    private interface AccionDialogo {
+
+        /**
+         * Es el metodo que determina las acciones personalizadas que se
+         * realizaran dependiendo de la implementacion de la clase.
+         */
+        public void onExecute();
+    }
 
     /**
      * Cambia el tema de la aplicacion, mandado llamar al momento de elegir una

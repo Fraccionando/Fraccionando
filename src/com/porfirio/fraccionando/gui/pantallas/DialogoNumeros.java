@@ -3,6 +3,7 @@ package com.porfirio.fraccionando.gui.pantallas;
 import com.porfirio.fraccionando.dominio.utils.Arreglos;
 import com.porfirio.fraccionando.dominio.utils.Constantes;
 import com.porfirio.fraccionando.gui.componentes.Generador;
+import com.porfirio.fraccionando.gui.componentes.RoundedPanel;
 import com.porfirio.fraccionando.main.Configuracion;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -15,7 +16,8 @@ import javax.swing.JTextField;
  *
  * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
  */
-public class DialogoNumeros extends javax.swing.JDialog {
+public class DialogoNumeros extends javax.swing.JDialog
+        implements DialogoFuncion {
 
     private int respuesta;
     private long[] numeros;
@@ -167,7 +169,7 @@ public class DialogoNumeros extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanelFondoOscuro = new javax.swing.JPanel();
-        jPanelFondoClaro = new javax.swing.JPanel();
+        jPanelFondoClaro = new RoundedPanel(10);
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldNumeros = new javax.swing.JTextField();
@@ -186,6 +188,7 @@ public class DialogoNumeros extends javax.swing.JDialog {
         jPanelFondoClaro.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         jPanelFondoClaro.setLayout(new java.awt.BorderLayout());
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new java.awt.GridLayout(3, 1));
 
@@ -287,13 +290,7 @@ public class DialogoNumeros extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldNumeros;
     // End of variables declaration//GEN-END:variables
 
-    /**
-     * Obtiene la respuesta que desprende al dialogo segun la forma de cerrarse,
-     * siendo DIALOG_ACEPTAR para una entrada exitosa, o DIALOG_CANCELAR para
-     * cuando se cierra el dialogo sin concluir la entrada.
-     *
-     * @return Un valor de la clase Constantes, que determina la respuesta.
-     */
+    @Override
     public int getRespuesta() {
         return respuesta;
     }
