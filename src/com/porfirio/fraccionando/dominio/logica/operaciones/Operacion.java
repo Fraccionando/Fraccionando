@@ -4,6 +4,7 @@ import com.porfirio.fraccionando.dominio.enumerados.TipoPaso;
 import com.porfirio.fraccionando.dominio.logica.fracciones.Fraccion;
 import com.porfirio.fraccionando.dominio.procedimiento.Paso;
 import com.porfirio.fraccionando.dominio.procedimiento.Procedimiento;
+import com.porfirio.fraccionando.dominio.utils.Constantes;
 import com.porfirio.fraccionando.main.Configuracion;
 import java.util.ArrayList;
 
@@ -132,7 +133,7 @@ public class Operacion {
      * @return La fraccion que representa el resultado de la operacion.
      */
     public Fraccion calcularResultado(boolean operacionFinal) {
-        Procedimiento.agregarPaso(new Paso(Configuracion.getString("OPE_INI"),
+        Procedimiento.agregarPaso(new Paso(Constantes.bundle.getString("OPE_INI"),
                 TipoPaso.string));
         Procedimiento.agregarPaso(new Paso(toLatex(false), TipoPaso.expresion));
 

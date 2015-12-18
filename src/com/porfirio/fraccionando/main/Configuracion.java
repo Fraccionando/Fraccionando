@@ -25,7 +25,7 @@ public class Configuracion {
 
     private static final String archivo = "Preferencias.properties";
     private static Properties properties;
-    private static ResourceBundle bundle;
+//    private static ResourceBundle bundle;
     public static Locale locale;
     public static Color colorClaro;
     public static Color colorOscuro;
@@ -109,8 +109,7 @@ public class Configuracion {
         }
 
         Locale.setDefault(locale);
-        ResourceBundle.clearCache();
-        reiniciarBundle();
+
         guardar();
     }
 
@@ -146,25 +145,6 @@ public class Configuracion {
         colorOscuro = temaElegido.getOscuro();
 
         guardar();
-    }
-
-    /**
-     * Obtiene un string del ResourceBoundle correspondiente al idioma actual.
-     *
-     * @param key Es la llave de la cadena que va a buscar.
-     * @return El valor de la cadena buscada.
-     */
-    public static String getString(String key) {
-        return bundle.getString(key);
-    }
-
-    /**
-     * Vuelve a inicializar el ResourceBundle, para cuando se cambie de idioma,
-     * los nuevos resultados aparezcan en el idioma solicitado.
-     */
-    private static void reiniciarBundle() {
-        bundle = ResourceBundle.getBundle(
-                "com.porfirio.fraccionando.resources.strings.strings");
     }
 
     public static Dimension porcentajePantalla(int porcentaje) {

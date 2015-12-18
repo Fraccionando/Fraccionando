@@ -5,6 +5,7 @@ import com.porfirio.fraccionando.dominio.logica.calculos.Calculos;
 import com.porfirio.fraccionando.dominio.logica.fracciones.Fraccion;
 import com.porfirio.fraccionando.dominio.procedimiento.Paso;
 import com.porfirio.fraccionando.dominio.procedimiento.Procedimiento;
+import com.porfirio.fraccionando.dominio.utils.Constantes;
 import com.porfirio.fraccionando.main.Configuracion;
 import java.util.ArrayList;
 
@@ -39,7 +40,7 @@ public class SumaPocoDetallada extends Suma {
             convertirMixtasAImpropias();
 
             if (!sonIgualesLosDenominadores()) {
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("SUM_NX_DEN_DIF"), TipoPaso.string));
 
                 long mcm = Calculos.mcmSimple(getDenominadores());
@@ -49,11 +50,11 @@ public class SumaPocoDetallada extends Suma {
                         TipoPaso.expresion));
             }
 
-            Procedimiento.agregarPaso(new Paso(Configuracion
+            Procedimiento.agregarPaso(new Paso(Constantes.bundle
                     .getString("SUM_NX_DEN_IGU"), TipoPaso.string));
             Procedimiento.agregarPaso(new Paso(latexSumaNumeradores(),
                     TipoPaso.expresion));
-            Procedimiento.agregarPaso(new Paso(Configuracion
+            Procedimiento.agregarPaso(new Paso(Constantes.bundle
                     .getString("OPE_RES"), TipoPaso.string));
 
             resultado = calcularResultadoSumaNumeradores().toFraccionSimple();

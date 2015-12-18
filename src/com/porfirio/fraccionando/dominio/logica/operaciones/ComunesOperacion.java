@@ -4,6 +4,7 @@ import com.porfirio.fraccionando.dominio.enumerados.TipoPaso;
 import com.porfirio.fraccionando.dominio.logica.fracciones.Fraccion;
 import com.porfirio.fraccionando.dominio.procedimiento.Paso;
 import com.porfirio.fraccionando.dominio.procedimiento.Procedimiento;
+import com.porfirio.fraccionando.dominio.utils.Constantes;
 import com.porfirio.fraccionando.main.Configuracion;
 import java.util.ArrayList;
 
@@ -32,7 +33,7 @@ public class ComunesOperacion {
             Operacion operacion) {
         // Evalua si debe hacer conversion de las fracciones mixtas a impropias
         if (operacion.hayUnaFraccionMixta()) {
-            Procedimiento.agregarPaso(new Paso(Configuracion
+            Procedimiento.agregarPaso(new Paso(Constantes.bundle
                     .getString("OPE_SX_CAI"), TipoPaso.string));
 
             for (int i = 0; i < operacion.getFracciones().size(); i++) {
@@ -41,7 +42,7 @@ public class ComunesOperacion {
                 }
             }
 
-            Procedimiento.agregarPaso(new Paso(Configuracion
+            Procedimiento.agregarPaso(new Paso(Constantes.bundle
                     .getString("OPE_RES_CONV"), TipoPaso.string));
             Procedimiento.agregarPaso(new Paso(operacion.toLatex(false),
                     TipoPaso.expresion));
@@ -56,7 +57,7 @@ public class ComunesOperacion {
      */
     public static void convertirMixtasAImpropiasSimple(Operacion operacion) {
         if (operacion.hayUnaFraccionMixta()) {
-            Procedimiento.agregarPaso(new Paso(Configuracion
+            Procedimiento.agregarPaso(new Paso(Constantes.bundle
                     .getString("OPE_NX_CAI"), TipoPaso.string));
 
             for (int i = 0; i < operacion.getFracciones().size(); i++) {

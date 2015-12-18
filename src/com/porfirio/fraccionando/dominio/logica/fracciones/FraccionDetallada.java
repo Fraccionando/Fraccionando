@@ -5,7 +5,7 @@ import com.porfirio.fraccionando.dominio.logica.calculos.Calculos;
 import com.porfirio.fraccionando.dominio.procedimiento.FraccionPaso;
 import com.porfirio.fraccionando.dominio.procedimiento.Paso;
 import com.porfirio.fraccionando.dominio.procedimiento.Procedimiento;
-import com.porfirio.fraccionando.main.Configuracion;
+import com.porfirio.fraccionando.dominio.utils.Constantes;
 
 /**
  * Esta clase es una implementacion de la clase abstracta Fraccion, donde las
@@ -54,14 +54,14 @@ public class FraccionDetallada extends Fraccion {
 
     @Override
     public void simplificar() {
-        Procedimiento.agregarPaso(new Paso(Configuracion
+        Procedimiento.agregarPaso(new Paso(Constantes.bundle
                 .getString("FR_SIM_IND"), TipoPaso.string));
         Procedimiento.agregarPaso(new Paso(toLatex(false), TipoPaso.expresion));
 
         if (isSimplificable()) {
             if (IsUnidad()) {
                 if (isMixta()) {
-                    Procedimiento.agregarPaso(new Paso(Configuracion
+                    Procedimiento.agregarPaso(new Paso(Constantes.bundle
                             .getString("FR_SIM_SX_UNI_MIX"), TipoPaso.string));
                     Procedimiento.agregarPaso(
                             new Paso(entero + " + " + 1 + " = " + (entero + 1),
@@ -70,14 +70,14 @@ public class FraccionDetallada extends Fraccion {
                     numerador = 0l;
                     denominador = 0l;
 
-                    Procedimiento.agregarPaso(new Paso(Configuracion
+                    Procedimiento.agregarPaso(new Paso(Constantes.bundle
                             .getString("FR_RESULTADO"), TipoPaso.string));
-                    Paso res = new Paso( new FraccionSimple(entero, numerador, 
+                    Paso res = new Paso(new FraccionSimple(entero, numerador,
                             denominador).toLatex(false), TipoPaso.expresion);
                     Procedimiento.agregarPaso(res);
                     Procedimiento.setResultado(res);
                 } else {
-                    Procedimiento.agregarPaso(new Paso(Configuracion
+                    Procedimiento.agregarPaso(new Paso(Constantes.bundle
                             .getString("FR_SIM_SX_UNI_NOMIX"),
                             TipoPaso.string));
                     Procedimiento.agregarPaso((new Paso("1",
@@ -89,7 +89,7 @@ public class FraccionDetallada extends Fraccion {
                     denominador = 0l;
                 }
             } else {
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("FR_SIM_SX_INT"), TipoPaso.string));
 
                 if (isImpropia()) { // Siendo impropia, por default es el CASO II
@@ -97,7 +97,7 @@ public class FraccionDetallada extends Fraccion {
                     String pasoIndicacionMayor = numerador + " > "
                             + denominador;
 
-                    Procedimiento.agregarPaso(new Paso(Configuracion
+                    Procedimiento.agregarPaso(new Paso(Constantes.bundle
                             .getString("FR_SIM_SX_CAM"), TipoPaso.string));
                     Procedimiento.agregarPaso(new Paso(pasoIndicacionMayor,
                             TipoPaso.expresion));
@@ -109,7 +109,7 @@ public class FraccionDetallada extends Fraccion {
                 // impropia, CASO III
                 if (isPropia() && isReducible()) {
 
-                    Procedimiento.agregarPaso(new Paso(Configuracion
+                    Procedimiento.agregarPaso(new Paso(Constantes.bundle
                             .getString("FR_SIM_MCD"), TipoPaso.string));
 
                     long MCD = Calculos.mcdDetallado(numerador, denominador);
@@ -122,7 +122,7 @@ public class FraccionDetallada extends Fraccion {
                     FraccionPaso paso = new FraccionPaso(enteroPaso,
                             numeradorPaso, denominadorPaso);
 
-                    Procedimiento.agregarPaso(new Paso(Configuracion
+                    Procedimiento.agregarPaso(new Paso(Constantes.bundle
                             .getString("FR_SIM_SX_DIV"), TipoPaso.string));
                     Procedimiento.agregarPaso(new Paso(paso.toLatex(),
                             TipoPaso.expresion));
@@ -130,7 +130,7 @@ public class FraccionDetallada extends Fraccion {
                     numerador /= MCD;
                     denominador /= MCD;
 
-                    Procedimiento.agregarPaso(new Paso(Configuracion
+                    Procedimiento.agregarPaso(new Paso(Constantes.bundle
                             .getString("FR_RESULTADO"), TipoPaso.string));
                     FraccionSimple resultado = new FraccionSimple(entero,
                             numerador, denominador);
@@ -141,7 +141,7 @@ public class FraccionDetallada extends Fraccion {
                 }
             }
         } else {
-            Paso resultado = new Paso(Configuracion.getString("FR_CAM_NOSIMP"),
+            Paso resultado = new Paso(Constantes.bundle.getString("FR_CAM_NOSIMP"),
                     TipoPaso.string);
             Procedimiento.agregarPaso(resultado);
             Procedimiento.setResultado(resultado);
@@ -152,7 +152,7 @@ public class FraccionDetallada extends Fraccion {
     public boolean convertirAMixta() {
         boolean huboConversion = true;
 
-        Procedimiento.agregarPaso(new Paso(Configuracion
+        Procedimiento.agregarPaso(new Paso(Constantes.bundle
                 .getString("FR_CAM_IND"), TipoPaso.string));
         Procedimiento.agregarPaso(new Paso(toLatex(false), TipoPaso.expresion));
 
@@ -160,7 +160,7 @@ public class FraccionDetallada extends Fraccion {
             FraccionSimple auxiliar = new FraccionSimple(entero, numerador,
                     denominador);
 
-            Procedimiento.agregarPaso(new Paso(Configuracion
+            Procedimiento.agregarPaso(new Paso(Constantes.bundle
                     .getString("FR_CAM_SX_DES"), TipoPaso.string));
 
             String pasoIndicacionMayor = numerador + " > " + denominador;
@@ -174,7 +174,7 @@ public class FraccionDetallada extends Fraccion {
                 String pasoEntero = numerador + "÷" + denominador;
                 auxiliar.setEntero(numerador / denominador);
 
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("FR_CAM_SX_DET_ENT"), TipoPaso.string));
                 Procedimiento.agregarPaso(new Paso(pasoEntero + " = "
                         + auxiliar.getEntero(), TipoPaso.expresion));
@@ -186,13 +186,13 @@ public class FraccionDetallada extends Fraccion {
                         numerador, auxiliar.getEntero(), denominador,
                         auxiliar.getNumerador());
 
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("FR_CAM_SX_DET_NUM"), TipoPaso.string));
                 Procedimiento.agregarPaso(new Paso(pasoNumerador,
                         TipoPaso.expresion));
 
                 // Denominador
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("FR_CAM_SX_DET_DEN"), TipoPaso.string));
 
                 // Resumen operaciones
@@ -212,13 +212,13 @@ public class FraccionDetallada extends Fraccion {
                 // Entero
                 String pasoEntero = numerador + "÷" + denominador;
                 auxiliar.setEntero(numerador / denominador);
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("FR_CAM_SX_DET_ENT"), TipoPaso.string));
                 Procedimiento.agregarPaso(new Paso(pasoEntero + " = "
                         + auxiliar.getEntero(), TipoPaso.expresion));
 
                 // Indicacion de fraccion exacta
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("FR_CAM_SX_CII_EXA"), TipoPaso.string));
 
                 // Resumen operaciones
@@ -238,7 +238,7 @@ public class FraccionDetallada extends Fraccion {
                 long enteroGuardado = auxiliar.getEntero();
 
                 // Tomar en cuenta solo la parte fraccionaria al principio
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("FR_CAM_SX_CIII_MIX"), TipoPaso.string));
                 Procedimiento.agregarPaso(new Paso(new FraccionSimple(
                         auxiliar.getNumerador(), auxiliar.getDenominador())
@@ -248,7 +248,7 @@ public class FraccionDetallada extends Fraccion {
                 String pasoEntero = numerador + "÷" + denominador;
                 auxiliar.setEntero(numerador / denominador);
 
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("FR_CAM_SX_DET_ENT"), TipoPaso.string));
                 Procedimiento.agregarPaso(new Paso(pasoEntero + " = "
                         + auxiliar.getEntero(), TipoPaso.expresion));
@@ -260,13 +260,13 @@ public class FraccionDetallada extends Fraccion {
                         numerador, auxiliar.getEntero(), denominador,
                         auxiliar.getNumerador());
 
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("FR_CAM_SX_DET_NUM"), TipoPaso.string));
                 Procedimiento.agregarPaso(new Paso(pasoNumerador,
                         TipoPaso.expresion));
 
                 // Denominador
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("FR_CAM_SX_DET_DEN"), TipoPaso.string));
 
                 // Resumen operaciones 1
@@ -285,7 +285,7 @@ public class FraccionDetallada extends Fraccion {
                 pasoNumerador = String.valueOf(auxiliar.getNumerador());
                 pasoDenominador = String.valueOf(auxiliar.getDenominador());
 
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("FR_CAM_SX_CIII_ENT"), TipoPaso.string));
                 Procedimiento.agregarPaso(new Paso(new FraccionPaso(
                         pasoEntero, pasoNumerador, pasoDenominador).toLatex(),
@@ -297,7 +297,7 @@ public class FraccionDetallada extends Fraccion {
                 long enteroGuardado = auxiliar.getEntero();
 
                 // Tomar en cuenta solo la parte fraccionaria al principio
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("FR_CAM_SX_CIII_MIX"), TipoPaso.string));
                 Procedimiento.agregarPaso(new Paso(new FraccionSimple(
                         auxiliar.getNumerador(), auxiliar.getDenominador())
@@ -307,7 +307,7 @@ public class FraccionDetallada extends Fraccion {
                 String pasoEntero = numerador + "÷" + denominador;
                 auxiliar.setEntero(numerador / denominador);
 
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("FR_CAM_SX_DET_ENT"), TipoPaso.string));
                 Procedimiento.agregarPaso(new Paso(pasoEntero + " = "
                         + auxiliar.getEntero(), TipoPaso.expresion));
@@ -316,7 +316,7 @@ public class FraccionDetallada extends Fraccion {
                 auxiliar.setNumerador(0l);
 
                 // Indicacion de fraccion exacta
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("FR_CAM_SX_CII_EXA"), TipoPaso.string));
 
                 // Resumen operaciones 1
@@ -335,7 +335,7 @@ public class FraccionDetallada extends Fraccion {
                 pasoNumerador = String.valueOf(auxiliar.getNumerador());
                 pasoDenominador = String.valueOf(auxiliar.getDenominador());
 
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("FR_CAM_SX_CIII_ENT"), TipoPaso.string));
                 Procedimiento.agregarPaso(new Paso(new FraccionPaso(
                         pasoEntero, pasoNumerador, pasoDenominador).toLatex(),
@@ -345,7 +345,7 @@ public class FraccionDetallada extends Fraccion {
                 numerador = auxiliar.getNumerador();
             }
 
-            Procedimiento.agregarPaso(new Paso(Configuracion
+            Procedimiento.agregarPaso(new Paso(Constantes.bundle
                     .getString("FR_RESULTADO"), TipoPaso.string));
 
             FraccionSimple resultado = new FraccionSimple(entero,
@@ -356,7 +356,7 @@ public class FraccionDetallada extends Fraccion {
                     TipoPaso.expresion));
 
         } else {
-            Paso resultado = new Paso(Configuracion.getString("FR_CAM_NOIMP"),
+            Paso resultado = new Paso(Constantes.bundle.getString("FR_CAM_NOIMP"),
                     TipoPaso.string);
             Procedimiento.agregarPaso(resultado);
             Procedimiento.setResultado(resultado);
@@ -370,7 +370,7 @@ public class FraccionDetallada extends Fraccion {
     public boolean convertirAImpropia() {
         boolean hizoConversion = true;
 
-        Procedimiento.agregarPaso(new Paso(Configuracion
+        Procedimiento.agregarPaso(new Paso(Constantes.bundle
                 .getString("FR_CAI_IND"), TipoPaso.string));
         Procedimiento.agregarPaso(new Paso(toLatex(false), TipoPaso.expresion));
 
@@ -378,7 +378,7 @@ public class FraccionDetallada extends Fraccion {
         if (isMixta()) {
             // Evalua si la fraccion es entera
             if (numerador == 0) {
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("FR_CAI_DEN_EXA"), TipoPaso.string));
 
                 numerador = entero;
@@ -386,12 +386,12 @@ public class FraccionDetallada extends Fraccion {
                 denominador = 1l;
             } // Es una fraccion mixta normal
             else {
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("FR_CAI_SX_DES"), TipoPaso.string));
                 Procedimiento.agregarPaso(new Paso(entero + " + "
                         + new FraccionSimple(numerador, denominador).toLatex(hizoConversion),
                         TipoPaso.expresion));
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("FR_CAI_SX_OPE"), TipoPaso.string));
 
                 String pasoNumerador = String.format("[%d + (%d * %d)]",
@@ -407,7 +407,7 @@ public class FraccionDetallada extends Fraccion {
                 entero = 0l;
             }
 
-            Procedimiento.agregarPaso(new Paso(Configuracion
+            Procedimiento.agregarPaso(new Paso(Constantes.bundle
                     .getString("FR_RESULTADO"), TipoPaso.string));
             FraccionSimple resultado = new FraccionSimple(entero,
                     numerador, denominador);
@@ -416,7 +416,7 @@ public class FraccionDetallada extends Fraccion {
             Procedimiento.setResultado(new Paso(resultado.toLatex(false),
                     TipoPaso.expresion));
         } else {
-            Paso resultado = new Paso(Configuracion.getString("FR_CAM_NOMIX"),
+            Paso resultado = new Paso(Constantes.bundle.getString("FR_CAM_NOMIX"),
                     TipoPaso.string);
             Procedimiento.agregarPaso(resultado);
             Procedimiento.setResultado(resultado);

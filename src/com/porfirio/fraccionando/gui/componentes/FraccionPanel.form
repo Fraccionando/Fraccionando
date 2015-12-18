@@ -4,7 +4,9 @@
   <Properties>
     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-        <TitledBorder title="Fracci&#xf3;n"/>
+        <TitledBorder title="&lt;User Code&gt;">
+          <Connection PropertyName="titleX" code="Constantes.bundle.getString(&quot;LABEL_FRACCION&quot;)&#xa;" type="code"/>
+        </TitledBorder>
       </Border>
     </Property>
     <Property name="opaque" type="boolean" value="false"/>
@@ -43,7 +45,9 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Numerador"/>
+                <TitledBorder title="&lt;User Code&gt;">
+                  <Connection PropertyName="titleX" code="Constantes.bundle.getString(&quot;LABEL_NUMERADOR&quot;)" type="code"/>
+                </TitledBorder>
               </Border>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
@@ -114,7 +118,9 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="AC"/>
-                <Property name="toolTipText" type="java.lang.String" value="Reinicia el numerador"/>
+                <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constantes.bundle.getString(&quot;LABEL_TOOL_AC_NUM&quot;)" type="code"/>
+                </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
@@ -127,7 +133,9 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="DEL"/>
-                <Property name="toolTipText" type="java.lang.String" value="Elimina el &#xfa;ltimo d&#xed;gito del numerador"/>
+                <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constantes.bundle.getString(&quot;LABEL_TOOL_DEL_NUM&quot;)" type="code"/>
+                </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
@@ -137,7 +145,9 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Denominador"/>
+                <TitledBorder title="&lt;User Code&gt;">
+                  <Connection PropertyName="titleX" code="Constantes.bundle.getString(&quot;LABEL_DENOMINADOR&quot;)" type="code"/>
+                </TitledBorder>
               </Border>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
@@ -208,7 +218,9 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="AC"/>
-                <Property name="toolTipText" type="java.lang.String" value="Reinicia el denominador"/>
+                <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constantes.bundle.getString(&quot;LABEL_TOOL_AC_DEN&quot;)" type="code"/>
+                </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
@@ -221,7 +233,9 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="DEL"/>
-                <Property name="toolTipText" type="java.lang.String" value="Elimina el &#xfa;ltimo d&#xed;gito del denominador"/>
+                <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constantes.bundle.getString(&quot;LABEL_TOOL_DEL_DEN&quot;)" type="code"/>
+                </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
@@ -245,7 +259,9 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Entero"/>
+                <TitledBorder title="&lt;User Code&gt;">
+                  <Connection PropertyName="titleX" code="Constantes.bundle.getString(&quot;LABEL_ENTERO&quot;)" type="code"/>
+                </TitledBorder>
               </Border>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
@@ -321,7 +337,9 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="AC"/>
-                <Property name="toolTipText" type="java.lang.String" value="Reinicia la parte entera"/>
+                <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constantes.bundle.getString(&quot;LABEL_TOOL_AC_ENT&quot;)" type="code"/>
+                </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
@@ -334,7 +352,9 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="DEL"/>
-                <Property name="toolTipText" type="java.lang.String" value="Remueve el &#xfa;ltimo d&#xed;gito de la parte entera"/>
+                <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constantes.bundle.getString(&quot;LABEL_TOOL_DEL_ENT&quot;)" type="code"/>
+                </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
@@ -342,8 +362,12 @@
         </Container>
         <Component class="javax.swing.JButton" name="jButtonReiniciarFraccion">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Reiniciar"/>
-            <Property name="toolTipText" type="java.lang.String" value="Reinicia la &#xfa;ltima fracci&#xf3;n ingresada"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Constantes.bundle.getString(&quot;LABEL_REINICIAR&quot;)" type="code"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Constantes.bundle.getString(&quot;LABEL_TOOL_REINICIAR_FRACCION&quot;)" type="code"/>
+            </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -357,8 +381,12 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonRemoverFraccion">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Remover"/>
-            <Property name="toolTipText" type="java.lang.String" value="Elimina la &#xfa;ltima fracci&#xf3;n ingresada"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Constantes.bundle.getString(&quot;LABEL_REMOVER&quot;)" type="code"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Constantes.bundle.getString(&quot;LABEL_TOOL_REMOVER&quot;)" type="code"/>
+            </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>

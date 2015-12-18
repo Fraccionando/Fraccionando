@@ -3,8 +3,10 @@ package com.porfirio.fraccionando.dominio.logica.calculos;
 import com.porfirio.fraccionando.dominio.enumerados.TipoPaso;
 import com.porfirio.fraccionando.dominio.procedimiento.Paso;
 import com.porfirio.fraccionando.dominio.procedimiento.Procedimiento;
+import com.porfirio.fraccionando.dominio.utils.Constantes;
 import com.porfirio.fraccionando.main.Configuracion;
 import java.util.Arrays;
+import java.util.ResourceBundle;
 
 /**
  * Esta es una clase utilitaria que contiene metodos para resolver calculos
@@ -191,16 +193,16 @@ public class Calculos {
             factores = "(1)";
         }
 
-        Procedimiento.agregarPaso(new Paso(Configuracion
+        Procedimiento.agregarPaso(new Paso(Constantes.bundle
                 .getString("CAL_MCD_IND"), TipoPaso.string));
         Procedimiento.agregarPaso(new Paso(Arrays.toString(numeros),
                 TipoPaso.expresion));
-        Procedimiento.agregarPaso(new Paso(Configuracion
+        Procedimiento.agregarPaso(new Paso(Constantes.bundle
                 .getString("CAL_MCD_SX_EXP"), TipoPaso.string));
-        Procedimiento.agregarPaso(new Paso(Configuracion
+        Procedimiento.agregarPaso(new Paso(Constantes.bundle
                 .getString("CAL_MCD_SX_INT"), TipoPaso.string));
         Procedimiento.agregarPaso(new Paso(descomposicion, TipoPaso.expresion));
-        Procedimiento.agregarPaso(new Paso(Configuracion
+        Procedimiento.agregarPaso(new Paso(Constantes.bundle
                 .getString("CAL_MCD_SX_RES"), TipoPaso.string));
         Procedimiento.agregarPaso(new Paso(factores + " = " + mcd,
                 TipoPaso.expresion));
@@ -278,16 +280,16 @@ public class Calculos {
             n++;
         }
 
-        Procedimiento.agregarPaso(new Paso(Configuracion
+        Procedimiento.agregarPaso(new Paso(Constantes.bundle
                 .getString("CAL_MCM_IND"), TipoPaso.string));
         Procedimiento.agregarPaso(new Paso(Arrays.toString(numeros),
                 TipoPaso.expresion));
-        Procedimiento.agregarPaso(new Paso(Configuracion
+        Procedimiento.agregarPaso(new Paso(Constantes.bundle
                 .getString("CAL_MCM_SX_EXP"), TipoPaso.string));
-        Procedimiento.agregarPaso(new Paso(Configuracion
+        Procedimiento.agregarPaso(new Paso(Constantes.bundle
                 .getString("CAL_MCM_SX_INT"), TipoPaso.string));
         Procedimiento.agregarPaso(new Paso(descomposicion, TipoPaso.expresion));
-        Procedimiento.agregarPaso(new Paso(Configuracion
+        Procedimiento.agregarPaso(new Paso(Constantes.bundle
                 .getString("CAL_MCM_SX_RES"), TipoPaso.string));
         Procedimiento.agregarPaso(new Paso(factores + " = " + mcm,
                 TipoPaso.expresion));

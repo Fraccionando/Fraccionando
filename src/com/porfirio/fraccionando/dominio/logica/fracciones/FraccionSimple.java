@@ -4,7 +4,7 @@ import com.porfirio.fraccionando.dominio.enumerados.TipoPaso;
 import com.porfirio.fraccionando.dominio.logica.calculos.Calculos;
 import com.porfirio.fraccionando.dominio.procedimiento.Paso;
 import com.porfirio.fraccionando.dominio.procedimiento.Procedimiento;
-import com.porfirio.fraccionando.main.Configuracion;
+import com.porfirio.fraccionando.dominio.utils.Constantes;
 
 /**
  * Esta clase es una implementacion de la clase abstracta Fraccion, donde las
@@ -71,7 +71,7 @@ public class FraccionSimple extends Fraccion {
             }
 
             Procedimiento.agregarPaso(
-                    new Paso(Configuracion
+                    new Paso(Constantes.bundle
                             .getString("OPE_NX_RES_SIM"), TipoPaso.string));
             Procedimiento.agregarPaso(
                     new Paso(toLatex(false), TipoPaso.expresion));

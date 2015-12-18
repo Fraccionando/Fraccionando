@@ -4,6 +4,7 @@ import com.porfirio.fraccionando.dominio.enumerados.TipoPaso;
 import com.porfirio.fraccionando.dominio.logica.fracciones.Fraccion;
 import com.porfirio.fraccionando.dominio.procedimiento.Paso;
 import com.porfirio.fraccionando.dominio.procedimiento.Procedimiento;
+import com.porfirio.fraccionando.dominio.utils.Constantes;
 import com.porfirio.fraccionando.main.Configuracion;
 import java.util.ArrayList;
 
@@ -37,7 +38,7 @@ public class MixtaPocoDetallada extends Mixta {
         if (isMixta()) {
             convertirMixtasAImpropias();
 
-            Procedimiento.agregarPaso(new Paso(Configuracion
+            Procedimiento.agregarPaso(new Paso(Constantes.bundle
                     .getString("MIX_NX_GRUP"), TipoPaso.string));
             Procedimiento.agregarPaso(new Paso(latexAgrupacionPrecedencia(),
                     TipoPaso.expresion));

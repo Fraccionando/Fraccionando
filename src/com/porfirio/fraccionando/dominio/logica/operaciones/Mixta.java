@@ -4,6 +4,7 @@ import com.porfirio.fraccionando.dominio.enumerados.TipoPaso;
 import com.porfirio.fraccionando.dominio.logica.fracciones.Fraccion;
 import com.porfirio.fraccionando.dominio.procedimiento.Paso;
 import com.porfirio.fraccionando.dominio.procedimiento.Procedimiento;
+import com.porfirio.fraccionando.dominio.utils.Constantes;
 import com.porfirio.fraccionando.main.Configuracion;
 import java.util.ArrayList;
 
@@ -160,10 +161,10 @@ public abstract class Mixta extends Operacion {
                 operadores) : new SumaPocoDetallada(fracciones, operadores);
 
         if (this instanceof MixtaMuyDetallada) {
-            Procedimiento.agregarPaso(new Paso(Configuracion
+            Procedimiento.agregarPaso(new Paso(Constantes.bundle
                     .getString("MIX_SX_SUMRES"), TipoPaso.string));
         } else {
-            Procedimiento.agregarPaso(new Paso(Configuracion
+            Procedimiento.agregarPaso(new Paso(Constantes.bundle
                     .getString("MIX_NX_SUMRES"), TipoPaso.string));
         }
 
@@ -207,7 +208,7 @@ public abstract class Mixta extends Operacion {
         ArrayList<Fraccion> resultadosGrupos = new ArrayList<>();
 
         if (this instanceof MixtaMuyDetallada) {
-            Procedimiento.agregarPaso(new Paso(Configuracion
+            Procedimiento.agregarPaso(new Paso(Constantes.bundle
                     .getString("MIX_SX_PAREN"), TipoPaso.string));
         }
 

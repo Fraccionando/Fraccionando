@@ -6,10 +6,12 @@ import com.porfirio.fraccionando.gui.listeners.CreacionFraccionAdapter;
 import com.porfirio.fraccionando.dominio.logica.fracciones.Fraccion;
 import com.porfirio.fraccionando.dominio.logica.fracciones.FraccionSimple;
 import com.porfirio.fraccionando.dominio.utils.Arreglos;
+import com.porfirio.fraccionando.dominio.utils.Constantes;
 import com.porfirio.fraccionando.dominio.utils.ManejoDigitos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -20,6 +22,8 @@ import javax.swing.JOptionPane;
  * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
  */
 public class FraccionPanel extends javax.swing.JPanel {
+
+    //ResourceBundle bundle = ResourceBundle.getBundle("com.porfirio.fraccionando.resources.strings.strings");
 
     /**
      * Son las fracciones de la operacion o comparacion que se esta formando, en
@@ -147,14 +151,15 @@ public class FraccionPanel extends javax.swing.JPanel {
         jButtonReiniciarFraccion = new javax.swing.JButton();
         jButtonRemoverFraccion = new javax.swing.JButton();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder("Fracción"));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(Constantes.bundle.getString("LABEL_FRACCION")
+        ));
         setOpaque(false);
         setLayout(new java.awt.GridBagLayout());
 
         jPanel7.setOpaque(false);
         jPanel7.setLayout(new java.awt.GridLayout(2, 1));
 
-        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Numerador"));
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(Constantes.bundle.getString("LABEL_NUMERADOR")));
         jPanel8.setOpaque(false);
         jPanel8.setLayout(new java.awt.GridLayout(4, 3));
 
@@ -192,20 +197,20 @@ public class FraccionPanel extends javax.swing.JPanel {
         jButtonNumAc.setBackground(new java.awt.Color(193, 2, 12));
         jButtonNumAc.setForeground(new java.awt.Color(255, 255, 255));
         jButtonNumAc.setText("AC");
-        jButtonNumAc.setToolTipText("Reinicia el numerador");
+        jButtonNumAc.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_AC_NUM"));
         jButtonNumAc.setEnabled(false);
         jPanel8.add(jButtonNumAc);
 
         jButtonNumDel.setBackground(new java.awt.Color(193, 2, 12));
         jButtonNumDel.setForeground(new java.awt.Color(255, 255, 255));
         jButtonNumDel.setText("DEL");
-        jButtonNumDel.setToolTipText("Elimina el último dígito del numerador");
+        jButtonNumDel.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_DEL_NUM"));
         jButtonNumDel.setEnabled(false);
         jPanel8.add(jButtonNumDel);
 
         jPanel7.add(jPanel8);
 
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Denominador"));
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(Constantes.bundle.getString("LABEL_DENOMINADOR")));
         jPanel9.setOpaque(false);
         jPanel9.setLayout(new java.awt.GridLayout(4, 3));
 
@@ -243,14 +248,14 @@ public class FraccionPanel extends javax.swing.JPanel {
         jButtonDenAc.setBackground(new java.awt.Color(193, 2, 12));
         jButtonDenAc.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDenAc.setText("AC");
-        jButtonDenAc.setToolTipText("Reinicia el denominador");
+        jButtonDenAc.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_AC_DEN"));
         jButtonDenAc.setEnabled(false);
         jPanel9.add(jButtonDenAc);
 
         jButtonDenDel.setBackground(new java.awt.Color(193, 2, 12));
         jButtonDenDel.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDenDel.setText("DEL");
-        jButtonDenDel.setToolTipText("Elimina el último dígito del denominador");
+        jButtonDenDel.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_DEL_DEN"));
         jButtonDenDel.setEnabled(false);
         jPanel9.add(jButtonDenDel);
 
@@ -267,7 +272,7 @@ public class FraccionPanel extends javax.swing.JPanel {
         jPanel10.setOpaque(false);
         jPanel10.setLayout(new java.awt.GridBagLayout());
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Entero"));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(Constantes.bundle.getString("LABEL_ENTERO")));
         jPanel6.setOpaque(false);
         jPanel6.setLayout(new java.awt.GridLayout(4, 3));
 
@@ -305,14 +310,14 @@ public class FraccionPanel extends javax.swing.JPanel {
         jButtonEntAc.setBackground(new java.awt.Color(193, 2, 12));
         jButtonEntAc.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEntAc.setText("AC");
-        jButtonEntAc.setToolTipText("Reinicia la parte entera");
+        jButtonEntAc.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_AC_ENT"));
         jButtonEntAc.setEnabled(false);
         jPanel6.add(jButtonEntAc);
 
         jButtonEntDel.setBackground(new java.awt.Color(193, 2, 12));
         jButtonEntDel.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEntDel.setText("DEL");
-        jButtonEntDel.setToolTipText("Remueve el último dígito de la parte entera");
+        jButtonEntDel.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_DEL_ENT"));
         jButtonEntDel.setEnabled(false);
         jPanel6.add(jButtonEntDel);
 
@@ -327,8 +332,8 @@ public class FraccionPanel extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         jPanel10.add(jPanel6, gridBagConstraints);
 
-        jButtonReiniciarFraccion.setText("Reiniciar");
-        jButtonReiniciarFraccion.setToolTipText("Reinicia la última fracción ingresada");
+        jButtonReiniciarFraccion.setText(Constantes.bundle.getString("LABEL_REINICIAR"));
+        jButtonReiniciarFraccion.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_REINICIAR_FRACCION"));
         jButtonReiniciarFraccion.setEnabled(false);
         jButtonReiniciarFraccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -343,8 +348,8 @@ public class FraccionPanel extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         jPanel10.add(jButtonReiniciarFraccion, gridBagConstraints);
 
-        jButtonRemoverFraccion.setText("Remover");
-        jButtonRemoverFraccion.setToolTipText("Elimina la última fracción ingresada");
+        jButtonRemoverFraccion.setText(Constantes.bundle.getString("LABEL_REMOVER"));
+        jButtonRemoverFraccion.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_REMOVER"));
         jButtonRemoverFraccion.setEnabled(false);
         jButtonRemoverFraccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

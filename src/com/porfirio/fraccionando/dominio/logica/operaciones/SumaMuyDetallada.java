@@ -6,6 +6,7 @@ import com.porfirio.fraccionando.dominio.logica.fracciones.Fraccion;
 import com.porfirio.fraccionando.dominio.procedimiento.FraccionPaso;
 import com.porfirio.fraccionando.dominio.procedimiento.Paso;
 import com.porfirio.fraccionando.dominio.procedimiento.Procedimiento;
+import com.porfirio.fraccionando.dominio.utils.Constantes;
 import com.porfirio.fraccionando.main.Configuracion;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,38 +36,38 @@ public class SumaMuyDetallada extends Suma {
         if (isSuma()) {
             convertirMixtasAImpropias();
 
-            Procedimiento.agregarPaso(new Paso(Configuracion
+            Procedimiento.agregarPaso(new Paso(Constantes.bundle
                     .getString("SUM_SX_DEN"), TipoPaso.string));
             Procedimiento.agregarPaso(new Paso(Arrays
                     .toString(getDenominadores()), TipoPaso.expresion));
 
             if (sonIgualesLosDenominadores()) {
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("SUM_SX_DEN_IGU"), TipoPaso.string));
             } else {
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("SUM_SX_DEN_DIF"), TipoPaso.string));
 
                 long mcm = Calculos.mcmDetallado(getDenominadores());
 
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("SUM_SX_CONV_MCM"), TipoPaso.string));
                 Procedimiento.agregarPaso(new Paso(
                         latexConversionMcmFracciones(mcm), TipoPaso.expresion));
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("OPE_RES_CONV"), TipoPaso.string));
 
                 convertirAEquivalentesMcm(mcm);
 
                 Procedimiento.agregarPaso(new Paso(toLatex(false),
                         TipoPaso.expresion));
-                Procedimiento.agregarPaso(new Paso(Configuracion
+                Procedimiento.agregarPaso(new Paso(Constantes.bundle
                         .getString("SUM_SX_OPE_NUMS"), TipoPaso.string));
             }
 
             Procedimiento.agregarPaso(new Paso(latexSumaNumeradores(),
                     TipoPaso.expresion));
-            Procedimiento.agregarPaso(new Paso(Configuracion
+            Procedimiento.agregarPaso(new Paso(Constantes.bundle
                     .getString("OPE_RES"), TipoPaso.string));
 
             resultado = calcularResultadoSumaNumeradores()

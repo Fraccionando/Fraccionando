@@ -12,15 +12,15 @@ public class TestConfiguracion {
 
     public static void main(String[] args) {
         Configuracion.inicializar();
-        System.out.println(Configuracion.getString("hola_mundo"));
+        System.out.println(Constantes.bundle.getString("hola_mundo"));
         Configuracion.setIdioma(Constantes.iIngles);
-        System.out.println(Configuracion.getString("hola_mundo"));
+        System.out.println(Constantes.bundle.getString("hola_mundo"));
         Configuracion.setIdioma(Constantes.iEspanol);
-        System.out.println(Configuracion.getString("hola_mundo"));
+        System.out.println(Constantes.bundle.getString("hola_mundo"));
         Configuracion.setIdioma(Constantes.iIngles);
-        System.out.println(Configuracion.getString("hola_mundo"));
+        System.out.println(Constantes.bundle.getString("hola_mundo"));
         Configuracion.setIdioma(Constantes.iEspanol);
-        System.out.println(Configuracion.getString("hola_mundo"));
+        System.out.println(Constantes.bundle.getString("hola_mundo"));
     }
 
 }

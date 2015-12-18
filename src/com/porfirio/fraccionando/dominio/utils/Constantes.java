@@ -1,6 +1,7 @@
 package com.porfirio.fraccionando.dominio.utils;
 
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  * Esta es una clase utilitaria que solo contiene atributos, los cuales son
@@ -44,4 +45,6 @@ public class Constantes {
     public static final String conSimplificar = "SIMPLIFICAR";
     public static final String conCam = "CAM";
     public static final String conCai = "CAI";
+    public static ResourceBundle bundle = ResourceBundle.getBundle(
+            "com.porfirio.fraccionando.resources.strings.strings");
 }
