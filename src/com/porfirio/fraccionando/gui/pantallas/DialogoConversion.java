@@ -12,13 +12,22 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 
 /**
+ * Este cuadro de dialogo es mostrado para insertar funciones de conversion de
+ * fracciones, como simplificar, convertir a mixta y convertir a impropia.
  *
  * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
  */
 public class DialogoConversion extends javax.swing.JDialog
         implements DialogoFuncion {
 
+    /**
+     * Es la respuesta obtenida del dialogo para determinar si la accion dentro
+     * de el fue hecha correctamente o si fue cancelada.
+     */
     private int respuesta;
+    /**
+     * Es la fraccion que se genera a partir del dialogo.
+     */
     private Fraccion fraccion;
 
     /**
@@ -57,7 +66,7 @@ public class DialogoConversion extends javax.swing.JDialog
         respuesta = Constantes.DIALOG_CANCELAR;
         generadorFraccion.setFracciones(new ArrayList<>());
         generadorFraccion.setBotonRemoverVisible(false);
-        
+
         updateGUI();
     }
 
@@ -243,10 +252,19 @@ public class DialogoConversion extends javax.swing.JDialog
         return respuesta;
     }
 
+    /**
+     * Obtiene la fraccion generada para la conversion.
+     *
+     * @return Instancia de Fraccion.
+     */
     public Fraccion getFraccion() {
         return fraccion;
     }
 
+    /**
+     * Actualiza los componentes de la GUI como respuesta a los eventos de
+     * interaccion con el usuario.
+     */
     private void updateGUI() {
         Fraccion generada = generadorFraccion.getFraccion();
 

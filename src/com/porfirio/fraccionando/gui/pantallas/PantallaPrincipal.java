@@ -13,25 +13,16 @@ import com.porfirio.fraccionando.exportacion.Pdf;
 import com.porfirio.fraccionando.gui.componentes.Generador;
 import com.porfirio.fraccionando.gui.componentes.RoundedPanel;
 import com.porfirio.fraccionando.main.Configuracion;
-import java.awt.Component;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.UIManager;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**

@@ -7,8 +7,6 @@ import com.porfirio.fraccionando.gui.componentes.RoundedPanel;
 import com.porfirio.fraccionando.main.Configuracion;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  * Este es un cuadro de dialogo para insertar los calculos con numeros, como lo
@@ -19,7 +17,15 @@ import javax.swing.JTextField;
 public class DialogoNumeros extends javax.swing.JDialog
         implements DialogoFuncion {
 
+    /**
+     * Es la respuesta obtenida del dialogo para determinar si la accion dentro
+     * de el fue hecha correctamente o si fue cancelada.
+     */
     private int respuesta;
+    /**
+     * Es el arreglo de numeros generados por el dialogo, de los cuales se hara
+     * el calculo.
+     */
     private long[] numeros;
 
     /**

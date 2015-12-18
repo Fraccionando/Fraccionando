@@ -1,8 +1,9 @@
 package com.porfirio.fraccionando.gui.pantallas;
 
-import javax.swing.JDialog;
-
 /**
+ * Esta interface es usada para que los dialogos de funciones implementen de
+ * ella, y poder crear metodos o funciones genericas que trabajen con cualquiera
+ * de ellos.
  *
  * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
  */

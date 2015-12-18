@@ -5,7 +5,6 @@ import com.porfirio.fraccionando.dominio.procedimiento.Paso;
 import com.porfirio.fraccionando.dominio.procedimiento.Procedimiento;
 import com.porfirio.fraccionando.gui.componentes.Generador;
 import com.porfirio.fraccionando.latex.LatexRender;
-import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;

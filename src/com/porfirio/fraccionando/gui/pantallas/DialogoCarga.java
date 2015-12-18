@@ -3,8 +3,6 @@ package com.porfirio.fraccionando.gui.pantallas;
 import com.porfirio.fraccionando.gui.componentes.RoundedPanel;
 import com.porfirio.fraccionando.latex.LatexRender;
 import com.porfirio.fraccionando.main.Configuracion;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Este cuadro de dialogo es el que se muestra al iniciar la aplicacion,

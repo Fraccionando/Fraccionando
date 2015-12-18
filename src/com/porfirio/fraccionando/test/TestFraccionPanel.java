@@ -1,14 +1,13 @@
 package com.porfirio.fraccionando.test;
 
-import com.porfirio.fraccionando.dominio.logica.fracciones.Fraccion;
 import com.porfirio.fraccionando.dominio.logica.fracciones.FraccionSimple;
 import com.porfirio.fraccionando.dominio.logica.operaciones.Operacion;
 import com.porfirio.fraccionando.gui.listeners.CreacionFraccionListener;
-import com.porfirio.fraccionando.gui.pantallas.PantallaPrincipal;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
+ * Esta clase prueba al panel generador de fracciones.
  *
  * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
  */

@@ -5,23 +5,30 @@ import com.porfirio.fraccionando.dominio.logica.fracciones.FraccionSimple;
 import com.porfirio.fraccionando.dominio.utils.Constantes;
 import com.porfirio.fraccionando.gui.componentes.Generador;
 import com.porfirio.fraccionando.gui.componentes.RoundedPanel;
-import com.porfirio.fraccionando.gui.listeners.CreacionFraccionAdapter;
 import com.porfirio.fraccionando.gui.listeners.CreacionFraccionListener;
 import com.porfirio.fraccionando.latex.LatexRender;
 import com.porfirio.fraccionando.main.Configuracion;
 import java.util.ArrayList;
-import java.util.stream.Stream;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 
 /**
+ * Este cuadro de dialogo es mostrado para insertar funciones de comparacion,
+ * como lo son determinar fracciones equivalentes, reciprocas y la mayor.
  *
  * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
  */
 public class DialogoComparacion extends javax.swing.JDialog
         implements DialogoFuncion {
 
+    /**
+     * Es la respuesta obtenida del dialogo para determinar si la accion dentro
+     * de el fue hecha correctamente o si fue cancelada.
+     */
     private int respuesta;
+    /**
+     * Lista que contiene las dos fracciones que se van a comparar.
+     */
     ArrayList<Fraccion> fracciones;
 
     /**
@@ -267,12 +274,19 @@ public class DialogoComparacion extends javax.swing.JDialog
         return fracciones;
     }
 
+    /**
+     * Agrega una fraccion a la comparacion.
+     */
     public void agregarFraccion() {
         fracciones.add(new FraccionSimple());
         generadorFraccion.updateGUI();
         updateGUI();
     }
 
+    /**
+     * Actualiza los componentes de la GUI como respuesta a los eventos de
+     * interaccion con el usuario.
+     */
     private void updateGUI() {
 
         if (generadorFraccion.isCompleta() && fracciones.size() > 1) {
@@ -283,7 +297,7 @@ public class DialogoComparacion extends javax.swing.JDialog
 
         if (fracciones.size() == 1) {
             jButtonAceptar.setEnabled(false);
-            
+
             if (generadorFraccion.isCompleta()) {
                 jButtonAgregarFraccion.setEnabled(true);
             } else {

@@ -6,8 +6,6 @@ import com.porfirio.fraccionando.dominio.procedimiento.Paso;
 import com.porfirio.fraccionando.dominio.procedimiento.Procedimiento;
 import com.porfirio.fraccionando.main.Configuracion;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Es una implementacion de Mixta, donde las operaciones realizadas generan una

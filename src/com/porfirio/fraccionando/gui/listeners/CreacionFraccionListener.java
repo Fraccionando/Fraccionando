@@ -8,9 +8,19 @@ package com.porfirio.fraccionando.gui.listeners;
  */
 public interface CreacionFraccionListener {
 
+    /**
+     * Se dispara cuando una fraccion ha sido actualizada.
+     */
     public void onFraccionUpdated();
 
+    /**
+     * Se dispara cuando en una operacion, la ultima fraccion se elimina de
+     * ella.
+     */
     public void onFraccionRemoved();
 
+    /**
+     * Se dispara cuando la fraccion se reinicia.
+     */
     public void onFraccionReseted();
 }

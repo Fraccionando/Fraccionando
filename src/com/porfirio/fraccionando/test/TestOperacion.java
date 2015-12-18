@@ -1,12 +1,10 @@
 package com.porfirio.fraccionando.test;
 
 import com.porfirio.fraccionando.dominio.logica.fracciones.Fraccion;
-import com.porfirio.fraccionando.dominio.logica.fracciones.FraccionDetallada;
 import com.porfirio.fraccionando.dominio.logica.fracciones.FraccionSimple;
 import com.porfirio.fraccionando.dominio.logica.operaciones.Operacion;
 import com.porfirio.fraccionando.dominio.procedimiento.Paso;
 import com.porfirio.fraccionando.dominio.procedimiento.Procedimiento;
-import com.porfirio.fraccionando.dominio.utils.Constantes;
 import com.porfirio.fraccionando.main.Configuracion;
 import java.util.ArrayList;
 

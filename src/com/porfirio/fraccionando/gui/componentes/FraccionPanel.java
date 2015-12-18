@@ -5,7 +5,6 @@ import com.porfirio.fraccionando.gui.listeners.CreacionFraccionListener;
 import com.porfirio.fraccionando.gui.listeners.CreacionFraccionAdapter;
 import com.porfirio.fraccionando.dominio.logica.fracciones.Fraccion;
 import com.porfirio.fraccionando.dominio.logica.fracciones.FraccionSimple;
-import com.porfirio.fraccionando.dominio.logica.operaciones.Operacion;
 import com.porfirio.fraccionando.dominio.utils.Arreglos;
 import com.porfirio.fraccionando.dominio.utils.ManejoDigitos;
 import java.awt.event.ActionEvent;

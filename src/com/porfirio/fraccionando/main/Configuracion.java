@@ -1,7 +1,6 @@
 package com.porfirio.fraccionando.main;
 
 import com.porfirio.fraccionando.dominio.enumerados.ColorTema;
-import com.porfirio.fraccionando.dominio.enumerados.TipoPaso;
 import com.porfirio.fraccionando.dominio.utils.Constantes;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,8 +14,6 @@ import java.io.OutputStream;
 import java.util.Locale;
 import java.util.Properties;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Esta clase se encarga de cargar y guardar los aspectos de configuracion de

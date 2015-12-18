@@ -1,7 +1,6 @@
 package com.porfirio.fraccionando.dominio.procedimiento;
 
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  * Esta clase se encarga de administrar los pasos generados por las operaciones

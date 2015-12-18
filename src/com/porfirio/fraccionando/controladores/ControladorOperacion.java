@@ -1,6 +1,5 @@
 package com.porfirio.fraccionando.controladores;
 
-import com.porfirio.fraccionando.dominio.logica.fracciones.Fraccion;
 import com.porfirio.fraccionando.dominio.logica.fracciones.FraccionSimple;
 import com.porfirio.fraccionando.dominio.logica.operaciones.Operacion;
 import com.porfirio.fraccionando.dominio.procedimiento.Procedimiento;
@@ -12,7 +11,6 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
