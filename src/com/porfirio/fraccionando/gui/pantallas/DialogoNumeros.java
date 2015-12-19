@@ -198,13 +198,13 @@ public class DialogoNumeros extends javax.swing.JDialog
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new java.awt.GridLayout(3, 1));
 
-        jLabel1.setText("Inserta los números separados por comas");
+        jLabel1.setText(Constantes.bundle.getString("LABEL_COMAS"));
         jPanel1.add(jLabel1);
         jPanel1.add(jTextFieldNumeros);
 
         jPanel2.setOpaque(false);
 
-        jButtonAceptar.setText("Aceptar");
+        jButtonAceptar.setText(Constantes.bundle.getString("LABEL_ACEPTAR"));
         jButtonAceptar.setEnabled(false);
         jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,7 +213,7 @@ public class DialogoNumeros extends javax.swing.JDialog
         });
         jPanel2.add(jButtonAceptar);
 
-        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.setText(Constantes.bundle.getString("LABEL_CANCELAR"));
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelarActionPerformed(evt);

@@ -25,7 +25,6 @@ public class Configuracion {
 
     private static final String archivo = "Preferencias.properties";
     private static Properties properties;
-//    private static ResourceBundle bundle;
     public static Locale locale;
     public static Color colorClaro;
     public static Color colorOscuro;
@@ -109,6 +108,12 @@ public class Configuracion {
         }
 
         Locale.setDefault(locale);
+        ResourceBundle.clearCache();
+
+        Constantes.bundle = ResourceBundle.getBundle(
+                "com.porfirio.fraccionando.resources.strings.strings");
+
+        System.out.println(Locale.getDefault());
 
         guardar();
     }

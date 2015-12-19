@@ -1,5 +1,6 @@
 package com.porfirio.fraccionando.gui.pantallas;
 
+import com.porfirio.fraccionando.dominio.utils.Constantes;
 import com.porfirio.fraccionando.gui.componentes.Generador;
 import com.porfirio.fraccionando.gui.componentes.RoundedPanel;
 import com.porfirio.fraccionando.main.Configuracion;
@@ -45,7 +46,7 @@ public class DialogoAcercaDe extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Acerca de Fraccionando");
+        setTitle(Constantes.bundle.getString("LABEL_TITULO_ACERCA_DE"));
 
         jPanel1.setBackground(Configuracion.colorOscuro);
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -57,7 +58,7 @@ public class DialogoAcercaDe extends javax.swing.JDialog {
 
         jPanel3.setOpaque(false);
 
-        jButtonAceptar.setText("Aceptar");
+        jButtonAceptar.setText(Constantes.bundle.getString("LABEL_ACEPTAR"));
         jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAceptarActionPerformed(evt);
@@ -78,13 +79,13 @@ public class DialogoAcercaDe extends javax.swing.JDialog {
         jPanel5.setOpaque(false);
         jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.Y_AXIS));
 
-        jLabel4.setText("Fraccionando 1.1");
+        jLabel4.setText(Constantes.bundle.getString("LABEL_VERSION"));
         jPanel5.add(jLabel4);
 
-        jLabel2.setText("Desarrollado por: Porfirio Ángel Díaz Sánchez");
+        jLabel2.setText(Constantes.bundle.getString("LABEL_DESARROLLADO"));
         jPanel5.add(jLabel2);
 
-        jLabel3.setText("Contacto: porfirioads@gmail.com");
+        jLabel3.setText(Constantes.bundle.getString("LABEL_CONTACTO"));
         jPanel5.add(jLabel3);
 
         jPanel4.add(jPanel5, new java.awt.GridBagConstraints());

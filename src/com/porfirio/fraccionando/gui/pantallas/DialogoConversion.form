@@ -119,10 +119,14 @@
                           <Properties>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                                <TitledBorder title="Entrada"/>
+                                <TitledBorder title="&lt;User Code&gt;">
+                                  <Connection PropertyName="titleX" code="Constantes.bundle.getString(&quot;LABEL_ENTRADA&quot;)" type="code"/>
+                                </TitledBorder>
                               </Border>
                             </Property>
-                            <Property name="toolTipText" type="java.lang.String" value="En esta &#xe1;rea se muestra la operaci&#xf3;n que se est&#xe1; ingresando"/>
+                            <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="Constantes.bundle.getString(&quot;LABEL_TOOL_ENTRADA_CONVERSION&quot;)" type="code"/>
+                            </Property>
                             <Property name="opaque" type="boolean" value="false"/>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[482, 150]"/>
@@ -176,7 +180,9 @@
                       <SubComponents>
                         <Component class="javax.swing.JButton" name="jButtonAceptar">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Aceptar"/>
+                            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="Constantes.bundle.getString(&quot;LABEL_ACEPTAR&quot;)" type="code"/>
+                            </Property>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAceptarActionPerformed"/>
@@ -184,7 +190,9 @@
                         </Component>
                         <Component class="javax.swing.JButton" name="jButtonCancelar">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Cancelar"/>
+                            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="Constantes.bundle.getString(&quot;LABEL_CANCELAR&quot;)" type="code"/>
+                            </Property>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCancelarActionPerformed"/>

@@ -87,7 +87,9 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jLabel1">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Inserta los n&#xfa;meros separados por comas"/>
+                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="Constantes.bundle.getString(&quot;LABEL_COMAS&quot;)" type="code"/>
+                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextFieldNumeros">
@@ -101,7 +103,9 @@
                   <SubComponents>
                     <Component class="javax.swing.JButton" name="jButtonAceptar">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Aceptar"/>
+                        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="Constantes.bundle.getString(&quot;LABEL_ACEPTAR&quot;)" type="code"/>
+                        </Property>
                         <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                       <Events>
@@ -110,7 +114,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="jButtonCancelar">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Cancelar"/>
+                        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="Constantes.bundle.getString(&quot;LABEL_CANCELAR&quot;)" type="code"/>
+                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCancelarActionPerformed"/>

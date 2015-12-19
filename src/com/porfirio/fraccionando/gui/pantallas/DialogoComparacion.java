@@ -116,8 +116,8 @@ public class DialogoComparacion extends javax.swing.JDialog
         jPanel5.setOpaque(false);
         jPanel5.setLayout(new java.awt.BorderLayout());
 
-        jButtonAgregarFraccion.setText("Agregar fracción");
-        jButtonAgregarFraccion.setToolTipText("Agrega la otra fracción de la comparación");
+        jButtonAgregarFraccion.setText(Constantes.bundle.getString("LABEL_AGREGAR_FRACCION"));
+        jButtonAgregarFraccion.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_AGREGAR_FRACCION"));
         jButtonAgregarFraccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAgregarFraccionActionPerformed(evt);
@@ -134,8 +134,8 @@ public class DialogoComparacion extends javax.swing.JDialog
         roundedPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         roundedPanel1.setLayout(new java.awt.BorderLayout());
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Entrada"));
-        jPanel4.setToolTipText("En esta área se muestra la operación que se está ingresando");
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(Constantes.bundle.getString("LABEL_ENTRADA")));
+        jPanel4.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_ENTRADA_COMPARACION"));
         jPanel4.setOpaque(false);
         jPanel4.setPreferredSize(new java.awt.Dimension(482, 150));
         jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.LINE_AXIS));
@@ -157,7 +157,7 @@ public class DialogoComparacion extends javax.swing.JDialog
 
         jPanel3.setOpaque(false);
 
-        jButtonAceptar.setText("Aceptar");
+        jButtonAceptar.setText(Constantes.bundle.getString("LABEL_ACEPTAR"));
         jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAceptarActionPerformed(evt);
@@ -165,7 +165,7 @@ public class DialogoComparacion extends javax.swing.JDialog
         });
         jPanel3.add(jButtonAceptar);
 
-        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.setText(Constantes.bundle.getString("LABEL_CANCELAR"));
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelarActionPerformed(evt);

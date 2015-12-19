@@ -153,8 +153,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jPanelVista.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         jPanelVista.setLayout(new java.awt.BorderLayout());
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Explicación"));
-        jPanel3.setToolTipText("En esta área se muestran los pasos de la explicación");
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(Constantes.bundle.getString("LABEL_EXPLICACION")));
+        jPanel3.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_EXPLICACION"));
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new java.awt.BorderLayout());
 
@@ -169,431 +169,432 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jPanelVista.add(jPanel3, java.awt.BorderLayout.CENTER);
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Entrada"));
-        jPanel4.setToolTipText("En esta área se muestra la operación que se está ingresando");
-        jPanel4.setOpaque(false);
-        jPanel4.setPreferredSize(new java.awt.Dimension(482, 150));
-        jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.LINE_AXIS));
-
-        jScrollPaneEntrada.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        jPanelOperacion.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 20, 0));
-        jPanelOperacion.setOpaque(false);
-        jPanelOperacion.setLayout(new javax.swing.BoxLayout(jPanelOperacion, javax.swing.BoxLayout.LINE_AXIS));
-        jPanelOperacion.add(jLabelOperacion);
-
-        jScrollPaneEntrada.setViewportView(jPanelOperacion);
-
-        jPanel4.add(jScrollPaneEntrada);
-
-        jPanelVista.add(jPanel4, java.awt.BorderLayout.PAGE_END);
-
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado"));
-        jPanel5.setToolTipText("En esta área se muestra la operación que se está ingresando");
-        jPanel5.setOpaque(false);
-        jPanel5.setPreferredSize(new java.awt.Dimension(482, 150));
-        jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.LINE_AXIS));
-
-        jScrollPaneResultado.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        jPanelResultado.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 20, 0));
-        jPanelResultado.setOpaque(false);
-        jPanelResultado.setLayout(new javax.swing.BoxLayout(jPanelResultado, javax.swing.BoxLayout.LINE_AXIS));
-        jScrollPaneResultado.setViewportView(jPanelResultado);
-
-        jPanel5.add(jScrollPaneResultado);
-
-        jPanelVista.add(jPanel5, java.awt.BorderLayout.PAGE_START);
-
-        jPanelFondoClaro.add(jPanelVista, java.awt.BorderLayout.CENTER);
-
-        jPanelDerecho.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
-        jPanelDerecho.setOpaque(false);
-        jPanelDerecho.setLayout(new java.awt.BorderLayout());
-
-        jScrollPaneCalculadora.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPaneCalculadora.setRequestFocusEnabled(false);
-
-        jPanelCalculadora.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 20));
-        jPanelCalculadora.setOpaque(false);
-        jPanelCalculadora.setLayout(new javax.swing.BoxLayout(jPanelCalculadora, javax.swing.BoxLayout.Y_AXIS));
-        jPanelCalculadora.add(fraccionPanel);
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Operaciones"));
-        jPanel2.setOpaque(false);
-        jPanel2.setLayout(new java.awt.GridBagLayout());
-
-        jButtonMas.setText("+");
-        jButtonMas.setToolTipText("Agrega una suma");
-        jButtonMas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMasActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel2.add(jButtonMas, gridBagConstraints);
-
-        jButtonMenos.setText("-");
-        jButtonMenos.setToolTipText("Agrega una resta");
-        jButtonMenos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMenosActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel2.add(jButtonMenos, gridBagConstraints);
-
-        jButtonPor.setText("*");
-        jButtonPor.setToolTipText("Agrega una multiplicación");
-        jButtonPor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPorActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel2.add(jButtonPor, gridBagConstraints);
-
-        jButtonEntre.setText("÷");
-        jButtonEntre.setToolTipText("Agrega una división");
-        jButtonEntre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEntreActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel2.add(jButtonEntre, gridBagConstraints);
-
-        jButtonEquivalentes.setText("Equivalentes");
-        jButtonEquivalentes.setToolTipText("Determina si dos fracciones son equivalentes");
-        jButtonEquivalentes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEquivalentesActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel2.add(jButtonEquivalentes, gridBagConstraints);
-
-        jButtonReciprocas.setText("Recíprocas");
-        jButtonReciprocas.setToolTipText("Determina si dos fracciones son recíprocas");
-        jButtonReciprocas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonReciprocasActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel2.add(jButtonReciprocas, gridBagConstraints);
-
-        jButtonMayor.setText("Mayor");
-        jButtonMayor.setToolTipText("Determina la mayor de dos fracciones");
-        jButtonMayor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMayorActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel2.add(jButtonMayor, gridBagConstraints);
-
-        jButtonSimplificar.setText("Simplificar");
-        jButtonSimplificar.setToolTipText("Simplifica una fracción");
-        jButtonSimplificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSimplificarActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel2.add(jButtonSimplificar, gridBagConstraints);
-
-        jButtonCam.setText("C.A.M.");
-        jButtonCam.setToolTipText("Convierte una fracción impropia en mixta");
-        jButtonCam.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCamActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel2.add(jButtonCam, gridBagConstraints);
-
-        jButtonCai.setText("C.A.I.");
-        jButtonCai.setToolTipText("Convierte una fracción mixta en impropia");
-        jButtonCai.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCaiActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel2.add(jButtonCai, gridBagConstraints);
-
-        jButtonMcm.setText("M.C.M.");
-        jButtonMcm.setToolTipText("Calcula el Mínimo Común Múltiplo");
-        jButtonMcm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMcmActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel2.add(jButtonMcm, gridBagConstraints);
-
-        jButtonMcd.setText("M.C.D.");
-        jButtonMcd.setToolTipText("Calcula el Máximo Común Divisor");
-        jButtonMcd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMcdActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel2.add(jButtonMcd, gridBagConstraints);
-
-        jPanelCalculadora.add(jPanel2);
-
-        jScrollPaneCalculadora.setViewportView(jPanelCalculadora);
-
-        jPanelDerecho.add(jScrollPaneCalculadora, java.awt.BorderLayout.CENTER);
-
-        jPanelEnvio.setOpaque(false);
-        jPanelEnvio.setPreferredSize(new java.awt.Dimension(81, 100));
-        jPanelEnvio.setLayout(new java.awt.GridLayout(2, 1));
-
-        jButtonResolverOperacion.setText("Resolver");
-        jButtonResolverOperacion.setToolTipText("Resuelve la operación ingresada");
-        jButtonResolverOperacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonResolverOperacionActionPerformed(evt);
-            }
-        });
-        jPanelEnvio.add(jButtonResolverOperacion);
-
-        jButtonReiniciarOperacion.setText("Reiniciar");
-        jButtonReiniciarOperacion.setToolTipText("Reinicia la operación ingresada");
-        jButtonReiniciarOperacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonReiniciarOperacionActionPerformed(evt);
-            }
-        });
-        jPanelEnvio.add(jButtonReiniciarOperacion);
-
-        jPanelDerecho.add(jPanelEnvio, java.awt.BorderLayout.SOUTH);
-
-        jPanelFondoClaro.add(jPanelDerecho, java.awt.BorderLayout.EAST);
-
-        jPanelFondoOscuro.add(jPanelFondoClaro, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(jPanelFondoOscuro, java.awt.BorderLayout.CENTER);
-
-        jMenuArchivo.setText("Archivo");
-
-        jmItemNuevo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
-        jmItemNuevo.setText("Nuevo");
-        jmItemNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmItemNuevoActionPerformed(evt);
-            }
-        });
-        jMenuArchivo.add(jmItemNuevo);
-
-        jmItemGuardar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
-        jmItemGuardar.setText("Guardar");
-        jmItemGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmItemGuardarActionPerformed(evt);
-            }
-        });
-        jMenuArchivo.add(jmItemGuardar);
-
-        jmItemSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        jmItemSalir.setText("Salir");
-        jmItemSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmItemSalirActionPerformed(evt);
-            }
-        });
-        jMenuArchivo.add(jmItemSalir);
-
-        jMenuBar.add(jMenuArchivo);
-
-        jMenuPreferencias.setText("Preferencias");
-
-        jMenuTema.setText("Tema");
-
-        buttonGroupTemas.add(jrbItemAzul);
-        jrbItemAzul.setSelected(true);
-        jrbItemAzul.setText("Azul");
-        jrbItemAzul.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jrbItemAzulItemStateChanged(evt);
-            }
-        });
-        jMenuTema.add(jrbItemAzul);
-
-        buttonGroupTemas.add(jrbItemAmarillo);
-        jrbItemAmarillo.setText("Amarillo");
-        jrbItemAmarillo.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jrbItemAmarilloItemStateChanged(evt);
-            }
-        });
-        jMenuTema.add(jrbItemAmarillo);
-
-        buttonGroupTemas.add(jrbItemRosa);
-        jrbItemRosa.setText("Rosa");
-        jrbItemRosa.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jrbItemRosaItemStateChanged(evt);
-            }
-        });
-        jMenuTema.add(jrbItemRosa);
-
-        buttonGroupTemas.add(jrbItemRojo);
-        jrbItemRojo.setText("Rojo");
-        jrbItemRojo.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jrbItemRojoItemStateChanged(evt);
-            }
-        });
-        jMenuTema.add(jrbItemRojo);
-
-        buttonGroupTemas.add(jrbItemMorado);
-        jrbItemMorado.setText("Morado");
-        jrbItemMorado.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jrbItemMoradoItemStateChanged(evt);
-            }
-        });
-        jMenuTema.add(jrbItemMorado);
-
-        jMenuPreferencias.add(jMenuTema);
-
-        jMenuIdioma.setText("Idioma");
-
-        buttonGroupIdiomas.add(jrbItemEspanol);
-        jrbItemEspanol.setSelected(true);
-        jrbItemEspanol.setText("Español");
-        jrbItemEspanol.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jrbItemEspanolItemStateChanged(evt);
-            }
-        });
-        jMenuIdioma.add(jrbItemEspanol);
-
-        buttonGroupIdiomas.add(jrbItemIngles);
-        jrbItemIngles.setText("Inglés");
-        jrbItemIngles.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jrbItemInglesItemStateChanged(evt);
-            }
-        });
-        jMenuIdioma.add(jrbItemIngles);
-
-        jMenuPreferencias.add(jMenuIdioma);
-
-        jMenuExplicacion.setText("Explicación");
-
-        buttonGroupExplicaciones.add(jrbItemSimple);
-        jrbItemSimple.setText("Simple");
-        jrbItemSimple.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jrbItemSimpleItemStateChanged(evt);
-            }
-        });
-        jMenuExplicacion.add(jrbItemSimple);
-
-        buttonGroupExplicaciones.add(jrbItemDetallada);
-        jrbItemDetallada.setSelected(true);
-        jrbItemDetallada.setText("Detallada");
-        jrbItemDetallada.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jrbItemDetalladaItemStateChanged(evt);
-            }
-        });
-        jMenuExplicacion.add(jrbItemDetallada);
-
-        jMenuPreferencias.add(jMenuExplicacion);
-
-        jMenuBar.add(jMenuPreferencias);
-
-        jMenuAyuda.setText("Ayuda");
-
-        jmItemAcercaDe.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
-        jmItemAcercaDe.setText("Acerca de...");
-        jmItemAcercaDe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmItemAcercaDeActionPerformed(evt);
-            }
-        });
-        jMenuAyuda.add(jmItemAcercaDe);
-
-        jMenuBar.add(jMenuAyuda);
-
-        setJMenuBar(jMenuBar);
-
-        pack();
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(Constantes.bundle.getString("LABEL_ENTRADA"
+            + "")));
+jPanel4.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_ENTRADA_OPERACION"));
+jPanel4.setOpaque(false);
+jPanel4.setPreferredSize(new java.awt.Dimension(482, 150));
+jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.LINE_AXIS));
+
+jScrollPaneEntrada.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+jPanelOperacion.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 20, 0));
+jPanelOperacion.setOpaque(false);
+jPanelOperacion.setLayout(new javax.swing.BoxLayout(jPanelOperacion, javax.swing.BoxLayout.LINE_AXIS));
+jPanelOperacion.add(jLabelOperacion);
+
+jScrollPaneEntrada.setViewportView(jPanelOperacion);
+
+jPanel4.add(jScrollPaneEntrada);
+
+jPanelVista.add(jPanel4, java.awt.BorderLayout.PAGE_END);
+
+jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(Constantes.bundle.getString("LABEL_RESULTADO")));
+jPanel5.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_RESULTADO"));
+jPanel5.setOpaque(false);
+jPanel5.setPreferredSize(new java.awt.Dimension(482, 150));
+jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.LINE_AXIS));
+
+jScrollPaneResultado.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+jPanelResultado.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 20, 0));
+jPanelResultado.setOpaque(false);
+jPanelResultado.setLayout(new javax.swing.BoxLayout(jPanelResultado, javax.swing.BoxLayout.LINE_AXIS));
+jScrollPaneResultado.setViewportView(jPanelResultado);
+
+jPanel5.add(jScrollPaneResultado);
+
+jPanelVista.add(jPanel5, java.awt.BorderLayout.PAGE_START);
+
+jPanelFondoClaro.add(jPanelVista, java.awt.BorderLayout.CENTER);
+
+jPanelDerecho.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
+jPanelDerecho.setOpaque(false);
+jPanelDerecho.setLayout(new java.awt.BorderLayout());
+
+jScrollPaneCalculadora.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+jScrollPaneCalculadora.setRequestFocusEnabled(false);
+
+jPanelCalculadora.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 20));
+jPanelCalculadora.setOpaque(false);
+jPanelCalculadora.setLayout(new javax.swing.BoxLayout(jPanelCalculadora, javax.swing.BoxLayout.Y_AXIS));
+jPanelCalculadora.add(fraccionPanel);
+
+jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(Constantes.bundle.getString("LABEL_OPERACIONES")));
+jPanel2.setOpaque(false);
+jPanel2.setLayout(new java.awt.GridBagLayout());
+
+jButtonMas.setText("+");
+jButtonMas.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_SUMA"));
+jButtonMas.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButtonMasActionPerformed(evt);
+    }
+    });
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 0;
+    gridBagConstraints.gridy = 0;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+    gridBagConstraints.weightx = 1.0;
+    gridBagConstraints.weighty = 1.0;
+    jPanel2.add(jButtonMas, gridBagConstraints);
+
+    jButtonMenos.setText("-");
+    jButtonMenos.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_RESTA"));
+    jButtonMenos.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButtonMenosActionPerformed(evt);
+        }
+    });
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 1;
+    gridBagConstraints.gridy = 0;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+    gridBagConstraints.weightx = 1.0;
+    gridBagConstraints.weighty = 1.0;
+    jPanel2.add(jButtonMenos, gridBagConstraints);
+
+    jButtonPor.setText("*");
+    jButtonPor.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_MULTIPLICACION"));
+    jButtonPor.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButtonPorActionPerformed(evt);
+        }
+    });
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 2;
+    gridBagConstraints.gridy = 0;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+    gridBagConstraints.weightx = 1.0;
+    gridBagConstraints.weighty = 1.0;
+    jPanel2.add(jButtonPor, gridBagConstraints);
+
+    jButtonEntre.setText("÷");
+    jButtonEntre.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_DIVISION"));
+    jButtonEntre.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButtonEntreActionPerformed(evt);
+        }
+    });
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 3;
+    gridBagConstraints.gridy = 0;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+    gridBagConstraints.weightx = 1.0;
+    gridBagConstraints.weighty = 1.0;
+    jPanel2.add(jButtonEntre, gridBagConstraints);
+
+    jButtonEquivalentes.setText(Constantes.bundle.getString("LABEL_EQUIVALENTES"));
+    jButtonEquivalentes.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_EQUIVALENTES"));
+    jButtonEquivalentes.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButtonEquivalentesActionPerformed(evt);
+        }
+    });
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 0;
+    gridBagConstraints.gridy = 1;
+    gridBagConstraints.gridwidth = 2;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+    gridBagConstraints.weightx = 1.0;
+    gridBagConstraints.weighty = 1.0;
+    jPanel2.add(jButtonEquivalentes, gridBagConstraints);
+
+    jButtonReciprocas.setText(Constantes.bundle.getString("LABEL_RECIPROCAS"));
+    jButtonReciprocas.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_RECIPROCAS"));
+    jButtonReciprocas.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButtonReciprocasActionPerformed(evt);
+        }
+    });
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 2;
+    gridBagConstraints.gridy = 1;
+    gridBagConstraints.gridwidth = 2;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+    gridBagConstraints.weightx = 1.0;
+    gridBagConstraints.weighty = 1.0;
+    jPanel2.add(jButtonReciprocas, gridBagConstraints);
+
+    jButtonMayor.setText(Constantes.bundle.getString("LABEL_MAYOR"));
+    jButtonMayor.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_MAYOR"));
+    jButtonMayor.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButtonMayorActionPerformed(evt);
+        }
+    });
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 0;
+    gridBagConstraints.gridy = 2;
+    gridBagConstraints.gridwidth = 2;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+    gridBagConstraints.weightx = 1.0;
+    gridBagConstraints.weighty = 1.0;
+    jPanel2.add(jButtonMayor, gridBagConstraints);
+
+    jButtonSimplificar.setText(Constantes.bundle.getString("LABEL_SIMPLIFICAR"));
+    jButtonSimplificar.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_SIMPLIFICAR"));
+    jButtonSimplificar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButtonSimplificarActionPerformed(evt);
+        }
+    });
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 2;
+    gridBagConstraints.gridy = 2;
+    gridBagConstraints.gridwidth = 2;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+    gridBagConstraints.weightx = 1.0;
+    gridBagConstraints.weighty = 1.0;
+    jPanel2.add(jButtonSimplificar, gridBagConstraints);
+
+    jButtonCam.setText(Constantes.bundle.getString("LABEL_CAM"));
+    jButtonCam.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_CAM"));
+    jButtonCam.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButtonCamActionPerformed(evt);
+        }
+    });
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 2;
+    gridBagConstraints.gridy = 3;
+    gridBagConstraints.gridwidth = 2;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+    gridBagConstraints.weightx = 1.0;
+    gridBagConstraints.weighty = 1.0;
+    jPanel2.add(jButtonCam, gridBagConstraints);
+
+    jButtonCai.setText(Constantes.bundle.getString("LABEL_CAI"));
+    jButtonCai.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_CAI"));
+    jButtonCai.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButtonCaiActionPerformed(evt);
+        }
+    });
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 0;
+    gridBagConstraints.gridy = 3;
+    gridBagConstraints.gridwidth = 2;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+    gridBagConstraints.weightx = 1.0;
+    gridBagConstraints.weighty = 1.0;
+    jPanel2.add(jButtonCai, gridBagConstraints);
+
+    jButtonMcm.setText(Constantes.bundle.getString("LABEL_MCM"));
+    jButtonMcm.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_MCM"));
+    jButtonMcm.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButtonMcmActionPerformed(evt);
+        }
+    });
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 0;
+    gridBagConstraints.gridy = 4;
+    gridBagConstraints.gridwidth = 2;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+    gridBagConstraints.weightx = 1.0;
+    gridBagConstraints.weighty = 1.0;
+    jPanel2.add(jButtonMcm, gridBagConstraints);
+
+    jButtonMcd.setText(Constantes.bundle.getString("LABEL_MCD"));
+    jButtonMcd.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_MCD"));
+    jButtonMcd.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButtonMcdActionPerformed(evt);
+        }
+    });
+    gridBagConstraints = new java.awt.GridBagConstraints();
+    gridBagConstraints.gridx = 2;
+    gridBagConstraints.gridy = 4;
+    gridBagConstraints.gridwidth = 2;
+    gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+    gridBagConstraints.weightx = 1.0;
+    gridBagConstraints.weighty = 1.0;
+    jPanel2.add(jButtonMcd, gridBagConstraints);
+
+    jPanelCalculadora.add(jPanel2);
+
+    jScrollPaneCalculadora.setViewportView(jPanelCalculadora);
+
+    jPanelDerecho.add(jScrollPaneCalculadora, java.awt.BorderLayout.CENTER);
+
+    jPanelEnvio.setOpaque(false);
+    jPanelEnvio.setPreferredSize(new java.awt.Dimension(81, 100));
+    jPanelEnvio.setLayout(new java.awt.GridLayout(2, 1));
+
+    jButtonResolverOperacion.setText(Constantes.bundle.getString("LABEL_RESOLVER"));
+    jButtonResolverOperacion.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_RESOLVER"));
+    jButtonResolverOperacion.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButtonResolverOperacionActionPerformed(evt);
+        }
+    });
+    jPanelEnvio.add(jButtonResolverOperacion);
+
+    jButtonReiniciarOperacion.setText(Constantes.bundle.getString("LABEL_REINICIAR"));
+    jButtonReiniciarOperacion.setToolTipText(Constantes.bundle.getString("LABEL_TOOL_REINICIAR_OPERACION"));
+    jButtonReiniciarOperacion.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButtonReiniciarOperacionActionPerformed(evt);
+        }
+    });
+    jPanelEnvio.add(jButtonReiniciarOperacion);
+
+    jPanelDerecho.add(jPanelEnvio, java.awt.BorderLayout.SOUTH);
+
+    jPanelFondoClaro.add(jPanelDerecho, java.awt.BorderLayout.EAST);
+
+    jPanelFondoOscuro.add(jPanelFondoClaro, java.awt.BorderLayout.CENTER);
+
+    getContentPane().add(jPanelFondoOscuro, java.awt.BorderLayout.CENTER);
+
+    jMenuArchivo.setText(Constantes.bundle.getString("LABEL_ARCHIVO"));
+
+    jmItemNuevo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+    jmItemNuevo.setText(Constantes.bundle.getString("LABEL_NUEVO"));
+    jmItemNuevo.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jmItemNuevoActionPerformed(evt);
+        }
+    });
+    jMenuArchivo.add(jmItemNuevo);
+
+    jmItemGuardar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
+    jmItemGuardar.setText(Constantes.bundle.getString("LABEL_GUARDAR"));
+    jmItemGuardar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jmItemGuardarActionPerformed(evt);
+        }
+    });
+    jMenuArchivo.add(jmItemGuardar);
+
+    jmItemSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+    jmItemSalir.setText(Constantes.bundle.getString("LABEL_SALIR"));
+    jmItemSalir.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jmItemSalirActionPerformed(evt);
+        }
+    });
+    jMenuArchivo.add(jmItemSalir);
+
+    jMenuBar.add(jMenuArchivo);
+
+    jMenuPreferencias.setText(Constantes.bundle.getString("LABEL_PREFERENCIAS"));
+
+    jMenuTema.setText(Constantes.bundle.getString("LABEL_TEMA"));
+
+    buttonGroupTemas.add(jrbItemAzul);
+    jrbItemAzul.setSelected(true);
+    jrbItemAzul.setText(Constantes.bundle.getString("LABEL_AZUL"));
+    jrbItemAzul.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            jrbItemAzulItemStateChanged(evt);
+        }
+    });
+    jMenuTema.add(jrbItemAzul);
+
+    buttonGroupTemas.add(jrbItemAmarillo);
+    jrbItemAmarillo.setText(Constantes.bundle.getString("LABEL_AMARILLO"));
+    jrbItemAmarillo.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            jrbItemAmarilloItemStateChanged(evt);
+        }
+    });
+    jMenuTema.add(jrbItemAmarillo);
+
+    buttonGroupTemas.add(jrbItemRosa);
+    jrbItemRosa.setText(Constantes.bundle.getString("LABEL_ROSA"));
+    jrbItemRosa.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            jrbItemRosaItemStateChanged(evt);
+        }
+    });
+    jMenuTema.add(jrbItemRosa);
+
+    buttonGroupTemas.add(jrbItemRojo);
+    jrbItemRojo.setText(Constantes.bundle.getString("LABEL_ROJO"));
+    jrbItemRojo.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            jrbItemRojoItemStateChanged(evt);
+        }
+    });
+    jMenuTema.add(jrbItemRojo);
+
+    buttonGroupTemas.add(jrbItemMorado);
+    jrbItemMorado.setText(Constantes.bundle.getString("LABEL_MORADO"));
+    jrbItemMorado.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            jrbItemMoradoItemStateChanged(evt);
+        }
+    });
+    jMenuTema.add(jrbItemMorado);
+
+    jMenuPreferencias.add(jMenuTema);
+
+    jMenuIdioma.setText(Constantes.bundle.getString("LABEL_IDIOMA"));
+
+    buttonGroupIdiomas.add(jrbItemEspanol);
+    jrbItemEspanol.setSelected(true);
+    jrbItemEspanol.setText(Constantes.bundle.getString("LABEL_ESPANOL"));
+    jrbItemEspanol.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            jrbItemEspanolItemStateChanged(evt);
+        }
+    });
+    jMenuIdioma.add(jrbItemEspanol);
+
+    buttonGroupIdiomas.add(jrbItemIngles);
+    jrbItemIngles.setText(Constantes.bundle.getString("LABEL_INGLES"));
+    jrbItemIngles.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            jrbItemInglesItemStateChanged(evt);
+        }
+    });
+    jMenuIdioma.add(jrbItemIngles);
+
+    jMenuPreferencias.add(jMenuIdioma);
+
+    jMenuExplicacion.setText(Constantes.bundle.getString("LABEL_EXPLICACION"));
+
+    buttonGroupExplicaciones.add(jrbItemSimple);
+    jrbItemSimple.setText(Constantes.bundle.getString("LABEL_SIMPLE"));
+    jrbItemSimple.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            jrbItemSimpleItemStateChanged(evt);
+        }
+    });
+    jMenuExplicacion.add(jrbItemSimple);
+
+    buttonGroupExplicaciones.add(jrbItemDetallada);
+    jrbItemDetallada.setSelected(true);
+    jrbItemDetallada.setText(Constantes.bundle.getString("LABEL_DETALLADA"));
+    jrbItemDetallada.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            jrbItemDetalladaItemStateChanged(evt);
+        }
+    });
+    jMenuExplicacion.add(jrbItemDetallada);
+
+    jMenuPreferencias.add(jMenuExplicacion);
+
+    jMenuBar.add(jMenuPreferencias);
+
+    jMenuAyuda.setText(Constantes.bundle.getString("LABEL_AYUDA"));
+
+    jmItemAcercaDe.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+    jmItemAcercaDe.setText(Constantes.bundle.getString("LABEL_ACERCA_DE"));
+    jmItemAcercaDe.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jmItemAcercaDeActionPerformed(evt);
+        }
+    });
+    jMenuAyuda.add(jmItemAcercaDe);
+
+    jMenuBar.add(jMenuAyuda);
+
+    setJMenuBar(jMenuBar);
+
+    pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jrbItemAzulItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jrbItemAzulItemStateChanged
@@ -697,7 +698,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         if (pasos == null || pasos.isEmpty()) {
             JOptionPane.showMessageDialog(PantallaPrincipal.this,
-                    "Resuelve una operación antes de guardarla.", "ERROR",
+                    Constantes.bundle.getString("LABEL_ERROR_GUARDAR"),
+                    Constantes.bundle.getString("LABEL_ERROR"),
                     JOptionPane.ERROR_MESSAGE);
         } else {
             int respuesta = jFileChooserGuardar
@@ -713,7 +715,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 }
 
                 Pdf pdf = new Pdf(nombreArchivo);
-                pdf.setEncabezado("Pasos de la solución");
+                pdf.setEncabezado(Constantes.bundle.getString("LABEL_ENCABEZADO_PDF"));
                 pdf.addContenido(jPanelPasos.getComponents());
                 pdf.guardar();
             }
@@ -722,46 +724,54 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jButtonMcmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMcmActionPerformed
         DialogoNumeros dialogoMcm = new DialogoNumeros(this, true);
-        dialogoMcm.setTitle("Mínimo común múltiplo");
-        dialogoMcm.setVisible(true);
 
-        if (dialogoMcm.getRespuesta() == Constantes.DIALOG_ACEPTAR) {
-            Procedimiento.iniciar();
-            Calculos.mcmDetallado(dialogoMcm.getNumeros());
-            controladorResultado.colocarResultadoPasos();
-        }
+        abrirDialogoFuncion(dialogoMcm, Constantes.bundle
+                .getString("LABEL_TITULO_MCM"),
+                new AccionDialogo() {
+
+                    @Override
+                    public void onExecute() {
+                        Calculos.mcmDetallado(dialogoMcm.getNumeros());
+                    }
+                });
+
 
     }//GEN-LAST:event_jButtonMcmActionPerformed
 
     private void jButtonMcdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMcdActionPerformed
         DialogoNumeros dialogoMcd = new DialogoNumeros(this, true);
-        dialogoMcd.setTitle("Máximo común divisor");
-        dialogoMcd.setVisible(true);
 
-        if (dialogoMcd.getRespuesta() == Constantes.DIALOG_ACEPTAR) {
-            Procedimiento.iniciar();
-            Calculos.mcdDetallado(dialogoMcd.getNumeros());
-            controladorResultado.colocarResultadoPasos();
-        }
+        abrirDialogoFuncion(dialogoMcd, Constantes.bundle
+                .getString("LABEL_TITULO_MCD"),
+                new AccionDialogo() {
+
+                    @Override
+                    public void onExecute() {
+                        Calculos.mcdDetallado(dialogoMcd.getNumeros());
+                    }
+                });
     }//GEN-LAST:event_jButtonMcdActionPerformed
 
     private void jButtonSimplificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSimplificarActionPerformed
         DialogoConversion dialogoSimplificar = new DialogoConversion(this, true);
-        dialogoSimplificar.setTitle("Simplificar");
-        dialogoSimplificar.setVisible(true);
 
-        if (dialogoSimplificar.getRespuesta() == Constantes.DIALOG_ACEPTAR) {
-            Procedimiento.iniciar();
-            dialogoSimplificar.getFraccion().toFraccionDetallada()
-                    .simplificar();
-            controladorResultado.colocarResultadoPasos();
-        }
+        abrirDialogoFuncion(dialogoSimplificar, Constantes.bundle
+                .getString("LABEL_TITULO_SIMPLIFICAR"),
+                new AccionDialogo() {
+
+                    @Override
+                    public void onExecute() {
+                        dialogoSimplificar.getFraccion().toFraccionDetallada()
+                        .simplificar();
+                    }
+                });
     }//GEN-LAST:event_jButtonSimplificarActionPerformed
 
     private void jButtonCaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCaiActionPerformed
         DialogoConversion dialogoCai = new DialogoConversion(this, true);
 
-        abrirDialogoFuncion(dialogoCai, "Convertir a impropia",
+        abrirDialogoFuncion(dialogoCai, Constantes.bundle
+                .getString("LABEL_TITULO_CAI"),
                 new AccionDialogo() {
 
                     @Override
@@ -775,7 +785,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void jButtonCamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCamActionPerformed
         DialogoConversion dialogoCam = new DialogoConversion(this, true);
 
-        abrirDialogoFuncion(dialogoCam, "Convertir a mixta",
+        abrirDialogoFuncion(dialogoCam, Constantes.bundle
+                .getString("LABEL_TITULO_CAM"),
                 new AccionDialogo() {
 
                     @Override
@@ -788,7 +799,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void jButtonEquivalentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquivalentesActionPerformed
         DialogoComparacion dialogoEqui = new DialogoComparacion(this, true);
 
-        abrirDialogoFuncion(dialogoEqui, "Comprobar equivalentes",
+        abrirDialogoFuncion(dialogoEqui, Constantes.bundle
+                .getString("LABEL_TITULO_EQUIVALENTES"),
                 new AccionDialogo() {
 
                     @Override
@@ -803,7 +815,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void jButtonReciprocasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReciprocasActionPerformed
         DialogoComparacion dialogoReci = new DialogoComparacion(this, true);
 
-        abrirDialogoFuncion(dialogoReci, "Comprobar equivalentes",
+        abrirDialogoFuncion(dialogoReci, Constantes.bundle
+                .getString("LABEL_TITULO_RECIPROCAS"),
                 new AccionDialogo() {
 
                     @Override
@@ -818,7 +831,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void jButtonMayorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMayorActionPerformed
         DialogoComparacion dialogoMayor = new DialogoComparacion(this, true);
 
-        abrirDialogoFuncion(dialogoMayor, "Comprobar equivalentes",
+        abrirDialogoFuncion(dialogoMayor, Constantes.bundle
+                .getString("LABEL_TITULO_MAYOR"),
                 new AccionDialogo() {
 
                     @Override
@@ -849,6 +863,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             Procedimiento.iniciar();
             acciones.onExecute();
             controladorResultado.colocarResultadoPasos();
+
         }
     }
 
@@ -892,8 +907,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .equals(idioma)) {
             int respuesta
                     = JOptionPane.showConfirmDialog(PantallaPrincipal.this,
-                            "Para ver los cambios debes reiniciar Fraccionando, lo cual borrará los datos de tu área de trabajo. ¿Deseas reiniciarlo ahora?",
-                            "Confirmacion", JOptionPane.YES_NO_CANCEL_OPTION);
+                            Constantes.bundle.getString(
+                                    "LABEL_CONFIRMACION_IDIOMA"),
+                            Constantes.bundle.getString("LABEL_CONFIRMACION"),
+                            JOptionPane.YES_NO_CANCEL_OPTION);
 
             if (respuesta != JOptionPane.CANCEL_OPTION) {
                 Configuracion.setIdioma(idioma);
@@ -920,7 +937,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             Configuracion.setNivelExplicacion(explicacion);
 
             JOptionPane.showMessageDialog(PantallaPrincipal.this,
-                    "Los cambios en el nivel de detalle de la explicación se verán hasta la próxima vez que se resuelva una operación.", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+                    Constantes.bundle.getString("LABEL_AVISO_EXPLICACION"),
+                    Constantes.bundle.getString("LABEL_AVISO"),
+                    JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -1007,7 +1026,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         FileNameExtensionFilter fileFilter
                 = new FileNameExtensionFilter(
-                        "Archivos pdf (*.pdf)", "pdf", "PDF");
+                        Constantes.bundle.getString("LABEL_ARCHIVO_PDF"), "pdf",
+                        "PDF");
         jFileChooserGuardar.setAcceptAllFileFilterUsed(false);
         jFileChooserGuardar.setFileFilter(fileFilter);
         jFileChooserGuardar.addChoosableFileFilter(fileFilter);
@@ -1115,16 +1135,21 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaPrincipal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaPrincipal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaPrincipal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaPrincipal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
