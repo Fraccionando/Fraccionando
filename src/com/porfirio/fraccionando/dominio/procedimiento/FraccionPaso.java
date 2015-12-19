@@ -5,7 +5,7 @@ package com.porfirio.fraccionando.dominio.procedimiento;
  * una serie de operaciones en una fraccion, por lo que sus partes estan
  * representadas como cadenas, en lugar de numeros.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class FraccionPaso {
 

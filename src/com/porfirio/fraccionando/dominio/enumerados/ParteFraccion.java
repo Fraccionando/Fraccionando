@@ -4,7 +4,7 @@ package com.porfirio.fraccionando.dominio.enumerados;
  * Este enumerado contiene los valores correspondientes a las partes de una
  * fraccion.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public enum ParteFraccion {
 

@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
  * Este cuadro de dialogo es mostrado para insertar funciones de conversion de
  * fracciones, como simplificar, convertir a mixta y convertir a impropia.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class DialogoConversion extends javax.swing.JDialog
         implements DialogoFuncion {
@@ -31,7 +31,10 @@ public class DialogoConversion extends javax.swing.JDialog
     private Fraccion fraccion;
 
     /**
-     * Creates new form DialogoConversion
+     * Creates new form DialogoConversion.
+     *
+     * @param parent Es el padre del dialogo.
+     * @param modal Determina si sera un dialogo modal o no.
      */
     public DialogoConversion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

@@ -9,12 +9,15 @@ import com.porfirio.fraccionando.main.Configuracion;
  * permanece abierto mientras el programa carga y hace las operaciones
  * necesarias antes de iniciar.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class DialogoCarga extends javax.swing.JDialog {
 
     /**
-     * Creates new form DialogoCarga
+     * Creates new form DialogoCarga.
+     *
+     * @param parent Es el padre del dialogo.
+     * @param modal Determina si sera un dialogo modal o no.
      */
     public DialogoCarga(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

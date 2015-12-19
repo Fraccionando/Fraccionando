@@ -11,7 +11,7 @@ import com.porfirio.fraccionando.dominio.utils.Constantes;
  * Esta clase es una implementacion de la clase abstracta Fraccion, donde las
  * operaciones realizadas generan una explicacion detallada del proceso.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class FraccionDetallada extends Fraccion {
 

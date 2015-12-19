@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Esta clase abstracta es la base para una operacion de multiplicacion, en sus
  * modalidades que generan explicaciones ya sean detalladas o simples.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public abstract class Multiplicacion extends Operacion {
 

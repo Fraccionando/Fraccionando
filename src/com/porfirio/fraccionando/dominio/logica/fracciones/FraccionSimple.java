@@ -10,7 +10,7 @@ import com.porfirio.fraccionando.dominio.utils.Constantes;
  * Esta clase es una implementacion de la clase abstracta Fraccion, donde las
  * operaciones realizadas no generan ningun tipo de explicacion.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class FraccionSimple extends Fraccion {
 

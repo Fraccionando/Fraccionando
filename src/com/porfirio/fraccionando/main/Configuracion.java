@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
  * Esta clase se encarga de cargar y guardar los aspectos de configuracion de
  * Fraccionando tales como idioma, tema visual y nivel de explicacion.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class Configuracion {
 

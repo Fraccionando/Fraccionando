@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
  * Esta es una clase utilitaria que solo contiene atributos, los cuales son
  * constantes que son accedidas desde varias ubicaciones.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class Constantes {
 

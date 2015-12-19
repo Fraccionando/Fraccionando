@@ -4,7 +4,7 @@ package com.porfirio.fraccionando.dominio.utils;
  * Esta es una clase utilitaria para el manejo de operaciones comunes en cadenas
  * de texto, pero aplicada a numeros.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class ManejoDigitos {
 

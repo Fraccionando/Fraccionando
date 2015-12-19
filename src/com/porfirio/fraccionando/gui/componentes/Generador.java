@@ -14,7 +14,7 @@ import javax.swing.border.TitledBorder;
  * Esta clase utilitaria provee metodos para generar algunos objetos utiles para
  * la gui de la aplicacion.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class Generador {
 

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * basicas que se pueden hacer con la aplicacion (suma, resta, multiplicacion y
  * division).
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class Operacion {
 

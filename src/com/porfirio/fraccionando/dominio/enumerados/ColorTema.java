@@ -7,7 +7,7 @@ import java.awt.Color;
  * asociandoles ademas dos instancias de Color, una para el fondo claro, y otra
  * para el fondo oscuro del tema correspondiente.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public enum ColorTema {
 

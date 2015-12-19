@@ -6,7 +6,7 @@ import com.porfirio.fraccionando.main.Configuracion;
 /**
  * Esta clase prueba los aspectos de configuracion de la aplicacion.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class TestConfiguracion {
 

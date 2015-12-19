@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * Esta clase prueba los metodos de la Clase Operacion, asi como de toda su
  * jerarquia de herencia e implementaciones.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class TestOperacion {
 

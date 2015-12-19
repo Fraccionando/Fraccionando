@@ -29,7 +29,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * Esta clase tiene la ventana principal de Fraccionando, es el area de trabajo
  * de la aplicacion.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class PantallaPrincipal extends javax.swing.JFrame {
 

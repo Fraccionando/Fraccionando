@@ -3,7 +3,7 @@ package com.porfirio.fraccionando.test;
 /**
  * Esta clase prueba el panel de borde redondeado.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class TestRoundedPanel extends javax.swing.JFrame {
 

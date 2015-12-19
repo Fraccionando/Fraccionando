@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
  * de herencias para los tipos de explicaciones como con las fracciones y
  * operaciones.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class Calculos {
 

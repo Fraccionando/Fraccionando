@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Esta clase se encarga de administrar los pasos generados por las operaciones
  * del software.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class Procedimiento {
 

@@ -4,7 +4,7 @@ package com.porfirio.fraccionando.dominio.utils;
  * Esta clase utilitaria proporciona metodos para el manejo de arreglos, en
  * necesidades muy especificas de la aplicacion.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class Arreglos {
 

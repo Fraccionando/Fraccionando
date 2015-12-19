@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * Es una implementacion de Suma, donde las operaciones realizadas generan una
  * explicacion simple del procedimiento llevado a cabo.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class SumaPocoDetallada extends Suma {
 

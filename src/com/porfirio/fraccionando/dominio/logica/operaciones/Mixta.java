@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * division, etc.), en sus modalidades que generan explicaciones ya sean
  * detalladas o simples.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public abstract class Mixta extends Operacion {
 

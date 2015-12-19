@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
  * Este cuadro de dialogo es mostrado para insertar funciones de comparacion,
  * como lo son determinar fracciones equivalentes, reciprocas y la mayor.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class DialogoComparacion extends javax.swing.JDialog
         implements DialogoFuncion {
@@ -32,7 +32,10 @@ public class DialogoComparacion extends javax.swing.JDialog
     ArrayList<Fraccion> fracciones;
 
     /**
-     * Creates new form DialogoComparacion
+     * Creates new form DialogoComparacion.
+     *
+     * @param parent Es el padre del dialogo.
+     * @param modal Determina si sera un dialogo modal o no.
      */
     public DialogoComparacion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

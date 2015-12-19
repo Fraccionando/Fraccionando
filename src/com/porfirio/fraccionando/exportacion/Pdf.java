@@ -20,7 +20,7 @@ import javax.swing.JLabel;
 /**
  * Esta clase representa un documento pdf que va a ser formado y exportado.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class Pdf {
 

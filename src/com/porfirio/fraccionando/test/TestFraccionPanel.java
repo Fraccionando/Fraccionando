@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 /**
  * Esta clase prueba al panel generador de fracciones.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class TestFraccionPanel extends javax.swing.JFrame {
 

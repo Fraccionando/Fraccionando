@@ -5,7 +5,7 @@ import com.porfirio.fraccionando.dominio.enumerados.TipoPaso;
 /**
  * Esta clase representa un paso del procedimiento generado.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class Paso {
 

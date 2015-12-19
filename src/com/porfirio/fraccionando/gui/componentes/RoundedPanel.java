@@ -9,7 +9,7 @@ import java.awt.RenderingHints;
 /**
  * Este es un panel personalizado que tiene los bordes redondeados.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class RoundedPanel extends javax.swing.JPanel {
 

@@ -12,7 +12,7 @@ import java.awt.event.KeyListener;
  * Este es un cuadro de dialogo para insertar los calculos con numeros, como lo
  * son el minimo comun multiplo y maximo comun divisor.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class DialogoNumeros extends javax.swing.JDialog
         implements DialogoFuncion {
@@ -29,7 +29,10 @@ public class DialogoNumeros extends javax.swing.JDialog
     private long[] numeros;
 
     /**
-     * Creates new form DialogoNumeros
+     * Creates new form DialogoNumeros.
+     *
+     * @param parent Es el padre del dialogo.
+     * @param modal Determina si sera un dialogo modal o no.
      */
     public DialogoNumeros(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

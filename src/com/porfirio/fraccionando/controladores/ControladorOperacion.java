@@ -17,7 +17,7 @@ import javax.swing.JPanel;
  * Esta clase es un controlador para unir los datos de las operaciones con
  * fracciones con la GUI de la aplicacion.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class ControladorOperacion {
 

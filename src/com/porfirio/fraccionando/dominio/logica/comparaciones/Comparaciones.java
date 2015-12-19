@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
  * fracciones, como determinar si dos fracciones son equivalentes, si son
  * reciprocas y obtener la mayor de ellas.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class Comparaciones {
 

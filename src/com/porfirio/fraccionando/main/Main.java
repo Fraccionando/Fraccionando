@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * Esta es la clase principal del programa, por medio de la cual se inicia ya
  * sea la aplicacion o las pruebas.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class Main {
 

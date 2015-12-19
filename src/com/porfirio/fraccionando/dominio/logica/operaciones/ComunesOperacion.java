@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * comunes a todas las operaciones basicas con fracciones, tanto en la version
  * que genera explicaciones detalladas, como en la que no lo hace.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class ComunesOperacion {
 

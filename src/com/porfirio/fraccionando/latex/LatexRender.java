@@ -16,7 +16,7 @@ import org.scilab.forge.jlatexmath.TeXIcon;
  * Esta clase utilitaria sirve para renderizar codigos latex, y guardar el
  * resultado como imagenes, para su posterior utilizacion en la aplicacion.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class LatexRender {
 

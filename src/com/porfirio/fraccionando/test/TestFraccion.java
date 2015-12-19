@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * Esta clase prueba los metodos de la clase abstracta Fraccion, asi como de sus
  * implementaciones FraccionSimple y FraccionDetallada.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class TestFraccion {
 

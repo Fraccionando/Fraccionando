@@ -19,18 +19,20 @@ import javax.swing.JOptionPane;
  * Esta clase es una extension de JPanel, su objetivo es proporcionar la
  * interface para ingresar fracciones en las operaciones de la aplicacion.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class FraccionPanel extends javax.swing.JPanel {
 
     //ResourceBundle bundle = ResourceBundle.getBundle("com.porfirio.fraccionando.resources.strings.strings");
-
     /**
      * Son las fracciones de la operacion o comparacion que se esta formando, en
      * caso de que asi sea, en una conversion, esta lista solo tendra un
      * elemento.
      */
     private ArrayList<Fraccion> fracciones;
+    /**
+     * Son los operadores de la operacion que se esta formando en su caso.
+     */
     private ArrayList<Character> operadores;
     /**
      * Es el escuchadorBasico basico que ya contiene el panel generador de
@@ -77,7 +79,10 @@ public class FraccionPanel extends javax.swing.JPanel {
      *
      * @param botonRemover Valor que determina si el panel tendra visiblea el
      * boton de remover fraccion.
-     * @param fracciones
+     * @param fracciones Son las fracciones de la operacion o funcion que se
+     * esta formando.
+     * @param operadores Son los operadores de la operacion que se esta formando
+     * en su caso.
      */
     public FraccionPanel(boolean botonRemover, ArrayList<Fraccion> fracciones,
             ArrayList<Character> operadores) {

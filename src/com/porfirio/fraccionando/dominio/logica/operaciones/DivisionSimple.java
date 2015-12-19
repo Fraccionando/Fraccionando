@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * fracciones, en sus modalidades que generan explicaciones ya sean detalladas o
  * simples.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public abstract class DivisionSimple extends Operacion {
 

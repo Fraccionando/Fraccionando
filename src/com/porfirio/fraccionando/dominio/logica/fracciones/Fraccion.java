@@ -8,7 +8,7 @@ import java.util.Objects;
  * implementacion en sus subclases varia unicamente en los pasos que agrega a la
  * explicacion.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public abstract class Fraccion {
 

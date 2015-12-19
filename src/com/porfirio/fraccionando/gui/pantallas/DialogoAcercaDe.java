@@ -9,12 +9,15 @@ import com.porfirio.fraccionando.main.Configuracion;
  * Este cuadro de dialogo muestra informacion acerca de la aplicacion y del
  * autor de la misma.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class DialogoAcercaDe extends javax.swing.JDialog {
 
     /**
-     * Creates new form DialogoAcercaDe
+     * Creates new form DialogoAcercaDe.
+     * 
+     * @param parent Es el padre del dialogo.
+     * @param modal Determina si sera un dialogo modal o no.
      */
     public DialogoAcercaDe(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

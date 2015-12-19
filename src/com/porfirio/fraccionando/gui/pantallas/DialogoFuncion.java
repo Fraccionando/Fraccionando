@@ -5,7 +5,7 @@ package com.porfirio.fraccionando.gui.pantallas;
  * ella, y poder crear metodos o funciones genericas que trabajen con cualquiera
  * de ellos.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public interface DialogoFuncion {
 

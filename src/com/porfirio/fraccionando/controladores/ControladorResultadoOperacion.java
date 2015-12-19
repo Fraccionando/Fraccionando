@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * generados por una operacion de la aplicacion, es generico para todas las
  * operaciones, tanto basicas, como comparaciones y conversiones.
  *
- * @author Porfirio Angel Diaz Sanchez <porfirioads@gmail.com>
+ * @author Porfirio Angel Diaz Sanchez [porfirioads@gmail.com]
  */
 public class ControladorResultadoOperacion {
 
